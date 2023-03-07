@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  
+  <Color x:Key="AccentLight3">#98ECFE</Color>
+  <Color x:Key="AccentLight2">#60CCFE</Color>
+  <Color x:Key="AccentLight1">#0093F9</Color>
+  <Color x:Key="AccentBase">#0078D4</Color>
+  <Color x:Key="AccentDark1">#005FB8</Color>
+  <Color x:Key="AccentDark2">#003E92</Color>
+  <Color x:Key="AccentDark3">#001A68</Color>
+    
+</ResourceDictionary>
