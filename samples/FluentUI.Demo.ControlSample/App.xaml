@@ -5,6 +5,10 @@
   xmlns:local="clr-namespace:FluentUI.Demo.ControlSample"
   StartupUri="MainWindow.xaml">
   <Application.Resources>
-
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Fluent.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
   </Application.Resources>
 </Application>
