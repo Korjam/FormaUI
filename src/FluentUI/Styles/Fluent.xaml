@@ -6,6 +6,8 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Values/Text.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/Accent.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/ColorsLight.xaml" />
+    
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
   </ResourceDictionary.MergedDictionaries>
   
 </ResourceDictionary>
