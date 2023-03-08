@@ -40,8 +40,9 @@
     x:Key="{x:Static SystemParameters.FocusVisualStyleKey}"
     BasedOn="{StaticResource FocusVisual}" />
 
-  <Style x:Key="BaseButtonStyle"
-         TargetType="{x:Type ButtonBase}">
+  <Style
+    x:Key="BaseButtonStyle"
+    TargetType="{x:Type ButtonBase}">
     <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
     <Setter Property="BorderThickness" Value="1"/>
     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -51,6 +52,99 @@
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
   </Style>
 
+  <ControlTemplate
+    x:Key="StandardButtonTemplate"
+    TargetType="{x:Type ButtonBase}">
+
+    <Grid>
+
+      <Border
+        x:Name="background"
+        Background="{TemplateBinding Background}"
+        BorderThickness="0"
+        CornerRadius="3"
+        SnapsToDevicePixels="True" />
+
+      <Border
+        x:Name="border"
+        BorderThickness="{TemplateBinding BorderThickness}"
+        BorderBrush="{TemplateBinding BorderBrush}"
+        CornerRadius="3"
+        SnapsToDevicePixels="True" />
+
+      <ContentPresenter
+        x:Name="contentPresenter"
+        RecognizesAccessKey="True"
+        Margin="{TemplateBinding Padding}"
+        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        Focusable="False" />
+
+    </Grid>
+
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" TargetName="background" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" TargetName="background" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" TargetName="border" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" TargetName="contentPresenter" />
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" TargetName="background" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" TargetName="border" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <ControlTemplate x:Key="AccentButtonTemplate"
+    TargetType="{x:Type ButtonBase}">
+
+    <Grid>
+
+      <Border
+        x:Name="background"
+        Background="{TemplateBinding Background}"
+        BorderThickness="0"
+        CornerRadius="4"
+        SnapsToDevicePixels="True" />
+
+      <Border
+        x:Name="border"
+        BorderThickness="{TemplateBinding BorderThickness}"
+        BorderBrush="{TemplateBinding BorderBrush}"
+        CornerRadius="4"
+        SnapsToDevicePixels="True" />
+
+      <ContentPresenter
+        x:Name="contentPresenter"
+        RecognizesAccessKey="True"
+        Margin="{TemplateBinding Padding}"
+        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        Focusable="False" />
+
+    </Grid>
+
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" TargetName="background" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" TargetName="background" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorOnAccentDefaultBrush}" TargetName="border" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" TargetName="contentPresenter" />
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" TargetName="background" />
+        <Setter Property="BorderBrush" Value="Transparent" TargetName="border" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  
   <Style x:Key="StandardButtonStyle"
          TargetType="{x:Type ButtonBase}"
          BasedOn="{StaticResource BaseButtonStyle}">
@@ -60,55 +154,9 @@
     <Setter Property="Padding" Value="11,4,11,6" />
     <Setter Property="MinWidth" Value="118" />
     <Setter Property="MinHeight" Value="30" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ButtonBase}">
-          <Grid>
-
-            <Border
-              x:Name="background"
-              Background="{TemplateBinding Background}"
-              BorderThickness="0"
-              CornerRadius="3"
-              SnapsToDevicePixels="True" />
-
-            <Border
-              x:Name="border"
-              BorderThickness="{TemplateBinding BorderThickness}"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              CornerRadius="3"
-              SnapsToDevicePixels="True" />
-
-            <ContentPresenter
-              x:Name="contentPresenter"
-              RecognizesAccessKey="True"
-              Margin="{TemplateBinding Padding}"
-              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-              Focusable="False" />
-
-          </Grid>
-
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-              <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" TargetName="background" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-              <Setter Property="Background" Value="{DynamicResource ControlFillColorTertiaryBrush}" TargetName="background" />
-              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" TargetName="border" />
-              <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" TargetName="contentPresenter" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-              <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" TargetName="background" />
-              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" TargetName="border" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
+    <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
   </Style>
-
+  
   <Style x:Key="AccentButtonStyle"
          TargetType="{x:Type ButtonBase}"
          BasedOn="{StaticResource BaseButtonStyle}">
@@ -118,53 +166,7 @@
     <Setter Property="Padding" Value="12,5,12,7" />
     <Setter Property="MinWidth" Value="120" />
     <Setter Property="MinHeight" Value="32" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ButtonBase}">
-          <Grid>
-
-            <Border
-              x:Name="background"
-              Background="{TemplateBinding Background}"
-              BorderThickness="0"
-              CornerRadius="4"
-              SnapsToDevicePixels="True" />
-
-            <Border
-              x:Name="border"
-              BorderThickness="{TemplateBinding BorderThickness}"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              CornerRadius="4"
-              SnapsToDevicePixels="True" />
-
-            <ContentPresenter
-              x:Name="contentPresenter"
-              RecognizesAccessKey="True"
-              Margin="{TemplateBinding Padding}"
-              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-              Focusable="False" />
-
-          </Grid>
-
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-              <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" TargetName="background" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-              <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" TargetName="background" />
-              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorOnAccentDefaultBrush}" TargetName="border" />
-              <Setter Property="TextElement.Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" TargetName="contentPresenter" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-              <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" TargetName="background" />
-              <Setter Property="BorderBrush" Value="Transparent" TargetName="border" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
+    <Setter Property="Template" Value="{StaticResource AccentButtonTemplate}" />
   </Style>
 
   <Style x:Key="StandardCompactButtonStyle"
