@@ -167,9 +167,17 @@
     </Setter>
   </Style>
 
+  <Style x:Key="StandardCompactButtonStyle"
+         TargetType="{x:Type ButtonBase}"
+         BasedOn="{StaticResource StandardButtonStyle}">
+    <Setter Property="Padding" Value="11,0,11,2" />
+    <Setter Property="MinWidth" Value="47" />
+    <Setter Property="MinHeight" Value="22" />
+  </Style>
+
   <Style
     x:Key="{x:Type Button}"
     BasedOn="{StaticResource StandardButtonStyle}"
-    TargetType="{x:Type Button}"/>
+    TargetType="{x:Type Button}" />
 
 </ResourceDictionary>

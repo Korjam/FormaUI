@@ -22,6 +22,10 @@
       <ColumnDefinition Width="Auto" />
       <ColumnDefinition Width="5" />
       <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="Auto" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
@@ -38,6 +42,21 @@
 
     <Button Grid.Row="0"
             Grid.Column="2"
+            IsEnabled="False"
+            Content="Text" />
+
+    <Button Grid.Row="0"
+            Grid.Column="4"
+            Style="{StaticResource StandardCompactButtonStyle}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Text" />
+
+    <Button Grid.Row="0"
+            Grid.Column="6"
+            Style="{StaticResource StandardCompactButtonStyle}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             IsEnabled="False"
             Content="Text" />
 
