@@ -7,6 +7,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/Accent.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/ColorsLight.xaml" />
 
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Focus.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ToggleButton.xaml" />
   </ResourceDictionary.MergedDictionaries>

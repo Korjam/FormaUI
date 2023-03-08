@@ -11,35 +11,6 @@
   </ResourceDictionary.MergedDictionaries>
   -->
 
-  <Style x:Key="FocusVisual">
-    <Setter Property="Control.Template">
-      <Setter.Value>
-        <ControlTemplate>
-          <Grid>
-            <Rectangle
-              RadiusX="4"
-              RadiusY="4"
-              Margin="-3"
-              SnapsToDevicePixels="True"
-              Stroke="{DynamicResource FocusStrokeColorOuterBrush}"
-              StrokeThickness="2" />
-            <Rectangle
-              RadiusX="4"
-              RadiusY="4"
-              Margin="-1"
-              SnapsToDevicePixels="True"
-              Stroke="{DynamicResource FocusStrokeColorInnerBrush}"
-              StrokeThickness="1" />
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
-  <Style
-    x:Key="{x:Static SystemParameters.FocusVisualStyleKey}"
-    BasedOn="{StaticResource FocusVisual}" />
-
   <Style
     x:Key="BaseButtonStyle"
     TargetType="{x:Type ButtonBase}">
