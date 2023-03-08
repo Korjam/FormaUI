@@ -27,13 +27,28 @@
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
-    <Button Grid.Column="0"
+    <Button Grid.Row="0"
+            Grid.Column="0"
             Content="Text" />
 
-    <Button Grid.Column="2"
+    <Button Grid.Row="0"
+            Grid.Column="2"
+            IsEnabled="False"
+            Content="Text" />
+
+    <Button Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource AccentButtonStyle}"
+            Content="Text" />
+
+    <Button Grid.Row="2"
+            Grid.Column="2"
+            Style="{StaticResource AccentButtonStyle}"
             IsEnabled="False"
             Content="Text" />
 
