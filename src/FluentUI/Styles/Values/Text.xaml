@@ -15,7 +15,7 @@
   <FontWeight x:Key="BodyStrongFontWeight">SemiBold</FontWeight>
   <system:Double x:Key="BodyStrongFontSize">14</system:Double>
 
-  <FontWeight x:Key="BodyLargeWeight">Regular</FontWeight>
+  <FontWeight x:Key="BodyLargeFontWeight">Regular</FontWeight>
   <system:Double x:Key="BodyLargeFontSize">18</system:Double>
 
   <FontWeight x:Key="SubtitleFontWeight">SemiBold</FontWeight>
