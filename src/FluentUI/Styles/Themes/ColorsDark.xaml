@@ -151,31 +151,31 @@
   <!-- Control Elevation -->
   <LinearGradientBrush x:Key="ControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9058" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="1" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="0" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.1" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="CircleElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.5002" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="0.9545" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="0" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.5" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="TextControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9999" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.98" />
       <GradientStop Color="{DynamicResource ControlStrongStrokeColorDefaultColor}" Offset="1" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="TextControlElevationBorderFocusedBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9687" />
-      <GradientStop Color="{DynamicResource AccentFillColorDefaultColor}" Offset="0.9689" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9689" />
+      <GradientStop Color="{DynamicResource AccentFillColorDefaultColor}" Offset="0.969" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="AccentControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentDefaultColor}" Offset="0.9667" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentDefaultColor}" Offset="0.9" />
       <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="1" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>

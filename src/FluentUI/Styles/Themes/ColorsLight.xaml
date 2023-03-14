@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
@@ -152,18 +152,18 @@
   <LinearGradientBrush x:Key="ControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
       <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9058" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="1" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="1" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="CircleElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
       <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.5002" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="0.9545" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="0.9545" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="TextControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9999" />
+      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.98" />
       <GradientStop Color="{DynamicResource ControlStrongStrokeColorDefaultColor}" Offset="1" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
