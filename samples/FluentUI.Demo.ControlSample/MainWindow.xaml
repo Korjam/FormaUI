@@ -6,149 +6,160 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:FluentUI.Demo.ControlSample"
   mc:Ignorable="d"
-  Title="MainWindow" Height="450" Width="800">
+  Title="MainWindow"
+  Height="450"
+  Width="800"
+  Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
 
-  <ScrollViewer Padding="10"
-                HorizontalScrollBarVisibility="Auto"
-                VerticalScrollBarVisibility="Auto">
-    <StackPanel>
+  <Border Background="{DynamicResource LayerFillColorDefaultBrush}"
+          BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+          BorderThickness="1,1,0,0"
+          Margin="100,30,0,0"
+          CornerRadius="7,0,0,0">
 
-      <Grid>
+    <ScrollViewer Padding="10"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+      <StackPanel>
 
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Grid>
 
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="5"/>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="5" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="5"/>
-        </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Button"
-                   FontSize="{StaticResource SubtitleFontSize}"
-                   FontWeight="{StaticResource SubtitleFontWeight}" />
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5"/>
+          </Grid.RowDefinitions>
 
-        <Button Grid.Row="2"
-                Grid.Column="0"
-                Content="Text" />
+          <TextBlock Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     Text="Button"
+                     FontSize="{StaticResource SubtitleFontSize}"
+                     FontWeight="{StaticResource SubtitleFontWeight}" />
 
-        <Button Grid.Row="2"
-                Grid.Column="2"
-                IsEnabled="False"
-                Content="Text" />
+          <Button Grid.Row="2"
+                  Grid.Column="0"
+                  Content="Text" />
 
-        <Button Grid.Row="2"
-                Grid.Column="4"
-                Style="{StaticResource StandardCompactButtonStyle}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Content="Text" />
+          <Button Grid.Row="2"
+                  Grid.Column="2"
+                  IsEnabled="False"
+                  Content="Text" />
 
-        <Button Grid.Row="2"
-                Grid.Column="6"
-                Style="{StaticResource StandardCompactButtonStyle}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                IsEnabled="False"
-                Content="Text" />
+          <Button Grid.Row="2"
+                  Grid.Column="4"
+                  Style="{StaticResource StandardCompactButtonStyle}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Content="Text" />
 
-        <Button Grid.Row="4"
-                Grid.Column="0"
-                Style="{StaticResource AccentButtonStyle}"
-                Content="Text" />
+          <Button Grid.Row="2"
+                  Grid.Column="6"
+                  Style="{StaticResource StandardCompactButtonStyle}"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsEnabled="False"
+                  Content="Text" />
 
-        <Button Grid.Row="4"
-                Grid.Column="2"
-                Style="{StaticResource AccentButtonStyle}"
-                IsEnabled="False"
-                Content="Text" />
+          <Button Grid.Row="4"
+                  Grid.Column="0"
+                  Style="{StaticResource AccentButtonStyle}"
+                  Content="Text" />
 
-      </Grid>
-      
-      <Grid>
+          <Button Grid.Row="4"
+                  Grid.Column="2"
+                  Style="{StaticResource AccentButtonStyle}"
+                  IsEnabled="False"
+                  Content="Text" />
 
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="Auto" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        </Grid>
 
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="5" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="5" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+        <Grid>
 
-        <TextBlock Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                   Text="Toggle Button"
-                   FontSize="{StaticResource SubtitleFontSize}"
-                   FontWeight="{StaticResource SubtitleFontWeight}" />
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
 
-        <ToggleButton Grid.Row="2"
-                      Grid.Column="0"
-                      Content="Text" />
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
 
-        <ToggleButton Grid.Row="2"
-                      Grid.Column="2"
-                      IsEnabled="False"
-                      Content="Text" />
+          <TextBlock Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     Text="Toggle Button"
+                     FontSize="{StaticResource SubtitleFontSize}"
+                     FontWeight="{StaticResource SubtitleFontWeight}" />
 
-        <ToggleButton Grid.Row="4"
-                      Grid.Column="2"
-                      IsChecked="True"
-                      IsEnabled="False"
-                      Content="Text" />
+          <ToggleButton Grid.Row="2"
+                        Grid.Column="0"
+                        Content="Text" />
 
-        <ToggleButton Grid.Row="2"
-                      Grid.Column="4"
-                      Style="{StaticResource StandardCompactToggleButtonStyle}"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      Content="Text" />
+          <ToggleButton Grid.Row="2"
+                        Grid.Column="2"
+                        IsEnabled="False"
+                        Content="Text" />
 
-        <ToggleButton Grid.Row="2"
-                      Grid.Column="6"
-                      Style="{StaticResource StandardCompactToggleButtonStyle}"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      IsEnabled="False"
-                      Content="Text" />
+          <ToggleButton Grid.Row="4"
+                        Grid.Column="2"
+                        IsChecked="True"
+                        IsEnabled="False"
+                        Content="Text" />
 
-        <ToggleButton Grid.Row="4"
-                      Grid.Column="6"
-                      Style="{StaticResource StandardCompactToggleButtonStyle}"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      IsChecked="True"
-                      IsEnabled="False"
-                      Content="Text" />
+          <ToggleButton Grid.Row="2"
+                        Grid.Column="4"
+                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="Text" />
 
-      </Grid>
-      
-    </StackPanel>
-    
-  </ScrollViewer>
+          <ToggleButton Grid.Row="2"
+                        Grid.Column="6"
+                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        IsEnabled="False"
+                        Content="Text" />
+
+          <ToggleButton Grid.Row="4"
+                        Grid.Column="6"
+                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        IsChecked="True"
+                        IsEnabled="False"
+                        Content="Text" />
+
+        </Grid>
+
+      </StackPanel>
+
+    </ScrollViewer>
+
+  </Border>
 
 </Window>
