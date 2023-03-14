@@ -8,6 +8,8 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Fluent.xaml" />
+        <!-- Uncomment for dark theme -->
+        <!--<ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/ColorsDark.xaml" />-->
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Application.Resources>
