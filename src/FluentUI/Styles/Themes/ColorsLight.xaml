@@ -3,10 +3,10 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <!-- Text -->
-  <Color x:Key="TextFillColorPrimaryColor">#E400000F</Color>
-  <Color x:Key="TextFillColorSecondaryColor">#9E00000F</Color>
-  <Color x:Key="TextFillColorTertiaryColor">#7200000F</Color>
-  <Color x:Key="TextFillColorDisabledColor">#5C00000F</Color>
+  <Color x:Key="TextFillColorPrimaryColor">#E4000000</Color>
+  <Color x:Key="TextFillColorSecondaryColor">#9E000000</Color>
+  <Color x:Key="TextFillColorTertiaryColor">#72000000</Color>
+  <Color x:Key="TextFillColorDisabledColor">#5C000000</Color>
   <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{DynamicResource TextFillColorPrimaryColor}" />
   <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{DynamicResource TextFillColorSecondaryColor}" />
   <SolidColorBrush x:Key="TextFillColorTertiaryBrush" Color="{DynamicResource TextFillColorTertiaryColor}" />
@@ -16,7 +16,7 @@
   <Color x:Key="AccentTextFillColorPrimaryColor">#003E92</Color> <!-- AccentDark2 -->
   <Color x:Key="AccentTextFillColorSecondaryColor">#001A68</Color> <!-- AccentDark3 -->
   <Color x:Key="AccentTextFillColorTertiaryColor">#005FB8</Color> <!-- AccentDark1 -->
-  <Color x:Key="AccentTextFillColorDisabledColor">#5C00000F</Color>
+  <Color x:Key="AccentTextFillColorDisabledColor">#5C000000</Color>
   <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{DynamicResource AccentTextFillColorPrimaryColor}" />
   <SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="{DynamicResource AccentTextFillColorSecondaryColor}" />
   <SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="{DynamicResource AccentTextFillColorTertiaryColor}" />
@@ -132,10 +132,10 @@
 
   <!-- Surface Stroke -->
   <Color x:Key="SurfaceStrokeColorDefaultColor">#66757575</Color>
-  <Color x:Key="SurfaceStrokeColorDefaultWindowColor">#FF757575</Color>
+  <Color x:Key="SurfaceStrokeColorDefaultSnappedWindowsColor">#FF757575</Color>
   <Color x:Key="SurfaceStrokeColorFlyoutColor">#0F000000</Color>
   <SolidColorBrush x:Key="SurfaceStrokeColorDefaultBrush" Color="{DynamicResource SurfaceStrokeColorDefaultColor}" />
-  <SolidColorBrush x:Key="SurfaceStrokeColorDefaultWindowBrush" Color="{DynamicResource SurfaceStrokeColorDefaultWindowColor}" />
+  <SolidColorBrush x:Key="SurfaceStrokeColorDefaultSnappedWindowsBrush" Color="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsColor}" />
   <SolidColorBrush x:Key="SurfaceStrokeColorFlyoutBrush" Color="{DynamicResource SurfaceStrokeColorFlyoutColor}" />
 
   <!-- Divider Stroke -->
