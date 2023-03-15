@@ -187,6 +187,39 @@
 
         </Grid>
 
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Text="Password Box"
+                     Style="{DynamicResource TextSubtitle}" />
+
+          <PasswordBox Grid.Row="2"
+                       Grid.Column="0"
+                       Password="Text" />
+
+          <PasswordBox Grid.Row="2"
+                       Grid.Column="2"
+                       IsEnabled="False"
+                       Password="Text" />
+
+        </Grid>
+
       </StackPanel>
 
     </ScrollViewer>
