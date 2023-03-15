@@ -13,13 +13,13 @@
         <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
-        <Setter Property="Template" Value="{StaticResource AccentButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource AccentButtonTemplate}" />
       </Trigger>
       <Trigger Property="IsChecked" Value="False">
-        <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
       </Trigger>
       <Trigger Property="IsChecked" Value="{x:Null}">
-        <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
       </Trigger>
     </Style.Triggers>
   </Style>
@@ -35,13 +35,13 @@
         <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentControlElevationBorderBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
-        <Setter Property="Template" Value="{StaticResource AccentButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource AccentButtonTemplate}" />
       </Trigger>
       <Trigger Property="IsChecked" Value="False">
-        <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
       </Trigger>
       <Trigger Property="IsChecked" Value="{x:Null}">
-        <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
       </Trigger>
     </Style.Triggers>
   </Style>

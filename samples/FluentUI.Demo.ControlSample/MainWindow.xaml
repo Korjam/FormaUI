@@ -48,7 +48,7 @@
                      Grid.Column="0"
                      Grid.ColumnSpan="3"
                      Text="Button"
-                     Style="{StaticResource TextSubtitle}" />
+                     Style="{DynamicResource TextSubtitle}" />
 
           <Button Grid.Row="2"
                   Grid.Column="0"
@@ -61,14 +61,14 @@
 
           <Button Grid.Row="2"
                   Grid.Column="4"
-                  Style="{StaticResource StandardCompactButtonStyle}"
+                  Style="{DynamicResource StandardCompactButtonStyle}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Content="Text" />
 
           <Button Grid.Row="2"
                   Grid.Column="6"
-                  Style="{StaticResource StandardCompactButtonStyle}"
+                  Style="{DynamicResource StandardCompactButtonStyle}"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   IsEnabled="False"
@@ -76,12 +76,12 @@
 
           <Button Grid.Row="4"
                   Grid.Column="0"
-                  Style="{StaticResource AccentButtonStyle}"
+                  Style="{DynamicResource AccentButtonStyle}"
                   Content="Text" />
 
           <Button Grid.Row="4"
                   Grid.Column="2"
-                  Style="{StaticResource AccentButtonStyle}"
+                  Style="{DynamicResource AccentButtonStyle}"
                   IsEnabled="False"
                   Content="Text" />
 
@@ -111,7 +111,7 @@
           <TextBlock Grid.Column="0"
                      Grid.ColumnSpan="3"
                      Text="Toggle Button"
-                     Style="{StaticResource TextSubtitle}" />
+                     Style="{DynamicResource TextSubtitle}" />
 
           <ToggleButton Grid.Row="2"
                         Grid.Column="0"
@@ -130,14 +130,14 @@
 
           <ToggleButton Grid.Row="2"
                         Grid.Column="4"
-                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Content="Text" />
 
           <ToggleButton Grid.Row="2"
                         Grid.Column="6"
-                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         IsEnabled="False"
@@ -145,7 +145,7 @@
 
           <ToggleButton Grid.Row="4"
                         Grid.Column="6"
-                        Style="{StaticResource StandardCompactToggleButtonStyle}"
+                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         IsChecked="True"

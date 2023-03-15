@@ -125,7 +125,7 @@
     <Setter Property="Padding" Value="11,4,11,6" />
     <Setter Property="MinWidth" Value="118" />
     <Setter Property="MinHeight" Value="30" />
-    <Setter Property="Template" Value="{StaticResource StandardButtonTemplate}" />
+    <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
   </Style>
   
   <Style x:Key="AccentButtonStyle"
@@ -137,7 +137,7 @@
     <Setter Property="Padding" Value="12,5,12,7" />
     <Setter Property="MinWidth" Value="120" />
     <Setter Property="MinHeight" Value="32" />
-    <Setter Property="Template" Value="{StaticResource AccentButtonTemplate}" />
+    <Setter Property="Template" Value="{DynamicResource AccentButtonTemplate}" />
   </Style>
 
   <Style x:Key="StandardCompactButtonStyle"
