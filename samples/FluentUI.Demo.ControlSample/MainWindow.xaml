@@ -154,6 +154,39 @@
 
         </Grid>
 
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Text="Text Box"
+                     Style="{DynamicResource TextSubtitle}" />
+
+          <TextBox Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Text" />
+
+          <TextBox Grid.Row="2"
+                   Grid.Column="2"
+                   IsEnabled="False"
+                   Text="Text" />
+
+        </Grid>
+
       </StackPanel>
 
     </ScrollViewer>
