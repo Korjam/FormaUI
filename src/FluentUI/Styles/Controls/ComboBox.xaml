@@ -24,7 +24,7 @@
       </Setter.Value>
     </Setter>
   </Style>
-  
+
   <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
@@ -46,7 +46,8 @@
             <Border x:Name="splitBorder" 
                     SnapsToDevicePixels="True"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    CornerRadius="3">
               <TextBlock x:Name="arrow"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
@@ -73,19 +74,71 @@
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
               <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Trigger>
+            <DataTrigger Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True">
+              <Setter TargetName="arrow" Property="Margin" Value="9,5" />
+              <Setter TargetName="splitBorder" Property="BorderThickness" Value="1" />
+              <Setter TargetName="splitBorder" Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+              <Setter TargetName="splitBorder" Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True" />
+                <Condition Binding="{Binding IsMouseOver, ElementName=splitBorder}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter TargetName="splitBorder" Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+              <Setter TargetName="splitBorder" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+            </MultiDataTrigger>
+            <!-- This style only should apply when the button is pressed but not the arrow  -->
+            <!--
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True" />
+                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+              <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
+              <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
+
+            </MultiDataTrigger>
+            -->
+            <!-- This style only should apply when the arrow is pressed  -->
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True" />
+                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+              <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
+
+              <!-- This style only should apply when the arrow is pressed  -->
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True" />
+                <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+              <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+              <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+
+              <!-- This style only should apply when the arrow is pressed  -->
+            </MultiDataTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
   </Style>
 
-  <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF" />
-  
   <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
     <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
-        <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0" />
+        <ColumnDefinition Width="8" />
+        <ColumnDefinition MinWidth="30" Width="0" />
       </Grid.ColumnDefinitions>
       <Popup x:Name="PART_Popup"
              AllowsTransparency="True"
@@ -123,26 +176,33 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}"
                     IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                     Style="{StaticResource ComboBoxToggleButton}"
-                    Grid.ColumnSpan="2" />
+                    Grid.ColumnSpan="3" />
       <Border x:Name="border"
-              Margin="{TemplateBinding BorderThickness}"
-              Background="{StaticResource TextBox.Static.Background}">
+              Margin="{TemplateBinding BorderThickness}">
         <TextBox x:Name="PART_EditableTextBox"
                  Style="{StaticResource ComboBoxEditableTextBox}"
                  IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
                  Margin="{TemplateBinding Padding}"
+                 Foreground="{TemplateBinding Foreground}"
                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
       </Border>
+
+      <Border x:Name="borderAccent"
+              IsHitTestVisible="False"
+              SnapsToDevicePixels="True"
+              CornerRadius="3"
+              Grid.ColumnSpan="3" />
     </Grid>
     <ControlTemplate.Triggers>
       <Trigger Property="IsEnabled" Value="False">
-        <Setter TargetName="border" Property="Opacity" Value="0.56" />
-      </Trigger>
-      <Trigger Property="IsKeyboardFocusWithin" Value="True">
-        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+        <Setter TargetName="PART_EditableTextBox" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
       </Trigger>
       <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
         <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5" />
@@ -161,6 +221,13 @@
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="False">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
+      </Trigger>
+      <Trigger Property="IsKeyboardFocused" SourceName="PART_EditableTextBox" Value="True">
+        <Setter TargetName="borderAccent" Property="BorderThickness" Value="0,0,0,2" />
+        <Setter TargetName="borderAccent" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ControlFillColorInputActiveBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter TargetName="PART_EditableTextBox" Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -275,7 +342,10 @@
     <Style.Triggers>
       <Trigger Property="IsEditable" Value="True">
         <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Padding" Value="2" />
+        <!--<Setter Property="Padding" Value="11,4,4,4" />-->
+        <!-- TextBox is setting an aditional padding for some reason -->
+        <Setter Property="Padding" Value="8,4,4,4" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
       </Trigger>
     </Style.Triggers>
