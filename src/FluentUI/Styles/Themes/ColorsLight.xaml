@@ -228,9 +228,17 @@
   <SolidColorBrush x:Key="SolidBackgroundFillColorQuinaryBrush" Color="{DynamicResource SolidBackgroundFillColorQuinaryColor}" />
   <SolidColorBrush x:Key="SolidBackgroundFillColorSenaryBrush" Color="{DynamicResource SolidBackgroundFillColorSenaryColor}" />
 
-  <!-- TODO: Mica Background -->
-  <!-- TODO: Acrylic Background -->
-  <!-- TODO: Accent Acrylic Background -->
+  <!-- TODO: Mica Background, currently implementing fallback values -->
+  <SolidColorBrush x:Key="MicaBackgroundFillColorBaseBrush" Color="{DynamicResource SolidBackgroundFillColorBaseColor}" />
+  <SolidColorBrush x:Key="MicaBackgroundFillColorBaseAltBrush" Color="{DynamicResource SolidBackgroundFillColorBaseAltColor}" />
+
+  <!-- TODO: Acrylic Background, currently implementing fallback values -->
+  <SolidColorBrush x:Key="AcrylicBackgroundFillColorBaseBrush" Color="#FFEEEEEE" />
+  <SolidColorBrush x:Key="AcrylicBackgroundFillColorDefaultBrush" Color="#FFF9F9F9" />
+
+  <!-- TODO: Accent Acrylic Background, currently implementing fallback values -->
+  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorBaseBrush" Color="#FF98ECFE" /> <!-- AccentLight3 -->
+  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorDefaultBrush" Color="#FF98ECFE" /> <!-- AccentLight3 -->
 
   <!-- System -->
   
