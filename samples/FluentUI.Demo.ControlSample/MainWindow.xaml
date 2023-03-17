@@ -17,7 +17,7 @@
           Margin="100,30,0,0"
           CornerRadius="7,0,0,0">
 
-    <ScrollViewer Padding="10"
+    <ScrollViewer Padding="10,10,0,0"
                   HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto">
       <StackPanel>
