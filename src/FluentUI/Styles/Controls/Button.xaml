@@ -14,10 +14,10 @@
   <Style
     x:Key="BaseButtonStyle"
     TargetType="{x:Type ButtonBase}">
-    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
-    <Setter Property="BorderThickness" Value="1"/>
-    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
     <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
