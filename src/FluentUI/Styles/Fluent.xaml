@@ -13,6 +13,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ToggleButton.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TextBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/PasswordBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollBar.xaml" />
   </ResourceDictionary.MergedDictionaries>
   
 </ResourceDictionary>
