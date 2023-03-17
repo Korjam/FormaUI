@@ -49,15 +49,14 @@
               <ColumnDefinition Width="Auto" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border x:Name="checkBoxBorder" 
-                    Margin="1" 
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+            <Border HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                     BorderThickness="{TemplateBinding BorderThickness}" 
                     Background="{TemplateBinding Background}" 
                     BorderBrush="{TemplateBinding BorderBrush}"
                     Height="20"
                     Width="20"
+                    Margin="1" 
                     CornerRadius="4">
               <TextBlock x:Name="optionMark"
                          FontFamily="Segoe Fluent Icons"
@@ -82,21 +81,7 @@
               <Setter Property="FocusVisualStyle" Value="{DynamicResource OptionMarkFocusVisual}" />
               <Setter Property="Padding" Value="4,-1,0,0" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-              <Setter Property="Background" Value="{DynamicResource OptionMark.MouseOver.Background}" TargetName="checkBoxBorder" />
-              <Setter Property="BorderBrush" Value="{DynamicResource OptionMark.MouseOver.Border}" TargetName="checkBoxBorder" />
-              <Setter Property="Foreground" Value="{DynamicResource OptionMark.MouseOver.Glyph}" TargetName="optionMark" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-              <Setter Property="Background" Value="{DynamicResource OptionMark.Disabled.Background}" TargetName="checkBoxBorder" />
-              <Setter Property="BorderBrush" Value="{DynamicResource OptionMark.Disabled.Border}" TargetName="checkBoxBorder" />
-              <Setter Property="Foreground" Value="{DynamicResource OptionMark.Disabled.Glyph}" TargetName="optionMark" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-              <Setter Property="Background" Value="{DynamicResource OptionMark.Pressed.Background}" TargetName="checkBoxBorder" />
-              <Setter Property="BorderBrush" Value="{DynamicResource OptionMark.Pressed.Border}" TargetName="checkBoxBorder" />
-              <Setter Property="Foreground" Value="{DynamicResource OptionMark.Pressed.Glyph}" TargetName="optionMark" />
-            </Trigger>
+            
             <Trigger Property="IsChecked" Value="True">
               <Setter Property="Visibility" Value="Visible" TargetName="optionMark" />
               <Setter Property="Text" Value="&#xF78C;" TargetName="optionMark" />
@@ -109,6 +94,79 @@
               <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
               <Setter Property="BorderThickness" Value="0" />
             </Trigger>
+            
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="False" />
+                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="False" />
+                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongColorDisabledBrush}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="False" />
+                <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorDisabledBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongColorDisabledBrush}" />
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="True" />
+                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="True" />
+                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" TargetName="optionMark" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="True" />
+                <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorDisabledBrush}" TargetName="optionMark" />
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="{x:Null}" />
+                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="{x:Null}" />
+                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorSecondaryBrush}" TargetName="optionMark" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Value="{x:Null}" />
+                <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
+              </MultiDataTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextOnAccentFillColorDisabledBrush}" TargetName="optionMark" />
+            </MultiDataTrigger>
+
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
