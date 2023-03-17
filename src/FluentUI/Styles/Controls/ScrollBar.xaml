@@ -26,7 +26,7 @@
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
+    <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
     <Setter Property="FontSize" Value="8" />
     <Setter Property="Foreground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
     <Setter Property="Background" Value="Transparent" />
