@@ -45,13 +45,20 @@
             <Grid x:Name="headerPanel" 
                   Grid.Column="0" 
                   Grid.Row="0">
+              
               <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition x:Name="ColumnDefinition2" Width="Auto" />
+                <ColumnDefinition x:Name="ColumnDefinition3" Width="*" />
               </Grid.ColumnDefinitions>
-              <TabPanel Background="Transparent"
+              <Grid.RowDefinitions>
+                <RowDefinition x:Name="RowDefinition2" Height="Auto" />
+                <RowDefinition x:Name="RowDefinition3" Height="*" />
+              </Grid.RowDefinitions>
+              
+              <TabPanel x:Name="tabPanel"
+                        Background="Transparent"
                         IsItemsHost="True" 
-                        Margin="2,2,2,0" 
+                        Margin="8,2,2,0" 
                         KeyboardNavigation.TabIndex="1" 
                         HorizontalAlignment="Left"
                         Panel.ZIndex="1" />
@@ -82,7 +89,11 @@
               <Setter Property="Grid.Row" TargetName="contentPanel" Value="0" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="Auto" />
-              <Setter Property="Margin" TargetName="headerPanel" Value="2,0,2,2" />
+
+              <Setter Property="Margin" TargetName="tabPanel" Value="8,0,2,2" />
+              
+              <Setter Property="Margin" TargetName="fillBorder" Value="-2,0,0,0" />
+              <Setter Property="BorderThickness" TargetName="fillBorder" Value="0,1,0,0" />
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Left">
               <Setter Property="Grid.Row" TargetName="headerPanel" Value="0" />
@@ -93,7 +104,20 @@
               <Setter Property="Width" TargetName="ColumnDefinition1" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
-              <Setter Property="Margin" TargetName="headerPanel" Value="2,2,0,2" />
+
+              <Setter Property="Margin" TargetName="tabPanel" Value="2,8,0,2" />
+
+              <Setter Property="Grid.Row" TargetName="tabPanel" Value="0" />
+              <Setter Property="Grid.Row" TargetName="fillBorder" Value="1" />
+              <Setter Property="Grid.Column" TargetName="tabPanel" Value="0" />
+              <Setter Property="Grid.Column" TargetName="fillBorder" Value="0" />
+              <Setter Property="Width" TargetName="ColumnDefinition2" Value="Auto" />
+              <Setter Property="Width" TargetName="ColumnDefinition3" Value="*" />
+              <Setter Property="Height" TargetName="RowDefinition2" Value="Auto" />
+              <Setter Property="Height" TargetName="RowDefinition3" Value="*" />
+
+              <Setter Property="Margin" TargetName="fillBorder" Value="0,-2,0,0" />
+              <Setter Property="BorderThickness" TargetName="fillBorder" Value="0,0,1,0" />
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Right">
               <Setter Property="Grid.Row" TargetName="headerPanel" Value="0" />
@@ -104,11 +128,26 @@
               <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
-              <Setter Property="Margin" TargetName="headerPanel" Value="0,2,2,2" />
+
+              <Setter Property="Margin" TargetName="tabPanel" Value="0,8,2,2" />
+
+              <Setter Property="Grid.Row" TargetName="tabPanel" Value="0" />
+              <Setter Property="Grid.Row" TargetName="fillBorder" Value="1" />
+              <Setter Property="Grid.Column" TargetName="tabPanel" Value="0" />
+              <Setter Property="Grid.Column" TargetName="fillBorder" Value="0" />
+              <Setter Property="Width" TargetName="ColumnDefinition2" Value="Auto" />
+              <Setter Property="Width" TargetName="ColumnDefinition3" Value="*" />
+              <Setter Property="Height" TargetName="RowDefinition2" Value="Auto" />
+              <Setter Property="Height" TargetName="RowDefinition3" Value="*" />
+
+              <Setter Property="Margin" TargetName="fillBorder" Value="0,-2,0,0" />
+              <Setter Property="BorderThickness" TargetName="fillBorder" Value="1,0,0,0" />
             </Trigger>
+            <!--
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
             </Trigger>
+            -->
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
@@ -189,10 +228,35 @@
               <Setter Property="FontWeight" Value="{DynamicResource BodyStrongFontWeight}" />
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
             </Trigger>
-            <Trigger Property="IsSelected" Value="False">
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
+                <Condition Binding="{Binding Path=TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top" />
+              </MultiDataTrigger.Conditions>
               <Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,0,0,1" />
+            </MultiDataTrigger>
+
+            <Trigger Property="TabStripPlacement" Value="Bottom">
+              <Setter TargetName="selectionBorder" Property="CornerRadius" Value="0,0,8,8" />
             </Trigger>
-            
+
+            <Trigger Property="TabStripPlacement" Value="Left">
+              <Setter TargetName="selectionBorder" Property="CornerRadius" Value="8,0,0,8" />
+              <Setter TargetName="divider" Property="BorderThickness" Value="0,0,0,1" />
+              <Setter TargetName="divider" Property="HorizontalAlignment" Value="Center" />
+              <Setter TargetName="divider" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="divider" Property="Height" Value="Auto" />
+              <Setter TargetName="divider" Property="Width" Value="16" />
+            </Trigger>
+
+            <Trigger Property="TabStripPlacement" Value="Right">
+              <Setter TargetName="selectionBorder" Property="CornerRadius" Value="0,8,8,0" />
+              <Setter TargetName="divider" Property="BorderThickness" Value="0,1,0,0" />
+              <Setter TargetName="divider" Property="HorizontalAlignment" Value="Center" />
+              <Setter TargetName="divider" Property="VerticalAlignment" Value="Bottom" />
+              <Setter TargetName="divider" Property="Height" Value="Auto" />
+              <Setter TargetName="divider" Property="Width" Value="16" />
+            </Trigger>
             
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -285,6 +349,7 @@
               </MultiDataTrigger.Conditions>
               <!--<Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,1,0,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,0,1,0" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -294,8 +359,8 @@
               <!--<Setter Property="Panel.ZIndex" Value="1" />
               <Setter Property="Margin" Value="-2,-2,0,-2" />
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
-              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,1,0,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,1,0,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,1,0,1" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -304,6 +369,7 @@
               </MultiDataTrigger.Conditions>
               <!--<Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,0,1,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,1,0,0" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -315,6 +381,7 @@
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
               <Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,0,1,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="1,0,1,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,0,1,1" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -323,6 +390,7 @@
               </MultiDataTrigger.Conditions>
               <!--<Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,1,1,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="1,0,0,0" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -334,6 +402,7 @@
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
               <Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,1,1,1" />
               <Setter TargetName="mainBorder" Property="BorderThickness" Value="0,1,1,1" />-->
+              <Setter TargetName="selectionBorder" Property="BorderThickness" Value="0,1,1,1" />
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
