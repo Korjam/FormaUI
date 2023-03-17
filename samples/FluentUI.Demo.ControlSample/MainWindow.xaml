@@ -342,10 +342,10 @@
 
         <ListBox Grid.Row="2"
                  Grid.Column="0"
-                 SelectedIndex="1">
-          <ListBoxItem>Item1</ListBoxItem>
+                 SelectionMode="Extended">
+          <ListBoxItem IsSelected="True">Item1</ListBoxItem>
           <ListBoxItem>Item2</ListBoxItem>
-          <ListBoxItem>Item3</ListBoxItem>
+          <ListBoxItem IsSelected="True">Item3</ListBoxItem>
           <ListBoxItem>Item4</ListBoxItem>
           <ListBoxItem>Item5</ListBoxItem>
         </ListBox>
