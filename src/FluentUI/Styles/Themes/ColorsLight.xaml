@@ -280,4 +280,47 @@
   <SolidColorBrush x:Key="SystemFillColorSolidNeutralBrush" Color="{DynamicResource SystemFillColorSolidNeutralColor}" />
   <SolidColorBrush x:Key="SystemFillColorSolidNeutralBackgroundBrush" Color="{DynamicResource SystemFillColorSolidNeutralBackgroundColor}" />
 
+  <!-- Effects -->
+  <DropShadowEffect x:Key="CardRestShadow"
+                    BlurRadius="4"
+                    ShadowDepth="2"
+                    Opacity="0.04"
+                    Color="#000000"
+                    Direction="270" />
+  
+  <DropShadowEffect x:Key="CardHoverShadow"
+                    BlurRadius="4"
+                    ShadowDepth="2"
+                    Opacity="0.1"
+                    Color="#000000"
+                    Direction="270" />
+
+  <DropShadowEffect x:Key="TooltipShadow"
+                    BlurRadius="8"
+                    ShadowDepth="4"
+                    Opacity="0.14"
+                    Color="#000000"
+                    Direction="270" />
+
+  <DropShadowEffect x:Key="FlyoutShadow"
+                    BlurRadius="16"
+                    ShadowDepth="8"
+                    Opacity="0.14"
+                    Color="#000000"
+                    Direction="270" />
+
+  <DropShadowEffect x:Key="DialogShadow1"
+                    BlurRadius="21"
+                    ShadowDepth="2"
+                    Opacity="0.15"
+                    Color="#000000"
+                    Direction="270" />
+
+  <DropShadowEffect x:Key="DialogShadow2"
+                    BlurRadius="64"
+                    ShadowDepth="32"
+                    Opacity="0.19"
+                    Color="#000000"
+                    Direction="270" />
+
 </ResourceDictionary>
