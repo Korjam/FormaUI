@@ -2,10 +2,6 @@
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   
-  <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Values/Text.xaml" />
-  </ResourceDictionary.MergedDictionaries>
-  
   <Style
     x:Key="TextBlockBase"
     TargetType="{x:Type TextBlock}"
