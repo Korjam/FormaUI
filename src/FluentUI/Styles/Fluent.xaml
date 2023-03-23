@@ -14,6 +14,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/PasswordBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollBar.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollViewer.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TextBlock.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TextBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ToggleButton.xaml" />

@@ -11,305 +11,312 @@
   Width="800"
   Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
 
-  <Border Background="{DynamicResource LayerFillColorDefaultBrush}"
-          BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-          BorderThickness="1,1,0,0"
-          Margin="100,30,0,0"
-          CornerRadius="7,0,0,0">
+  <TabControl SelectedIndex="1" Padding="10,10,0,0">
 
-    <ScrollViewer Padding="10,10,0,0"
-                  HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto">
-      <StackPanel>
+    <TabItem Header="Button">
 
-        <Grid>
+      <Grid>
 
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-          </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
 
-          <TextBlock Grid.Row="0"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="3"
-                     Text="Button"
-                     Style="{DynamicResource TextSubtitle}" />
-
-          <Button Grid.Row="2"
-                  Grid.Column="0"
-                  Content="Text" />
-
-          <Button Grid.Row="2"
-                  Grid.Column="2"
-                  IsEnabled="False"
-                  Content="Text" />
-
-          <Button Grid.Row="2"
-                  Grid.Column="4"
-                  Style="{DynamicResource StandardCompactButtonStyle}"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Content="Text" />
-
-          <Button Grid.Row="2"
-                  Grid.Column="6"
-                  Style="{DynamicResource StandardCompactButtonStyle}"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  IsEnabled="False"
-                  Content="Text" />
-
-          <Button Grid.Row="4"
-                  Grid.Column="0"
-                  Style="{DynamicResource AccentButtonStyle}"
-                  Content="Text" />
-
-          <Button Grid.Row="4"
-                  Grid.Column="2"
-                  Style="{DynamicResource AccentButtonStyle}"
-                  IsEnabled="False"
-                  Content="Text" />
-
-        </Grid>
-
-        <Grid>
-
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-
-          <TextBlock Grid.Column="0"
-                     Grid.ColumnSpan="3"
-                     Text="Toggle Button"
-                     Style="{DynamicResource TextSubtitle}" />
-
-          <ToggleButton Grid.Row="2"
-                        Grid.Column="0"
-                        Content="Text" />
-
-          <ToggleButton Grid.Row="2"
-                        Grid.Column="2"
-                        IsEnabled="False"
-                        Content="Text" />
-
-          <ToggleButton Grid.Row="4"
-                        Grid.Column="2"
-                        IsChecked="True"
-                        IsEnabled="False"
-                        Content="Text" />
-
-          <ToggleButton Grid.Row="2"
-                        Grid.Column="4"
-                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Content="Text" />
-
-          <ToggleButton Grid.Row="2"
-                        Grid.Column="6"
-                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        IsEnabled="False"
-                        Content="Text" />
-
-          <ToggleButton Grid.Row="4"
-                        Grid.Column="6"
-                        Style="{DynamicResource StandardCompactToggleButtonStyle}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        IsChecked="True"
-                        IsEnabled="False"
-                        Content="Text" />
-
-        </Grid>
-
-        <Grid>
-
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-
-          <TextBlock Grid.Column="0"
-                     Grid.ColumnSpan="8"
-                     Text="Check Box"
-                     Style="{DynamicResource TextSubtitle}" />
-
-          <CheckBox Grid.Row="2"
-                    Grid.Column="0"
-                    Content="Text" />
-
-          <CheckBox Grid.Row="2"
-                    Grid.Column="2"
-                    IsEnabled="False"
-                    Content="Text" />
-
-          <CheckBox Grid.Row="4"
-                    Grid.Column="0"
-                    IsChecked="True"
-                    Content="Text" />
-
-          <CheckBox Grid.Row="4"
-                    Grid.Column="2"
-                    IsChecked="True"
-                    IsEnabled="False"
-                    Content="Text" />
-
-          <CheckBox Grid.Row="6"
-                    Grid.Column="0"
-                    IsChecked="{x:Null}"
-                    Content="Text" />
-
-          <CheckBox Grid.Row="6"
-                    Grid.Column="2"
-                    IsChecked="{x:Null}"
-                    IsEnabled="False"
-                    Content="Text" />
-          
-          <CheckBox Grid.Row="2"
-                    Grid.Column="4" />
-
-          <CheckBox Grid.Row="2"
-                    Grid.Column="6"
-                    IsEnabled="False" />
-
-          <CheckBox Grid.Row="4"
-                    Grid.Column="4"
-                    IsChecked="True" />
-
-          <CheckBox Grid.Row="4"
-                    Grid.Column="6"
-                    IsChecked="True"
-                    IsEnabled="False" />
-
-          <CheckBox Grid.Row="6"
-                    Grid.Column="4"
-                    IsChecked="{x:Null}" />
-
-          <CheckBox Grid.Row="6"
-                    Grid.Column="6"
-                    IsChecked="{x:Null}"
-                    IsEnabled="False" />
-
-        </Grid>
-
-        <Grid>
-
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
-
-          <TextBlock Grid.Column="0"
-                     Grid.ColumnSpan="2"
-                     Text="Text Box"
-                     Style="{DynamicResource TextSubtitle}" />
-
-          <TextBox Grid.Row="2"
+        <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   Text="Text" />
+                   Grid.ColumnSpan="3"
+                   Text="Button"
+                   Style="{DynamicResource TextSubtitle}" />
 
-          <TextBox Grid.Row="2"
-                   Grid.Column="2"
-                   IsEnabled="False"
-                   Text="Text" />
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Content="Text" />
 
-        </Grid>
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                IsEnabled="False"
+                Content="Text" />
 
-        <Grid>
+        <Button Grid.Row="2"
+                Grid.Column="4"
+                Style="{DynamicResource StandardCompactButtonStyle}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Text" />
 
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="160" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
+        <Button Grid.Row="2"
+                Grid.Column="6"
+                Style="{DynamicResource StandardCompactButtonStyle}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                IsEnabled="False"
+                Content="Text" />
 
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-          </Grid.RowDefinitions>
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Style="{DynamicResource AccentButtonStyle}"
+                Content="Text" />
 
-          <TextBlock Grid.Column="0"
-                     Grid.ColumnSpan="2"
-                     Text="Password Box"
-                     Style="{DynamicResource TextSubtitle}" />
+        <Button Grid.Row="4"
+                Grid.Column="2"
+                Style="{DynamicResource AccentButtonStyle}"
+                IsEnabled="False"
+                Content="Text" />
 
-          <PasswordBox Grid.Row="2"
-                       Grid.Column="0"
-                       Password="Text" />
+      </Grid>
 
-          <PasswordBox Grid.Row="2"
-                       Grid.Column="2"
-                       IsEnabled="False"
-                       Password="Text" />
+    </TabItem>
 
-        </Grid>
+    <TabItem Header="Toggle Button">
 
-      </StackPanel>
+      <Grid>
 
-    </ScrollViewer>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-  </Border>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Toggle Button"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <ToggleButton Grid.Row="2"
+                      Grid.Column="0"
+                      Content="Text" />
+
+        <ToggleButton Grid.Row="2"
+                      Grid.Column="2"
+                      IsEnabled="False"
+                      Content="Text" />
+
+        <ToggleButton Grid.Row="4"
+                      Grid.Column="2"
+                      IsChecked="True"
+                      IsEnabled="False"
+                      Content="Text" />
+
+        <ToggleButton Grid.Row="2"
+                      Grid.Column="4"
+                      Style="{DynamicResource StandardCompactToggleButtonStyle}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Content="Text" />
+
+        <ToggleButton Grid.Row="2"
+                      Grid.Column="6"
+                      Style="{DynamicResource StandardCompactToggleButtonStyle}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsEnabled="False"
+                      Content="Text" />
+
+        <ToggleButton Grid.Row="4"
+                      Grid.Column="6"
+                      Style="{DynamicResource StandardCompactToggleButtonStyle}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      IsChecked="True"
+                      IsEnabled="False"
+                      Content="Text" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Check Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="8"
+                   Text="Check Box"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <CheckBox Grid.Row="2"
+                  Grid.Column="0"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="2"
+                  Grid.Column="2"
+                  IsEnabled="False"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="4"
+                  Grid.Column="0"
+                  IsChecked="True"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="4"
+                  Grid.Column="2"
+                  IsChecked="True"
+                  IsEnabled="False"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="6"
+                  Grid.Column="0"
+                  IsChecked="{x:Null}"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="6"
+                  Grid.Column="2"
+                  IsChecked="{x:Null}"
+                  IsEnabled="False"
+                  Content="Text" />
+
+        <CheckBox Grid.Row="2"
+                  Grid.Column="4" />
+
+        <CheckBox Grid.Row="2"
+                  Grid.Column="6"
+                  IsEnabled="False" />
+
+        <CheckBox Grid.Row="4"
+                  Grid.Column="4"
+                  IsChecked="True" />
+
+        <CheckBox Grid.Row="4"
+                  Grid.Column="6"
+                  IsChecked="True"
+                  IsEnabled="False" />
+
+        <CheckBox Grid.Row="6"
+                  Grid.Column="4"
+                  IsChecked="{x:Null}" />
+
+        <CheckBox Grid.Row="6"
+                  Grid.Column="6"
+                  IsChecked="{x:Null}"
+                  IsEnabled="False" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Text Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Text Box"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <TextBox Grid.Row="2"
+                 Grid.Column="0"
+                 Text="Text" />
+
+        <TextBox Grid.Row="2"
+                 Grid.Column="2"
+                 IsEnabled="False"
+                 Text="Text" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Password Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Password Box"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <PasswordBox Grid.Row="2"
+                     Grid.Column="0"
+                     Password="Text" />
+
+        <PasswordBox Grid.Row="2"
+                     Grid.Column="2"
+                     IsEnabled="False"
+                     Password="Text" />
+
+      </Grid>
+
+    </TabItem>
+
+  </TabControl>
 
 </Window>
