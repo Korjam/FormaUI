@@ -25,9 +25,9 @@
         <Grid>
 
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="5" />
@@ -90,9 +90,9 @@
         <Grid>
 
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="5" />
@@ -243,9 +243,9 @@
         <Grid>
 
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
 
@@ -276,9 +276,9 @@
         <Grid>
 
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="160" />
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
 

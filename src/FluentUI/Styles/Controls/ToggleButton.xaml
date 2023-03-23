@@ -28,8 +28,6 @@
          TargetType="{x:Type ToggleButton}"
          BasedOn="{StaticResource StandardButtonStyle}">
     <Setter Property="Padding" Value="11,0,11,2" />
-    <Setter Property="MinWidth" Value="47" />
-    <Setter Property="MinHeight" Value="22" />
     <Style.Triggers>
       <Trigger Property="IsChecked" Value="True">
         <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
