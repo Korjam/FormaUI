@@ -311,13 +311,11 @@
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
     <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="MinWidth" Value="126" />
-    <Setter Property="MinHeight" Value="30" />
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-    <Setter Property="Padding" Value="11,4" />
+    <Setter Property="Padding" Value="12,5" />
     <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
     <Setter Property="ScrollViewer.PanningMode" Value="Both" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
@@ -327,7 +325,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <!--<Setter Property="Padding" Value="11,4,4,4" />-->
         <!-- TextBox is setting an aditional padding for some reason -->
-        <Setter Property="Padding" Value="8,4,4,4" />
+        <Setter Property="Padding" Value="8,2,4,2" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
       </Trigger>
