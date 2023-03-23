@@ -325,6 +325,8 @@
           <ColumnDefinition Width="100" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="100" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -360,6 +362,16 @@
           <ListBoxItem>Item4</ListBoxItem>
           <ListBoxItem>Item5</ListBoxItem>
         </ListBox>
+
+        <ListView Grid.Row="2"
+                  Grid.Column="4"
+                  SelectionMode="Extended">
+          <ListViewItem IsSelected="True">Item1</ListViewItem>
+          <ListViewItem>Item2</ListViewItem>
+          <ListViewItem IsSelected="True">Item3</ListViewItem>
+          <ListViewItem>Item4</ListViewItem>
+          <ListViewItem>Item5</ListViewItem>
+        </ListView>
 
       </Grid>
 
