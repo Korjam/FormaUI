@@ -317,6 +317,66 @@
 
     </TabItem>
 
+    <TabItem Header="List Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="List Box"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <ListBox Grid.Row="2"
+                 Grid.Column="0"
+                 SelectionMode="Extended">
+          <ListBoxItem IsSelected="True">Item1</ListBoxItem>
+          <ListBoxItem>Item2</ListBoxItem>
+          <ListBoxItem IsSelected="True">Item3</ListBoxItem>
+          <ListBoxItem>Item4</ListBoxItem>
+          <ListBoxItem>Item5</ListBoxItem>
+        </ListBox>
+
+        <ListBox Grid.Row="2"
+                 Grid.Column="2"
+                 SelectedIndex="1"
+                 IsEnabled="False">
+          <ListBoxItem>Item1</ListBoxItem>
+          <ListBoxItem>Item2</ListBoxItem>
+          <ListBoxItem>Item3</ListBoxItem>
+          <ListBoxItem>Item4</ListBoxItem>
+          <ListBoxItem>Item5</ListBoxItem>
+        </ListBox>
+
+        <ListView Grid.Row="2"
+                  Grid.Column="4"
+                  SelectionMode="Extended">
+          <ListViewItem IsSelected="True">Item1</ListViewItem>
+          <ListViewItem>Item2</ListViewItem>
+          <ListViewItem IsSelected="True">Item3</ListViewItem>
+          <ListViewItem>Item4</ListViewItem>
+          <ListViewItem>Item5</ListViewItem>
+        </ListView>
+
+      </Grid>
+
+    </TabItem>
+
   </TabControl>
 
 </Window>
