@@ -3,6 +3,36 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:FluentUI.Controls">
 
+  <Style x:Key="ChromeButtonStyle"
+         TargetType="{x:Type Button}">
+    <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
+    <Setter Property="FontSize" Value="10" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
+    
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Width" Value="46" />
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
   <ControlTemplate x:Key="WindowTemplateKey"
                    TargetType="{x:Type Window}">
     <Border Background="{TemplateBinding Background}"
@@ -37,20 +67,92 @@
 
   <Style x:Key="{x:Type Window}"
          TargetType="{x:Type Window}">
-    <Setter Property="Foreground"
-            Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-    <Setter Property="Background"
-            Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <!--
+    <Setter Property="FontSize" Value="{DynamicResource CaptionFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    -->
+    <Setter Property="Background" Value="{DynamicResource MicaBackgroundFillColorBaseBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="WindowChrome.WindowChrome">
+      <Setter.Value>
+        <WindowChrome CaptionHeight="32"
+                      NonClientFrameEdges="None" />
+      </Setter.Value>
+    </Setter>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Window}">
           <Border Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-            <AdornerDecorator>
-              <ContentPresenter />
-            </AdornerDecorator>
+            <Grid Margin="{TemplateBinding Padding}">
+              
+              <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+
+              <Grid Grid.Row="0"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="16" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="iconPlaceHolder"
+                        Grid.Column="0"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Height="16"
+                        Width="16"
+                        CornerRadius="8" />
+
+                <TextBlock Grid.Column="2"
+                           Padding="0,0,0,2"
+                           Margin="0,0,8,0"
+                           VerticalAlignment="Center"
+                           Text="{TemplateBinding Title}"
+                           FontFamily="{DynamicResource ControlFontFamily}"
+                           FontSize="{DynamicResource CaptionFontSize}"
+                           FontWeight="{DynamicResource CaptionFontWeight}"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+
+                <StackPanel Grid.Column="4"
+                            Orientation="Horizontal">
+                  <Button x:Name="MinimizeButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE921;" />
+                  <Button x:Name="MaximizeButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE922;" />
+                  <Button x:Name="RestoreButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE923;" />
+                  <Button x:Name="CloseButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE8BB;" />
+                </StackPanel>
+              </Grid>
+
+              <AdornerDecorator Grid.Row="1">
+                <ContentPresenter />
+              </AdornerDecorator>
+              
+            </Grid>
           </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="WindowState" Value="Normal">
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="WindowState" Value="Maximized">
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Visible" />
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter Property="Padding" Value="5" />
+            </Trigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -64,8 +166,6 @@
   </Style>
 
   <Style TargetType="{x:Type controls:FluentWindow}"
-         BasedOn="{StaticResource {x:Type Window}}">
-    <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
-  </Style>
-
+         BasedOn="{StaticResource {x:Type Window}}" />
+  
 </ResourceDictionary>
