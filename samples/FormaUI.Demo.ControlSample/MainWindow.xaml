@@ -82,6 +82,7 @@
         <Button
           Grid.Row="4"
           Grid.Column="0"
+          Click="Button_Click"
           Content="Text"
           Style="{DynamicResource AccentButtonStyle}" />
 

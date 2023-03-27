@@ -1,4 +1,4 @@
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System.Diagnostics;
 using System.Windows;
 
@@ -44,6 +44,15 @@ public static class ThemeManager
         }
         private set => _appliedTheme = value;
     }
+
+    public static void SwitchTheme() =>
+        ChangeTheme(AppliedTheme switch
+        {
+            Theme.Light => Theme.Dark,
+            Theme.Dark => Theme.Light,
+            Theme.Unknown => throw new ArgumentOutOfRangeException(nameof(AppliedTheme), AppliedTheme, "Cannot switch to an unknown theme."),
+            _ => throw new UnreachableException(),
+        });
 
     public static void ChangeTheme(Theme theme)
     {

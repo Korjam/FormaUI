@@ -20,4 +20,9 @@ public partial class MainWindow
     private void ShowOkCancelDialog(object sender, RoutedEventArgs e) => FluentMessageBox.Show(Text, Caption, MessageBoxButton.OKCancel);
     private void ShowYesNoDialog(object sender, RoutedEventArgs e) => FluentMessageBox.Show(Text, Caption, MessageBoxButton.YesNo);
     private void ShowYesNoCancelDialog(object sender, RoutedEventArgs e) => FluentMessageBox.Show(Text, Caption, MessageBoxButton.YesNoCancel);
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        ThemeManager.SwitchTheme();
+    }
 }
