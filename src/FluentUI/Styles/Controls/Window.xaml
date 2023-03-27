@@ -3,6 +3,36 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:FluentUI.Controls">
 
+  <ControlTemplate x:Key="ChromeButtonTemplate"
+    TargetType="{x:Type Button}">
+
+    <Grid>
+
+      <Border
+        x:Name="background"
+        Background="{TemplateBinding Background}"
+        BorderThickness="0"
+        SnapsToDevicePixels="True" />
+
+      <Border
+        x:Name="border"
+        BorderThickness="{TemplateBinding BorderThickness}"
+        BorderBrush="{TemplateBinding BorderBrush}"
+        CornerRadius="3"
+        SnapsToDevicePixels="True" />
+
+      <ContentPresenter
+        x:Name="contentPresenter"
+        RecognizesAccessKey="True"
+        Margin="{TemplateBinding Padding}"
+        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        Focusable="False" />
+
+    </Grid>
+  </ControlTemplate>
+
   <Style x:Key="ChromeButtonStyle"
          TargetType="{x:Type Button}">
     <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
@@ -17,7 +47,7 @@
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Width" Value="46" />
     <Setter Property="Height" Value="32" />
-    <Setter Property="Template" Value="{DynamicResource StandardButtonTemplate}" />
+    <Setter Property="Template" Value="{DynamicResource ChromeButtonTemplate}" />
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
         <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
@@ -26,9 +56,27 @@
         <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
       </Trigger>
-      <Trigger Property="IsPressed" Value="True">
-        <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
+      <Trigger Property="IsEnabled" Value="False">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="CaptionButtonStyle"
+         TargetType="{x:Type Button}"
+         BasedOn="{StaticResource ChromeButtonStyle}" />
+
+  <Style x:Key="CloseButtonStyle"
+         TargetType="{x:Type Button}"
+         BasedOn="{StaticResource ChromeButtonStyle}">
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource ShellCaptionCloseFillColorPrimaryBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ShellCaptionCloseTextColorPrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Background" Value="{DynamicResource ShellCaptionCloseFillColorSecondaryBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ShellCaptionCloseTextColorSecondaryBrush}" />
       </Trigger>
     </Style.Triggers>
   </Style>
@@ -134,19 +182,19 @@
                   <Button x:Name="MinimizeButton"
                           Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" 
                           Content="&#xE921;"
-                          Style="{DynamicResource ChromeButtonStyle}" />
+                          Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="MaximizeButton"
                           Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}" 
                           Content="&#xE922;"
-                          Style="{DynamicResource ChromeButtonStyle}" />
+                          Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="RestoreButton"
                           Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
                           Content="&#xE923;"
-                          Style="{DynamicResource ChromeButtonStyle}" />
+                          Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="CloseButton"
                           Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
                           Content="&#xE8BB;"
-                          Style="{DynamicResource ChromeButtonStyle}" />
+                          Style="{DynamicResource CloseButtonStyle}" />
                 </StackPanel>
               </Grid>
 
