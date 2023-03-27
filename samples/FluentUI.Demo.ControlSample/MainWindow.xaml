@@ -317,6 +317,66 @@
 
     </TabItem>
 
+    <TabItem Header="Combo Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Combo Box"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <ComboBox Grid.Row="2"
+                  Grid.Column="0"
+                  SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox Grid.Row="2"
+                  Grid.Column="2"
+                  SelectedIndex="0"
+                  IsEnabled="False">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox Grid.Row="4"
+                  Grid.Column="0"
+                  IsEditable="True"
+                  SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox Grid.Row="4"
+                  Grid.Column="2"
+                  IsEditable="True"
+                  SelectedIndex="0"
+                  IsEnabled="False">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+      </Grid>
+      
+    </TabItem>
+
     <TabItem Header="List Box">
 
       <Grid>
