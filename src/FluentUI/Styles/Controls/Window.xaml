@@ -187,6 +187,11 @@
               <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
             </Trigger>
+            <Trigger Property="WindowStyle" Value="ToolWindow">
+              <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
