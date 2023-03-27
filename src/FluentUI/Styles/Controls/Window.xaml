@@ -79,7 +79,8 @@
     <Setter Property="WindowChrome.WindowChrome">
       <Setter.Value>
         <WindowChrome CaptionHeight="32"
-                      NonClientFrameEdges="None" />
+                      NonClientFrameEdges="None"
+                      UseAeroCaptionButtons="False" />
       </Setter.Value>
     </Setter>
     <Setter Property="Template">
@@ -128,11 +129,24 @@
                            Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
 
                 <StackPanel Grid.Column="4"
-                            Orientation="Horizontal">
-                  <Button x:Name="MinimizeButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE921;" />
-                  <Button x:Name="MaximizeButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE922;" />
-                  <Button x:Name="RestoreButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE923;" />
-                  <Button x:Name="CloseButton" Style="{DynamicResource ChromeButtonStyle}" Content="&#xE8BB;" />
+                            Orientation="Horizontal"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
+                  <Button x:Name="MinimizeButton"
+                          Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" 
+                          Content="&#xE921;"
+                          Style="{DynamicResource ChromeButtonStyle}" />
+                  <Button x:Name="MaximizeButton"
+                          Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}" 
+                          Content="&#xE922;"
+                          Style="{DynamicResource ChromeButtonStyle}" />
+                  <Button x:Name="RestoreButton"
+                          Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
+                          Content="&#xE923;"
+                          Style="{DynamicResource ChromeButtonStyle}" />
+                  <Button x:Name="CloseButton"
+                          Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
+                          Content="&#xE8BB;"
+                          Style="{DynamicResource ChromeButtonStyle}" />
                 </StackPanel>
               </Grid>
 
