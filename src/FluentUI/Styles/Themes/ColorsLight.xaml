@@ -323,4 +323,18 @@
                     Color="#000000"
                     Direction="270" />
 
+  <!-- Shell colors -->
+
+  <!-- Caption Close Fill -->
+  <Color x:Key="ShellCaptionCloseFillColorPrimaryColor">#FFC42B1C</Color>
+  <Color x:Key="ShellCaptionCloseFillColorSecondaryColor">#E6C42B1C</Color>
+  <SolidColorBrush x:Key="ShellCaptionCloseFillColorPrimaryBrush" Color="{DynamicResource ShellCaptionCloseFillColorPrimaryColor}" />
+  <SolidColorBrush x:Key="ShellCaptionCloseFillColorSecondaryBrush" Color="{DynamicResource ShellCaptionCloseFillColorSecondaryColor}" />
+
+  <!-- Caption Close Text -->
+  <Color x:Key="ShellCaptionCloseTextColorPrimaryColor">#FFFFFFFF</Color>
+  <Color x:Key="ShellCaptionCloseTextColorSecondaryColor">#B2FFFFFF</Color>
+  <SolidColorBrush x:Key="ShellCaptionCloseTextColorPrimaryBrush" Color="{DynamicResource ShellCaptionCloseTextColorPrimaryColor}" />
+  <SolidColorBrush x:Key="ShellCaptionCloseTextColorSecondaryBrush" Color="{DynamicResource ShellCaptionCloseTextColorSecondaryColor}" />
+  
 </ResourceDictionary>
