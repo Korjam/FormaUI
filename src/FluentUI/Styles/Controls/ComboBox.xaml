@@ -111,8 +111,6 @@
               <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
               <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
-
-              <!-- This style only should apply when the arrow is pressed  -->
             </MultiDataTrigger>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
@@ -123,8 +121,6 @@
               <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
               <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
-
-              <!-- This style only should apply when the arrow is pressed  -->
             </MultiDataTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -194,10 +190,6 @@
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
         <Setter TargetName="PART_EditableTextBox" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
       </Trigger>
-      <!--<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
-        <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5" />
-        <Setter Property="Color" TargetName="shadow" Value="#71000000" />
-      </Trigger>-->
       <Trigger Property="HasItems" Value="False">
         <Setter Property="Height" TargetName="dropDownBorder" Value="95" />
       </Trigger>
@@ -208,10 +200,6 @@
         </MultiTrigger.Conditions>
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
       </MultiTrigger>
-      <!--<Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="False">
-        <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
-        <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
-      </Trigger>-->
       <Trigger Property="IsKeyboardFocused" SourceName="PART_EditableTextBox" Value="True">
         <Setter TargetName="borderAccent" Property="BorderThickness" Value="0,0,0,2" />
         <Setter TargetName="borderAccent" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
@@ -281,10 +269,6 @@
         <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
       </Trigger>
-      <!--<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True">
-        <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5" />
-        <Setter Property="Color" TargetName="shadow" Value="#71000000" />
-      </Trigger>-->
       <Trigger Property="HasItems" Value="False">
         <Setter Property="Height" TargetName="dropDownBorder" Value="95" />
       </Trigger>
@@ -295,10 +279,6 @@
         </MultiTrigger.Conditions>
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
       </MultiTrigger>
-      <!--<Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="False">
-        <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
-        <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
-      </Trigger>-->
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
