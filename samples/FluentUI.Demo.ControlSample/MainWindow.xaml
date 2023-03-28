@@ -1639,6 +1639,93 @@
 
     </TabItem>
 
+    <TabItem Header="Progress Bar">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Progress Bar"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <ProgressBar Grid.Row="2"
+                     Grid.Column="0"
+                     Value="0" />
+
+        <ProgressBar Grid.Row="4"
+                     Grid.Column="0"
+                     Value="25" />
+
+        <ProgressBar Grid.Row="6"
+                     Grid.Column="0"
+                     Value="50" />
+
+        <ProgressBar Grid.Row="8"
+                     Grid.Column="0"
+                     Value="75" />
+
+        <ProgressBar Grid.Row="10"
+                     Grid.Column="0"
+                     Value="100" />
+
+        <ProgressBar Grid.Row="2"
+                     Grid.Column="2"
+                     Value="0"
+                     IsEnabled="False" />
+
+        <ProgressBar Grid.Row="4"
+                     Grid.Column="2"
+                     Value="25"
+                     IsEnabled="False" />
+
+        <ProgressBar Grid.Row="6"
+                     Grid.Column="2"
+                     Value="50"
+                     IsEnabled="False" />
+
+        <ProgressBar Grid.Row="8"
+                     Grid.Column="2"
+                     Value="75"
+                     IsEnabled="False" />
+
+        <ProgressBar Grid.Row="10"
+                     Grid.Column="2"
+                     Value="100"
+                     IsEnabled="False" />
+
+        <ProgressBar Grid.Row="2"
+                     Grid.Column="4"
+                     IsIndeterminate="True" />
+
+      </Grid>
+
+    </TabItem>
+
   </TabControl>
 
 </controls:FluentWindow>
