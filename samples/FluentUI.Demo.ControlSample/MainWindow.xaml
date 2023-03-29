@@ -6,6 +6,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:FluentUI.Demo.ControlSample"
   xmlns:controls="clr-namespace:FluentUI.Controls;assembly=FluentUI"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib"
   mc:Ignorable="d"
   Title="MainWindow"
   Height="850"
@@ -1577,6 +1578,84 @@
         </ComboBox>
 
       </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Date Picker">
+
+      <ScrollViewer>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Row="0"
+                     Grid.Column="0"
+                     Text="Date Picker"
+                     Style="{DynamicResource TextSubtitle}" />
+
+          <DatePicker Grid.Row="2"
+                      Grid.Column="0" />
+
+          <Calendar Grid.Row="4"
+                    Grid.Column="0"
+                    SelectionMode="MultipleRange">
+
+            <Calendar.BlackoutDates>
+              <CalendarDateRange Start="03/21/2023" End="03/23/2023" />
+            </Calendar.BlackoutDates>
+
+            <Calendar.SelectedDates>
+              <sys:DateTime>03/15/2023</sys:DateTime>
+              <sys:DateTime>03/16/2023</sys:DateTime>
+              <sys:DateTime>03/17/2023</sys:DateTime>
+            </Calendar.SelectedDates>
+
+          </Calendar>
+
+          <Calendar Grid.Row="4"
+                    Grid.Column="2"
+                    DisplayMode="Year" />
+
+          <Calendar Grid.Row="4"
+                    Grid.Column="4"
+                    DisplayMode="Decade" />
+
+          <Calendar Grid.Row="6"
+                    Grid.Column="0"
+                    IsEnabled="False" />
+
+          <Calendar Grid.Row="6"
+                    Grid.Column="2"
+                    DisplayMode="Year"
+                    IsEnabled="False" />
+
+          <Calendar Grid.Row="6"
+                    Grid.Column="4"
+                    DisplayMode="Decade"
+                    IsEnabled="False" />
+
+        </Grid>
+
+      </ScrollViewer>
 
     </TabItem>
 

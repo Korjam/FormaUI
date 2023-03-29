@@ -9,8 +9,10 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Themes/ColorsLight.xaml" />
 
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Calendar.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/CheckBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ComboBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/DatePicker.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Focus.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ListBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ListView.xaml" />
