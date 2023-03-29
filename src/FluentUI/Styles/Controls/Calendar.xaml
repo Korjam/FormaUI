@@ -269,7 +269,7 @@
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
                         Visibility="Hidden"
-                        Margin="6,-3,7,6"
+                        Margin="6,20,7,6"
                         HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                       <RowDefinition Height="Auto" />
@@ -326,7 +326,7 @@
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="0" />
-    
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type CalendarDayButton}">
@@ -362,11 +362,11 @@
             </Grid>
           </Grid>
           <ControlTemplate.Triggers>
-            
+
             <Trigger Property="IsMouseOver" Value="True">
               <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Trigger>
-            
+
             <Trigger Property="IsPressed" Value="True">
               <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
@@ -381,7 +381,7 @@
               <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </MultiTrigger>
-            
+
             <Trigger Property="IsInactive" Value="True">
               <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
             </Trigger>
@@ -472,7 +472,7 @@
             <Trigger Property="IsFocused" Value="True">
               <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Visible" />
             </Trigger>
-            
+
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
@@ -480,129 +480,111 @@
   </Style>
 
   <Style TargetType="{x:Type CalendarButton}">
-    <Setter Property="Background" Value="#FFBADDE9" />
-    <Setter Property="MinWidth" Value="40" />
-    <Setter Property="MinHeight" Value="42" />
-    <Setter Property="FontSize" Value="10" />
+    <Setter Property="MinWidth" Value="54" />
+    <Setter Property="MinHeight" Value="54" />
+    <Setter Property="Margin" Value="9,9,8.5,8.5" />
+    <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
+
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type CalendarButton}">
           <Grid>
-            <VisualStateManager.VisualStateGroups>
-              <VisualStateGroup Name="CommonStates">
-                <VisualStateGroup.Transitions>
-                  <VisualTransition GeneratedDuration="0:0:0.1" />
-                </VisualStateGroup.Transitions>
-                <VisualState Name="Normal" />
-                <VisualState Name="MouseOver">
-                  <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="Background"
-                                     Storyboard.TargetProperty="Opacity"
-                                     To=".5"
-                                     Duration="0" />
-                  </Storyboard>
-                </VisualState>
-                <VisualState Name="Pressed">
-                  <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="Background"
-                                     Storyboard.TargetProperty="Opacity"
-                                     To=".5"
-                                     Duration="0" />
-                  </Storyboard>
-                </VisualState>
-              </VisualStateGroup>
-              <VisualStateGroup Name="SelectionStates">
-                <VisualStateGroup.Transitions>
-                  <VisualTransition GeneratedDuration="0" />
-                </VisualStateGroup.Transitions>
-                <VisualState Name="Unselected" />
-                <VisualState Name="Selected">
-                  <Storyboard>
-                    <DoubleAnimation Storyboard.TargetName="SelectedBackground"
-                                     Storyboard.TargetProperty="Opacity"
-                                     To=".75"
-                                     Duration="0" />
-                  </Storyboard>
-                </VisualState>
-              </VisualStateGroup>
-              <VisualStateGroup Name="ActiveStates">
-                <VisualStateGroup.Transitions>
-                  <VisualTransition GeneratedDuration="0" />
-                </VisualStateGroup.Transitions>
-                <VisualState Name="Active" />
-                <VisualState Name="Inactive">
-                  <Storyboard>
-                    <ColorAnimation Storyboard.TargetName="NormalText"
-                                    Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                    Duration="0"
-                                    To="#FF777777" />
-                  </Storyboard>
-                </VisualState>
-              </VisualStateGroup>
-              <VisualStateGroup Name="CalendarButtonFocusStates">
-                <VisualStateGroup.Transitions>
-                  <VisualTransition GeneratedDuration="0" />
-                </VisualStateGroup.Transitions>
-                <VisualState Name="CalendarButtonFocused">
-                  <Storyboard>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CalendarButtonFocusVisual"
-                                                   Storyboard.TargetProperty="Visibility"
-                                                   Duration="0">
-                      <DiscreteObjectKeyFrame KeyTime="0">
-                        <DiscreteObjectKeyFrame.Value>
-                          <Visibility>Visible</Visibility>
-                        </DiscreteObjectKeyFrame.Value>
-                      </DiscreteObjectKeyFrame>
-                    </ObjectAnimationUsingKeyFrames>
-                  </Storyboard>
-                </VisualState>
-                <VisualState Name="CalendarButtonUnfocused">
-                  <Storyboard>
-                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CalendarButtonFocusVisual"
-                                                   Storyboard.TargetProperty="Visibility"
-                                                   Duration="0">
-                      <DiscreteObjectKeyFrame KeyTime="0">
-                        <DiscreteObjectKeyFrame.Value>
-                          <Visibility>Collapsed</Visibility>
-                        </DiscreteObjectKeyFrame.Value>
-                      </DiscreteObjectKeyFrame>
-                    </ObjectAnimationUsingKeyFrames>
-                  </Storyboard>
-                </VisualState>
-              </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <Rectangle x:Name="SelectedBackground"
-                       RadiusX="1"
-                       RadiusY="1"
-                       Opacity="0"
-                       Fill="{TemplateBinding Background}" />
-            <Rectangle x:Name="Background"
-                       RadiusX="1"
-                       RadiusY="1"
-                       Opacity="0"
-                       Fill="{TemplateBinding Background}" />
+            <Ellipse x:Name="BackGroundVisual"
+                     Stroke="{TemplateBinding BorderBrush}"
+                     Fill="{TemplateBinding Background}" />
+
             <ContentPresenter x:Name="NormalText"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              Margin="1,0,1,1"
-                              TextElement.Foreground="#FF333333" />
-            <Rectangle x:Name="CalendarButtonFocusVisual"
-                       Visibility="Collapsed"
-                       IsHitTestVisible="False"
-                       RadiusX="1"
-                       RadiusY="1"
-                       Stroke="#FF45D6FA" />
+                              TextElement.Foreground="{TemplateBinding Foreground}" />
+
+            <Grid x:Name="ButtonFocusVisual"
+                  Visibility="Collapsed">
+              <Ellipse Stroke="{DynamicResource FocusStrokeColorInnerBrush}"
+                       StrokeThickness="1"
+                       Margin="-0.5" />
+              <Ellipse Stroke="{DynamicResource FocusStrokeColorOuterBrush}"
+                       StrokeThickness="2"
+                       Margin="-2.5" />
+            </Grid>
           </Grid>
           <ControlTemplate.Triggers>
-            <Trigger Property="IsFocused" Value="True">
-              <Setter TargetName="CalendarButtonFocusVisual" Property="Visibility" Value="Visible" />
+
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
             </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </Trigger>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsInactive" Value="False" />
+                <Condition Property="HasSelectedDays" Value="False" />
+                <Condition Property="IsEnabled" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+            </MultiTrigger>
+
+            <Trigger Property="IsInactive" Value="True">
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </Trigger>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="HasSelectedDays" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+              <Setter TargetName="BackGroundVisual" Property="StrokeThickness" Value="1" />
+              <Setter TargetName="BackGroundVisual" Property="Margin" Value="0.5" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="HasSelectedDays" Value="True" />
+                <Condition Property="IsMouseOver" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="HasSelectedDays" Value="True" />
+                <Condition Property="IsPressed" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource AccentTextFillColorTertiaryBrush}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="HasSelectedDays" Value="True" />
+                <Condition Property="IsEnabled" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+            </MultiTrigger>
+
+            <Trigger Property="IsFocused" Value="True">
+              <Setter TargetName="ButtonFocusVisual" Property="Visibility" Value="Visible" />
+            </Trigger>
+
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
   </Style>
-  
+
 </ResourceDictionary>
