@@ -14,6 +14,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ComboBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/DatePicker.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Focus.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Label.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ListBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ListView.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/PasswordBox.xaml" />
