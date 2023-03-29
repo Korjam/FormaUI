@@ -8,10 +8,11 @@
   xmlns:controls="clr-namespace:FluentUI.Controls;assembly=FluentUI"
   mc:Ignorable="d"
   Title="MainWindow"
-  Height="450"
-  Width="800">
+  Height="850"
+  Width="1100">
 
-  <TabControl Padding="10,10,0,0">
+  <TabControl Padding="10,10,0,0"
+              TabStripPlacement="Left">
 
     <TabItem Header="Button">
 
