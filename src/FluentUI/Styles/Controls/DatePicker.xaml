@@ -9,6 +9,7 @@
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TextControlElevationBorderBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="CalendarStyle" Value="{DynamicResource {x:Type Calendar}}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="Padding" Value="12,5,36,7" />
     <Setter Property="IsTodayHighlighted" Value="True" />
