@@ -151,7 +151,7 @@
         <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
       </Trigger>
-      <Trigger Property="IsPressed" Value="True">
+      <Trigger Property="IsEnabled" Value="False">
         <Setter Property="Background" Value="{DynamicResource SubtleFillColorDisabledBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
       </Trigger>
