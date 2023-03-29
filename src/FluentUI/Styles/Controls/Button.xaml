@@ -22,14 +22,14 @@
         x:Name="background"
         Background="{TemplateBinding Background}"
         BorderThickness="0"
-        CornerRadius="3"
+        CornerRadius="4"
         SnapsToDevicePixels="True" />
 
       <Border
         x:Name="border"
         BorderThickness="{TemplateBinding BorderThickness}"
         BorderBrush="{TemplateBinding BorderBrush}"
-        CornerRadius="3"
+        CornerRadius="4"
         SnapsToDevicePixels="True" />
 
       <ContentPresenter
