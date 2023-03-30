@@ -19,6 +19,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ListView.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/PasswordBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ProgressBar.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/RadioButton.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollBar.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollViewer.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Slider.xaml" />
