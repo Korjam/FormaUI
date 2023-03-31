@@ -76,7 +76,7 @@
                 Height="4" 
                 Margin="5,0" 
                 Grid.Row="1" 
-                VerticalAlignment="center"
+                VerticalAlignment="Center"
                 CornerRadius="2"
                 Background="{DynamicResource ControlStrongFillColorDefaultBrush}">
           <Canvas Margin="-6,0">
@@ -88,13 +88,24 @@
                        Fill="{DynamicResource ControlStrongFillColorDefaultBrush}" />
           </Canvas>
         </Border>
+        <Border Name="TrackFill"
+                Height="4" 
+                Width="{Binding ActualWidth, ElementName=DecreaseButton}"
+                Margin="5,0" 
+                Grid.Row="1" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                CornerRadius="2"
+                Background="{DynamicResource AccentFillColorDefaultBrush}" />
         <Track x:Name="PART_Track" Grid.Row="1">
           <Track.DecreaseRepeatButton>
-            <RepeatButton Command="{x:Static Slider.DecreaseLarge}" 
+            <RepeatButton x:Name="DecreaseButton"
+                          Command="{x:Static Slider.DecreaseLarge}" 
                           Style="{StaticResource RepeatButtonTransparent}" />
           </Track.DecreaseRepeatButton>
           <Track.IncreaseRepeatButton>
-            <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
+            <RepeatButton x:Name="IncreaseButton"
+                          Command="{x:Static Slider.IncreaseLarge}" 
                           Style="{StaticResource RepeatButtonTransparent}" />
           </Track.IncreaseRepeatButton>
           <Track.Thumb>
@@ -125,6 +136,9 @@
         <Setter Property="BorderThickness" TargetName="TrackBackground" Value="1" />
         <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
         <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Background" TargetName="TrackFill" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
@@ -176,7 +190,7 @@
                  Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
         <Border x:Name="TrackBackground" 
                 Grid.Column="1" 
-                HorizontalAlignment="center" 
+                HorizontalAlignment="Center" 
                 Margin="0,5" 
                 Width="4" 
                 CornerRadius="2"
@@ -190,13 +204,24 @@
                        Fill="{DynamicResource ControlStrongFillColorDefaultBrush}" />
           </Canvas>
         </Border>
+        <Border Name="TrackFill"
+                Width="4" 
+                Height="{Binding ActualHeight, ElementName=DecreaseButton}"
+                Margin="0,5" 
+                Grid.Column="1" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                CornerRadius="2"
+                Background="{DynamicResource AccentFillColorDefaultBrush}" />
         <Track x:Name="PART_Track" Grid.Column="1">
           <Track.DecreaseRepeatButton>
-            <RepeatButton Command="{x:Static Slider.DecreaseLarge}" 
+            <RepeatButton x:Name="DecreaseButton"
+                          Command="{x:Static Slider.DecreaseLarge}" 
                           Style="{StaticResource RepeatButtonTransparent}" />
           </Track.DecreaseRepeatButton>
           <Track.IncreaseRepeatButton>
-            <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
+            <RepeatButton x:Name="IncreaseLarge"
+                          Command="{x:Static Slider.IncreaseLarge}" 
                           Style="{StaticResource RepeatButtonTransparent}" />
           </Track.IncreaseRepeatButton>
           <Track.Thumb>
@@ -227,6 +252,9 @@
         <Setter Property="BorderThickness" TargetName="TrackBackground" Value="1" />
         <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
         <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Background" TargetName="TrackFill" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
