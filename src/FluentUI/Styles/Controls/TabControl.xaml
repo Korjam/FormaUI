@@ -1,7 +1,12 @@
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:behaviors="clr-namespace:FluentUI.Behaviors">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.ScrollViewer.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
   <Style TargetType="{x:Type TabControl}">
     <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
     <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
@@ -12,6 +17,7 @@
     <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
     <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="behaviors:SelectorBehaviors.ScrollIntoSelectedItem" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type TabControl}">
@@ -27,32 +33,16 @@
               <RowDefinition x:Name="RowDefinition0" Height="Auto" />
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
-            <Grid x:Name="headerPanel" 
-                  Grid.Column="0" 
-                  Grid.Row="0">
-              
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="ColumnDefinition2" Width="Auto" />
-                <ColumnDefinition x:Name="ColumnDefinition3" Width="*" />
-              </Grid.ColumnDefinitions>
-              <Grid.RowDefinitions>
-                <RowDefinition x:Name="RowDefinition2" Height="Auto" />
-                <RowDefinition x:Name="RowDefinition3" Height="*" />
-              </Grid.RowDefinitions>
-              
-              <TabPanel x:Name="tabPanel"
-                        Background="Transparent"
-                        IsItemsHost="True" 
-                        Margin="8,2,2,0" 
-                        KeyboardNavigation.TabIndex="1" 
-                        HorizontalAlignment="Left"
-                        Panel.ZIndex="1" />
-              <Border x:Name="fillBorder"
-                      Grid.Column="1"
-                      BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-                      BorderThickness="0,0,0,1"
-                      Margin="-2,0,0,0"/>
-            </Grid>
+            <ScrollViewer x:Name="headerPanel"
+                          Style="{StaticResource TabHorizontalOverflowScrollViewer}"
+                          Margin="8,2,2,0" 
+                          KeyboardNavigation.TabIndex="1" 
+                          Panel.ZIndex="1">
+              <StackPanel x:Name="headerContainer"
+                          Orientation="Horizontal"
+                          Background="Transparent"
+                          IsItemsHost="True"  />
+            </ScrollViewer>
             <Border x:Name="contentPanel" 
                     Grid.Column="0" 
                     Grid.Row="1" 
@@ -74,11 +64,7 @@
               <Setter Property="Grid.Row" TargetName="contentPanel" Value="0" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="Auto" />
-
-              <Setter Property="Margin" TargetName="tabPanel" Value="8,0,2,2" />
-              
-              <Setter Property="Margin" TargetName="fillBorder" Value="-2,0,0,0" />
-              <Setter Property="BorderThickness" TargetName="fillBorder" Value="0,1,0,0" />
+              <Setter Property="Margin" TargetName="headerPanel" Value="8,0,2,2" />
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Left">
               <Setter Property="Grid.Row" TargetName="headerPanel" Value="0" />
@@ -89,20 +75,10 @@
               <Setter Property="Width" TargetName="ColumnDefinition1" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
+              <Setter Property="Margin" TargetName="headerPanel" Value="2,8,0,2" />
 
-              <Setter Property="Margin" TargetName="tabPanel" Value="2,8,0,2" />
-
-              <Setter Property="Grid.Row" TargetName="tabPanel" Value="0" />
-              <Setter Property="Grid.Row" TargetName="fillBorder" Value="1" />
-              <Setter Property="Grid.Column" TargetName="tabPanel" Value="0" />
-              <Setter Property="Grid.Column" TargetName="fillBorder" Value="0" />
-              <Setter Property="Width" TargetName="ColumnDefinition2" Value="Auto" />
-              <Setter Property="Width" TargetName="ColumnDefinition3" Value="*" />
-              <Setter Property="Height" TargetName="RowDefinition2" Value="Auto" />
-              <Setter Property="Height" TargetName="RowDefinition3" Value="*" />
-
-              <Setter Property="Margin" TargetName="fillBorder" Value="0,-2,0,0" />
-              <Setter Property="BorderThickness" TargetName="fillBorder" Value="0,0,1,0" />
+              <Setter Property="Style" TargetName="headerPanel" Value="{StaticResource TabVerticalOverflowScrollViewer}" />
+              <Setter Property="Orientation" TargetName="headerContainer" Value="Vertical" />
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Right">
               <Setter Property="Grid.Row" TargetName="headerPanel" Value="0" />
@@ -113,26 +89,11 @@
               <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto" />
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
+              <Setter Property="Margin" TargetName="headerPanel" Value="0,8,2,2" />
 
-              <Setter Property="Margin" TargetName="tabPanel" Value="0,8,2,2" />
-
-              <Setter Property="Grid.Row" TargetName="tabPanel" Value="0" />
-              <Setter Property="Grid.Row" TargetName="fillBorder" Value="1" />
-              <Setter Property="Grid.Column" TargetName="tabPanel" Value="0" />
-              <Setter Property="Grid.Column" TargetName="fillBorder" Value="0" />
-              <Setter Property="Width" TargetName="ColumnDefinition2" Value="Auto" />
-              <Setter Property="Width" TargetName="ColumnDefinition3" Value="*" />
-              <Setter Property="Height" TargetName="RowDefinition2" Value="Auto" />
-              <Setter Property="Height" TargetName="RowDefinition3" Value="*" />
-
-              <Setter Property="Margin" TargetName="fillBorder" Value="0,-2,0,0" />
-              <Setter Property="BorderThickness" TargetName="fillBorder" Value="1,0,0,0" />
+              <Setter Property="Style" TargetName="headerPanel" Value="{StaticResource TabVerticalOverflowScrollViewer}" />
+              <Setter Property="Orientation" TargetName="headerContainer" Value="Vertical" />
             </Trigger>
-            <!--
-            <Trigger Property="IsEnabled" Value="False">
-              <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-            </Trigger>
-            -->
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
