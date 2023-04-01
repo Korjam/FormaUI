@@ -8,7 +8,7 @@
 
   <Style x:Key="TabHorizontalOverflowScrollViewer" 
          TargetType="{x:Type ScrollViewer}">
-    <Setter Property="HorizontalScrollBarVisibility" Value="Visible" />
+    <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
     <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
     <Setter Property="Template">
       <Setter.Value>
@@ -16,9 +16,9 @@
           <Grid x:Name="Grid"
                 Background="{TemplateBinding Background}">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="42" />
+              <ColumnDefinition x:Name="LeftColumn" Width="0" />
               <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="42" />
+              <ColumnDefinition x:Name="RightColumn" Width="0" />
             </Grid.ColumnDefinitions>
             
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
@@ -46,6 +46,12 @@
                        ViewportSize="{TemplateBinding ViewportWidth}"
                        Style="{DynamicResource TabControlScrollBar}" />
           </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
+              <Setter TargetName="LeftColumn" Property="Width" Value="42" />
+              <Setter TargetName="RightColumn" Property="Width" Value="42" />
+            </Trigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -54,16 +60,16 @@
   <Style x:Key="TabVerticalOverflowScrollViewer" 
          TargetType="{x:Type ScrollViewer}">
     <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
-    <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ScrollViewer}">
           <Grid x:Name="Grid"
                 Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
-              <RowDefinition Height="32" />
+              <RowDefinition x:Name="TopRow" Height="0" />
               <RowDefinition Height="*" />
-              <RowDefinition Height="32" />
+              <RowDefinition x:Name="BottomRow" Height="0" />
             </Grid.RowDefinitions>
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="1"
@@ -86,6 +92,12 @@
                        Style="{DynamicResource TabControlScrollBar}" />
             <ScrollBar x:Name="PART_HorizontalScrollBar" Visibility="Collapsed" />
           </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
+              <Setter TargetName="TopRow" Property="Height" Value="32" />
+              <Setter TargetName="BottomRow" Property="Height" Value="32" />
+            </Trigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
