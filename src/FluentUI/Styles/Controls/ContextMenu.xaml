@@ -194,9 +194,10 @@
 
   <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
          TargetType="{x:Type Separator}">
-    <Setter Property="Background" Value="{StaticResource Menu.Static.Separator}" />
-    <Setter Property="BorderBrush" Value="{StaticResource Menu.Static.Separator}" />
+    <Setter Property="Background" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
     <Setter Property="MinHeight" Value="1" />
+    <Setter Property="Margin" Value="1,1,1,2" />
     <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -204,7 +205,7 @@
           <Border Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}"
-                  Margin="30,0,0,0" />
+                  Margin="0" />
         </ControlTemplate>
       </Setter.Value>
     </Setter>
