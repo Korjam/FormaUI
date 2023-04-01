@@ -246,6 +246,8 @@
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="0" />
+    
+    <Setter Property="FocusVisualStyle" Value="{DynamicResource RoundFocusVisual}" />
 
     <Setter Property="Template">
       <Setter.Value>
@@ -412,6 +414,8 @@
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="0" />
+    
+    <Setter Property="FocusVisualStyle" Value="{DynamicResource RoundFocusVisual}" />
 
     <Setter Property="Template">
       <Setter.Value>

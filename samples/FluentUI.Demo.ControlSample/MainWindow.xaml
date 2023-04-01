@@ -250,11 +250,17 @@
       <Grid>
 
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -338,6 +344,71 @@
 
           <RadioButton Grid.Row="4"
                        Content="Item 3"
+                       IsEnabled="False" />
+
+        </Grid>
+        
+        <Grid Grid.Row="2"
+              Grid.Column="6">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0"
+                       IsChecked="True" />
+
+          <RadioButton Grid.Row="2" />
+
+          <RadioButton Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Grid.Column="8">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0" />
+
+          <RadioButton Grid.Row="2"
+                       IsChecked="{x:Null}" />
+
+          <RadioButton Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Grid.Column="10">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0"
+                       IsChecked="True"
+                       IsEnabled="False" />
+
+          <RadioButton Grid.Row="2"
+                       IsChecked="{x:Null}"
+                       IsEnabled="False"  />
+
+          <RadioButton Grid.Row="4"
                        IsEnabled="False" />
 
         </Grid>
