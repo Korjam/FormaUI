@@ -13,6 +13,7 @@
   Width="1000">
 
   <TabControl Padding="10,10,0,0"
+              SelectedIndex="9"
               TabStripPlacement="Top">
 
     <TabItem Header="Button">
@@ -1836,18 +1837,21 @@
       <Grid>
 
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="150" />
           <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="150" />
           <ColumnDefinition Width="5" />
-          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="200" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="5" />
-          <RowDefinition Height="150" />
+          <RowDefinition Height="400" />
+          <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
@@ -1886,6 +1890,23 @@
           <ListViewItem>Item4</ListViewItem>
           <ListViewItem>Item5</ListViewItem>
         </ListView>
+
+        <TreeView Grid.Row="2"
+                  Grid.Column="6">
+          <TreeViewItem Header="Item 1" />
+          <TreeViewItem Header="Item 2" />
+          <TreeViewItem Header="Item 2" IsExpanded="True">
+            <TreeViewItem Header="Item 1" />
+            <TreeViewItem Header="Item 2" IsExpanded="True" IsSelected="True">
+              <TreeViewItem Header="Item 1" />
+              <TreeViewItem Header="Item 2" />
+            </TreeViewItem>
+            <TreeViewItem Header="Item 3" />
+          </TreeViewItem>
+          <TreeViewItem Header="Item 2" IsExpanded="False">
+            <TreeViewItem Header="Item 1" />
+          </TreeViewItem>
+        </TreeView>
 
       </Grid>
 
