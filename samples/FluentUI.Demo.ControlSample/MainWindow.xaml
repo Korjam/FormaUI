@@ -1978,6 +1978,94 @@
 
     </TabItem>
 
+    <TabItem Header="Menu">
+
+      <DockPanel>
+
+        <Menu DockPanel.Dock="Top">
+
+          <MenuItem Header="Item 1" />
+
+          <Separator />
+
+          <MenuItem Header="Parent Item 1">
+            <MenuItem.Icon>
+              <TextBlock FontFamily="{DynamicResource IconsFontFamily}"
+                         Text="&#xed56;"
+                         FontSize="16" />
+            </MenuItem.Icon>
+            <MenuItem Header="Child Item 1" />
+            <MenuItem Header="Child Item 2" />
+          </MenuItem>
+
+          <MenuItem Header="Item 2" />
+
+          <Separator />
+
+          <MenuItem Header="Checkable Item 1"
+                    IsCheckable="True"
+                    IsChecked="True" />
+          <MenuItem Header="Checkable Item 2"
+                    IsCheckable="True"
+                    IsChecked="False" />
+
+          <Separator />
+
+          <MenuItem Header="Item 1" InputGestureText="Hint" />
+
+        </Menu>
+
+        <Grid>
+
+          <TextBlock Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     Text="Context Menu"
+                     Style="{DynamicResource TextSubtitle}" />
+
+          <Grid.ContextMenu>
+
+            <ContextMenu>
+
+              <MenuItem Header="Item 1" />
+
+              <Separator />
+
+              <MenuItem Header="Parent Item 1">
+                <MenuItem.Icon>
+                  <TextBlock FontFamily="{DynamicResource IconsFontFamily}"
+                             Text="&#xed56;"
+                             FontSize="16" />
+                </MenuItem.Icon>
+                <MenuItem Header="Child Item 1" />
+                <MenuItem Header="Child Item 2" />
+              </MenuItem>
+
+              <MenuItem Header="Item 2" />
+
+              <Separator />
+
+              <MenuItem Header="Checkable Item 1"
+                      IsCheckable="True"
+                      IsChecked="True" />
+              <MenuItem Header="Checkable Item 2"
+                      IsCheckable="True"
+                      IsChecked="False" />
+
+              <Separator />
+
+              <MenuItem Header="Item 1" InputGestureText="Hint" />
+
+            </ContextMenu>
+
+          </Grid.ContextMenu>
+
+        </Grid>
+
+      </DockPanel>
+
+    </TabItem>
+
   </TabControl>
 
 </controls:FluentWindow>
