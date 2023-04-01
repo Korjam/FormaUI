@@ -3,64 +3,23 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:converters="clr-namespace:FluentUI.Converters">
 
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
   <converters:DividerConverter x:Key="HalfConverter" Divider="2" />
 
-  <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
-    <Setter Property="Background" Value="Transparent" />
+  <Style x:Key="TabControlScrollBarButton"
+         TargetType="{x:Type RepeatButton}"
+         BasedOn="{StaticResource SubtleIconOnlyButtonStyle}">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type RepeatButton}">
-          <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
-  <Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
-    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontSize" Value="8" />
+    <Setter Property="Margin" Value="4" />
+    <Setter Property="Padding" Value="12,8" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="Focusable" Value="False" />
-    <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
-    <Setter Property="FontSize" Value="8" />
-    <Setter Property="Foreground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderBrush" Value="Transparent" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type RepeatButton}">
-          <Border x:Name="border"
-                  BorderThickness="{TemplateBinding BorderThickness}"
-                  SnapsToDevicePixels="True"
-                  Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}">
-            <ContentPresenter x:Name="contentPresenter"
-                              Margin="{TemplateBinding Padding}"
-                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              Focusable="False" />
-          </Border>
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-              <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-              <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
   </Style>
 
   <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
@@ -79,24 +38,7 @@
       </Setter.Value>
     </Setter>
   </Style>
-
-  <Style x:Key="ScrollBarThumbHorizontal" TargetType="{x:Type Thumb}">
-    <Setter Property="OverridesDefaultStyle" Value="True" />
-    <Setter Property="IsTabStop" Value="False" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type Thumb}">
-          <Border x:Name="rectangle"
-                  SnapsToDevicePixels="True"
-                  Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
-                  Height="{TemplateBinding Height}"
-                  Width="{TemplateBinding Width}"
-                  CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfConverter}}" />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
+  
   <ControlTemplate x:Key="ScrollBarVerticalTemplate"
                    TargetType="{x:Type ScrollBar}">
     <Grid x:Name="Bg" SnapsToDevicePixels="True">
@@ -114,7 +56,7 @@
       <RepeatButton x:Name="PART_LineUpButton"
                     Command="{x:Static ScrollBar.LineUpCommand}"
                     IsEnabled="{TemplateBinding IsMouseOver}"
-                    Style="{DynamicResource ScrollBarButton}"
+                    Style="{DynamicResource TabControlScrollBarButton}"
                     Content="&#xEDDB;" />
       <Track x:Name="PART_Track"
              IsDirectionReversed="True"
@@ -136,7 +78,7 @@
                     Command="{x:Static ScrollBar.LineDownCommand}"
                     IsEnabled="{TemplateBinding IsMouseOver}"
                     Grid.Row="2"
-                    Style="{DynamicResource ScrollBarButton}"
+                    Style="{DynamicResource TabControlScrollBarButton}"
                     Content="&#xEDDC;" />
     </Grid>
     <ControlTemplate.Triggers>
@@ -151,59 +93,33 @@
 
   <ControlTemplate x:Key="ScrollBarHorizontalTemplate"
                    TargetType="{x:Type ScrollBar}">
-    <Grid x:Name="Bg" SnapsToDevicePixels="True">
+    <Grid SnapsToDevicePixels="True">
       <Grid.ColumnDefinitions>
-        <ColumnDefinition MaxWidth="16" />
-        <ColumnDefinition Width="0.00001*" />
-        <ColumnDefinition MaxWidth="16" />
+        <ColumnDefinition MaxWidth="42" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition MaxWidth="42" />
       </Grid.ColumnDefinitions>
-      <Border Grid.Column="0"
-              Grid.ColumnSpan="3"
-              BorderThickness="{TemplateBinding BorderThickness}"
-              Background="{TemplateBinding Background}"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfConverter}}" />
       <RepeatButton x:Name="PART_LineLeftButton"
                     Command="{x:Static ScrollBar.LineLeftCommand}"
-                    IsEnabled="{TemplateBinding IsMouseOver}"
-                    Style="{DynamicResource ScrollBarButton}"
+                    Style="{DynamicResource TabControlScrollBarButton}"
                     Content="&#xEDD9;" />
       <Track x:Name="PART_Track"
              Grid.Column="1"
-             IsEnabled="{TemplateBinding IsMouseOver}">
-        <Track.DecreaseRepeatButton>
-          <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{DynamicResource RepeatButtonTransparent}" />
-        </Track.DecreaseRepeatButton>
-        <Track.IncreaseRepeatButton>
-          <RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{DynamicResource RepeatButtonTransparent}" />
-        </Track.IncreaseRepeatButton>
-        <Track.Thumb>
-          <Thumb x:Name="bar"
-                 Style="{DynamicResource ScrollBarThumbHorizontal}"
-                 Margin="2,3" />
-        </Track.Thumb>
-      </Track>
+             IsEnabled="False"
+             Visibility="Collapsed" />
       <RepeatButton x:Name="PART_LineRightButton"
                     Grid.Column="2"
                     Command="{x:Static ScrollBar.LineRightCommand}"
-                    IsEnabled="{TemplateBinding IsMouseOver}"
-                    Style="{DynamicResource ScrollBarButton}"
+                    Style="{DynamicResource TabControlScrollBarButton}"
                     Content="&#xEDDA;" />
     </Grid>
-    <ControlTemplate.Triggers>
-      <Trigger Property="IsMouseOver" Value="False">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter TargetName="bar" Property="Margin" Value="2,7,2,3" />
-        <Setter TargetName="PART_LineLeftButton" Property="Visibility" Value="Hidden" />
-        <Setter TargetName="PART_LineRightButton" Property="Visibility" Value="Hidden" />
-      </Trigger>
-    </ControlTemplate.Triggers>
   </ControlTemplate>
 
-  <Style TargetType="{x:Type ScrollBar}">
+  <Style x:Key="TabControlScrollBar"
+         TargetType="{x:Type ScrollBar}">
     <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-    <Setter Property="Background" Value="{DynamicResource AcrylicBackgroundFillColorDefaultBrush}" />
+    <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="Width" Value="12" />
     <Setter Property="MinWidth" Value="12" />
@@ -212,8 +128,8 @@
       <Trigger Property="Orientation" Value="Horizontal">
         <Setter Property="Width" Value="Auto" />
         <Setter Property="MinWidth" Value="0" />
-        <Setter Property="Height" Value="12" />
-        <Setter Property="MinHeight" Value="12" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="MinHeight" Value="32" />
         <Setter Property="Template" Value="{StaticResource ScrollBarHorizontalTemplate}" />
         <Setter Property="Background" Value="Transparent" />
       </Trigger>
