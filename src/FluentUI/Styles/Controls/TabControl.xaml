@@ -32,12 +32,12 @@
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
             <ScrollViewer x:Name="headerPanel"
-                          HorizontalScrollBarVisibility="Visible"
-                          Style="{StaticResource TabOverflowScrollViewer}"
+                          Style="{StaticResource TabHorizontalOverflowScrollViewer}"
                           Margin="8,2,2,0" 
                           KeyboardNavigation.TabIndex="1" 
                           Panel.ZIndex="1">
-              <StackPanel Orientation="Horizontal"
+              <StackPanel x:Name="headerContainer"
+                          Orientation="Horizontal"
                           Background="Transparent"
                           IsItemsHost="True"  />
             </ScrollViewer>
@@ -74,6 +74,9 @@
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
               <Setter Property="Margin" TargetName="headerPanel" Value="2,8,0,2" />
+
+              <Setter Property="Style" TargetName="headerPanel" Value="{StaticResource TabVerticalOverflowScrollViewer}" />
+              <Setter Property="Orientation" TargetName="headerContainer" Value="Vertical" />
             </Trigger>
             <Trigger Property="TabStripPlacement" Value="Right">
               <Setter Property="Grid.Row" TargetName="headerPanel" Value="0" />
@@ -85,6 +88,9 @@
               <Setter Property="Height" TargetName="RowDefinition0" Value="*" />
               <Setter Property="Height" TargetName="RowDefinition1" Value="0" />
               <Setter Property="Margin" TargetName="headerPanel" Value="0,8,2,2" />
+
+              <Setter Property="Style" TargetName="headerPanel" Value="{StaticResource TabVerticalOverflowScrollViewer}" />
+              <Setter Property="Orientation" TargetName="headerContainer" Value="Vertical" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

@@ -6,8 +6,10 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.ScrollBar.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
-  <Style x:Key="TabOverflowScrollViewer" 
+  <Style x:Key="TabHorizontalOverflowScrollViewer" 
          TargetType="{x:Type ScrollViewer}">
+    <Setter Property="HorizontalScrollBarVisibility" Value="Visible" />
+    <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -18,10 +20,7 @@
               <ColumnDefinition Width="*" />
               <ColumnDefinition Width="42" />
             </Grid.ColumnDefinitions>
-            <!--<Grid.RowDefinitions>
-              <RowDefinition Height="*" />
-              <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>-->
+            
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="0"
                                     Grid.RowSpan="2"
@@ -32,17 +31,7 @@
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     Content="{TemplateBinding Content}"
                                     Margin="{TemplateBinding Padding}" />
-            <ScrollBar x:Name="PART_VerticalScrollBar"
-                       Cursor="Arrow"
-                       Grid.Row="0"
-                       Grid.Column="1"
-                       AutomationProperties.AutomationId="VerticalScrollBar"
-                       Maximum="{TemplateBinding ScrollableHeight}"
-                       Minimum="0"
-                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                       Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                       ViewportSize="{TemplateBinding ViewportHeight}"
-                       Style="{DynamicResource TabControlScrollBar}" />
+            <ScrollBar x:Name="PART_VerticalScrollBar" Visibility="Collapsed" />
             <ScrollBar x:Name="PART_HorizontalScrollBar"
                        Cursor="Arrow"
                        Grid.Row="1"
@@ -56,6 +45,46 @@
                        Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
                        ViewportSize="{TemplateBinding ViewportWidth}"
                        Style="{DynamicResource TabControlScrollBar}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="TabVerticalOverflowScrollViewer" 
+         TargetType="{x:Type ScrollViewer}">
+    <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+    <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ScrollViewer}">
+          <Grid x:Name="Grid"
+                Background="{TemplateBinding Background}">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="32" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="32" />
+            </Grid.RowDefinitions>
+            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                    Grid.Row="1"
+                                    CanContentScroll="{TemplateBinding CanContentScroll}"
+                                    CanHorizontallyScroll="False"
+                                    CanVerticallyScroll="False"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    Content="{TemplateBinding Content}"
+                                    Margin="{TemplateBinding Padding}" />
+            <ScrollBar x:Name="PART_VerticalScrollBar"
+                       Cursor="Arrow"
+                       Grid.RowSpan="3"
+                       Orientation="Vertical"
+                       AutomationProperties.AutomationId="VerticalScrollBar"
+                       Maximum="{TemplateBinding ScrollableHeight}"
+                       Minimum="0"
+                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                       Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                       ViewportSize="{TemplateBinding ViewportHeight}"
+                       Style="{DynamicResource TabControlScrollBar}" />
+            <ScrollBar x:Name="PART_HorizontalScrollBar" Visibility="Collapsed" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
