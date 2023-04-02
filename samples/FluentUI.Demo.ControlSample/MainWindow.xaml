@@ -12,8 +12,11 @@
   Height="600"
   Width="1000">
 
+  <Window.DataContext>
+    <local:MainViewModel />
+  </Window.DataContext>
+
   <TabControl Padding="10,10,0,0"
-              SelectedIndex="9"
               TabStripPlacement="Top">
 
     <TabItem Header="Button">
@@ -348,7 +351,7 @@
                        IsEnabled="False" />
 
         </Grid>
-        
+
         <Grid Grid.Row="2"
               Grid.Column="6">
 
@@ -1909,6 +1912,43 @@
         </TreeView>
 
       </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Data Grid">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Data Grid"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <DataGrid Grid.Row="2"
+                  Grid.Column="0"
+                  ItemsSource="{Binding Users}"
+                  SelectedIndex="3" />
+
+        <DataGrid Grid.Row="2"
+                  Grid.Column="2"
+                  ItemsSource="{Binding Users}"
+                  SelectedIndex="3"
+                  IsEnabled="False" />
+      </Grid>
+
 
     </TabItem>
 
