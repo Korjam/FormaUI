@@ -4,7 +4,11 @@
   xmlns:behaviors="clr-namespace:FluentUI.Behaviors">
 
   <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Values/Text.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/CheckBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ComboBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TextBox.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
   <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
@@ -31,7 +35,7 @@
     <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
     <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
-    
+
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
 
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
@@ -43,11 +47,14 @@
     <!--<Setter Property="GridLinesVisibility" Value="None" />-->
     <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
     <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DividerStrokeColorDefaultBrush}" />
-    
+
     <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
     <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
     <Setter Property="ScrollViewer.PanningMode" Value="Both" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+
+    <Setter Property="behaviors:DataGridBehaviors.ApplyFuentStyles" Value="True" />
+
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type DataGrid}">
@@ -144,7 +151,7 @@
       </Setter.Value>
     </Setter>
   </Style>
-  
+
   <Style x:Key="ColumnHeaderGripperStyle"
          TargetType="{x:Type Thumb}">
     <Setter Property="Width" Value="8" />
@@ -331,25 +338,6 @@
     </Style.Triggers>
   </Style>
 
-  <Style x:Key="{x:Static DataGridComboBoxColumn.TextBlockComboBoxStyleKey}"
-         TargetType="{x:Type ComboBox}">
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="{x:Type ComboBox}">
-          <ContentPresenter Margin="1,1,1,1"
-                            Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            IsHitTestVisible="False" />
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-
   <Style x:Key="{x:Type DataGridColumnHeader}"
          TargetType="{x:Type DataGridColumnHeader}">
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
@@ -357,7 +345,7 @@
     <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="Padding" Value="2" />
+    <Setter Property="Padding" Value="11,6,11,8" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -456,5 +444,66 @@
       </Setter.Value>
     </Setter>
   </Style>
-  
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.TextBoxStyleKey}"
+         TargetType="{x:Type TextBlock}">
+    <Setter Property="Padding" Value="11,6,11,8" />
+    <!--<Setter Property="Margin" Value="11,6,11,8" />-->
+  </Style>
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.TextBoxEditingStyleKey}"
+         TargetType="{x:Type TextBox}"
+         BasedOn="{StaticResource {x:Type TextBox}}">
+    <Setter Property="Padding" Value="11,6,11,8" />
+  </Style>
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.ComboBoxStyleKey}"
+         TargetType="{x:Type ComboBox}"
+         BasedOn="{StaticResource {x:Type ComboBox}}">
+    <Setter Property="Padding" Value="11,6,11,8" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type ComboBox}">
+          <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            Margin="{TemplateBinding Padding}"
+                            IsHitTestVisible="False" />
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+              <Setter Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.ComboBoxEditingStyleKey}"
+         TargetType="{x:Type ComboBox}"
+         BasedOn="{StaticResource {x:Type ComboBox}}">
+    <Setter Property="Padding" Value="11,6,11,8" />
+  </Style>
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.CheckBoxStyleKey}"
+         TargetType="{x:Type CheckBox}"
+         BasedOn="{StaticResource {x:Type CheckBox}}">
+    <Setter Property="Margin" Value="6,6,8,8" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="IsHitTestVisible" Value="False" />
+  </Style>
+
+  <Style x:Key="{x:Static behaviors:DataGridStyles.CheckBoxEditingStyleKey}"
+         TargetType="{x:Type CheckBox}"
+         BasedOn="{StaticResource {x:Type CheckBox}}">
+    <Setter Property="Margin" Value="6,6,8,8" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+  </Style>
+
 </ResourceDictionary>
