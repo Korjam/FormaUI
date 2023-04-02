@@ -16,7 +16,7 @@
     <local:MainViewModel />
   </Window.DataContext>
 
-  <TabControl Padding="10,10,0,0"
+  <TabControl Padding="10,10,0,10"
               TabStripPlacement="Top">
 
     <TabItem Header="Button">
@@ -2124,6 +2124,195 @@
         </Grid>
 
       </DockPanel>
+
+    </TabItem>
+
+    <TabItem Header="Expander">
+
+      <ScrollViewer>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="300" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     Text="Expander"
+                     Style="{DynamicResource TextSubtitle}" />
+
+          <Expander Grid.Row="2"
+                    Grid.Column="0"
+                    Header="I'm an expander header"
+                    Content="I'm expander content" />
+
+          <Expander Grid.Row="4"
+                    Grid.Column="0"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    IsExpanded="True" />
+
+          <Expander Grid.Row="6"
+                    Grid.Column="0"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    ExpandDirection="Up" />
+
+          <Expander Grid.Row="8"
+                    Grid.Column="0"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    ExpandDirection="Up"
+                    IsExpanded="True" />
+
+          <Expander Grid.Row="2"
+                    Grid.Column="2"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    IsEnabled="False" />
+
+          <Expander Grid.Row="4"
+                    Grid.Column="2"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    IsExpanded="True"
+                    IsEnabled="False" />
+
+          <Expander Grid.Row="6"
+                    Grid.Column="2"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    ExpandDirection="Up"
+                    IsEnabled="False" />
+
+          <Expander Grid.Row="8"
+                    Grid.Column="2"
+                    Header="I'm an expander header"
+                    Content="I'm expander content"
+                    ExpandDirection="Up"
+                    IsExpanded="True"
+                    IsEnabled="False" />
+
+          <Grid Grid.Row="10"
+                Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander Grid.Column="0"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Right" />
+
+            <Expander Grid.Column="2"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Right"
+                      IsExpanded="True" />
+
+          </Grid>
+
+          <Grid Grid.Row="10"
+                Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander Grid.Column="0"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Right"
+                      IsEnabled="False" />
+
+            <Expander Grid.Column="2"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Right"
+                      IsExpanded="True"
+                      IsEnabled="False" />
+
+          </Grid>
+
+          <Grid Grid.Row="12"
+                Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander Grid.Column="0"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Left" />
+
+            <Expander Grid.Column="2"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Left"
+                      IsExpanded="True" />
+
+          </Grid>
+
+          <Grid Grid.Row="12"
+                Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander Grid.Column="0"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Left"
+                      IsEnabled="False" />
+
+            <Expander Grid.Column="2"
+                      Header="I'm an expander header"
+                      Content="I'm expander content"
+                      ExpandDirection="Left"
+                      IsExpanded="True"
+                      IsEnabled="False" />
+
+          </Grid>
+
+        </Grid>
+
+      </ScrollViewer>
 
     </TabItem>
 
