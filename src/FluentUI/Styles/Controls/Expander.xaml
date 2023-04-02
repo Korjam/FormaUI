@@ -153,32 +153,38 @@
         <Grid x:Name="HeaderSite"
               Focusable="False"
               DockPanel.Dock="Left"
-              Height="62">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>
+              MinWidth="62">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
           <ContentPresenter FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}"
                             Content="{TemplateBinding Header}"
                             ContentTemplate="{TemplateBinding HeaderTemplate}"
                             ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Margin="{TemplateBinding Padding}" />
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center"
+                            Margin="{TemplateBinding Padding}">
+            <ContentPresenter.LayoutTransform>
+              <TransformGroup>
+                <RotateTransform Angle="-90" />
+              </TransformGroup>
+            </ContentPresenter.LayoutTransform>
+          </ContentPresenter>
           <ToggleButton x:Name="ExpanderButton"
-                        Grid.Column="1"
-                        Margin="0,0,3,0"
+                        Grid.Row="1"
+                        Margin="0,0,0,3"
                         Style="{StaticResource ExpanderRightHeaderStyle}"
                         IsChecked="{Binding Path=IsExpanded,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" />
         </Grid>
         <Border x:Name="ExpandSite"
                 DockPanel.Dock="Right"
                 Visibility="Collapsed"
-                BorderThickness="0,1,0,0"
+                BorderThickness="1,0,0,0"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}">
           <ContentPresenter Focusable="False"
-                            Margin="47,7"
+                            Margin="12,8"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
         </Border>
@@ -191,6 +197,7 @@
       <Trigger Property="ExpandDirection" Value="Left">
         <Setter Property="DockPanel.Dock" Value="Left" TargetName="ExpandSite" />
         <Setter Property="DockPanel.Dock" Value="Right" TargetName="HeaderSite" />
+        <Setter Property="BorderThickness" Value="0,0,1,0" TargetName="ExpandSite" />
         <Setter Property="Style" Value="{StaticResource ExpanderLeftHeaderStyle}" TargetName="ExpanderButton" />
       </Trigger>
       <Trigger Property="IsEnabled" Value="False">
@@ -215,9 +222,11 @@
     <Setter Property="Template" Value="{StaticResource ExpanderHorizontal}" />
     <Style.Triggers>
       <Trigger Property="ExpandDirection" Value="Right">
+        <Setter Property="Padding" Value="10,20,13,5" />
         <Setter Property="Template" Value="{StaticResource ExpanderVertical}" />
       </Trigger>
       <Trigger Property="ExpandDirection" Value="Left">
+        <Setter Property="Padding" Value="10,20,13,5" />
         <Setter Property="Template" Value="{StaticResource ExpanderVertical}" />
       </Trigger>
     </Style.Triggers>
