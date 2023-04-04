@@ -23,7 +23,6 @@
             
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="0"
-                                    Grid.RowSpan="2"
                                     Grid.Column="1"
                                     CanContentScroll="{TemplateBinding CanContentScroll}"
                                     CanHorizontallyScroll="False"
@@ -93,7 +92,7 @@
             <ScrollBar x:Name="PART_HorizontalScrollBar" Visibility="Collapsed" />
           </Grid>
           <ControlTemplate.Triggers>
-            <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
+            <Trigger Property="ComputedVerticalScrollBarVisibility" Value="Visible">
               <Setter TargetName="TopRow" Property="Height" Value="32" />
               <Setter TargetName="BottomRow" Property="Height" Value="32" />
             </Trigger>
