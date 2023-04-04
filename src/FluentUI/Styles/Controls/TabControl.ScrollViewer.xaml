@@ -3,8 +3,21 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.ScrollBar.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Button.xaml" />
   </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="TabControlScrollBarButton"
+         TargetType="{x:Type RepeatButton}"
+         BasedOn="{StaticResource SubtleIconOnlyButtonStyle}">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FontSize" Value="8" />
+    <Setter Property="Margin" Value="4" />
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+  </Style>
 
   <Style x:Key="TabHorizontalOverflowScrollViewer" 
          TargetType="{x:Type ScrollViewer}">
@@ -16,11 +29,17 @@
           <Grid x:Name="Grid"
                 Background="{TemplateBinding Background}">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition x:Name="LeftColumn" Width="0" />
+              <ColumnDefinition x:Name="LeftColumn" Width="0" MaxWidth="42" />
               <ColumnDefinition Width="*" />
-              <ColumnDefinition x:Name="RightColumn" Width="0" />
+              <ColumnDefinition x:Name="RightColumn" Width="0" MaxWidth="42" />
             </Grid.ColumnDefinitions>
-            
+            <RepeatButton Grid.Column="0"
+                          Grid.Row="0"
+                          Style="{StaticResource TabControlScrollBarButton}"
+                          Command="{x:Static ScrollBar.LineLeftCommand}"
+                          CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                          Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                          Content="&#xEDD9;" />
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="0"
                                     Grid.Column="1"
@@ -30,20 +49,13 @@
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     Content="{TemplateBinding Content}"
                                     Margin="{TemplateBinding Padding}" />
-            <ScrollBar x:Name="PART_VerticalScrollBar" Visibility="Collapsed" />
-            <ScrollBar x:Name="PART_HorizontalScrollBar"
-                       Cursor="Arrow"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       Grid.ColumnSpan="3"
-                       Orientation="Horizontal"
-                       AutomationProperties.AutomationId="HorizontalScrollBar"
-                       Maximum="{TemplateBinding ScrollableWidth}"
-                       Minimum="0"
-                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                       Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                       ViewportSize="{TemplateBinding ViewportWidth}"
-                       Style="{DynamicResource TabControlScrollBar}" />
+            <RepeatButton Grid.Column="2"
+                          Grid.Row="0"
+                          Style="{StaticResource TabControlScrollBarButton}"
+                          Command="{x:Static ScrollBar.LineRightCommand}"
+                          CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                          Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                          Content="&#xEDDA;" />
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="ComputedHorizontalScrollBarVisibility" Value="Visible">
@@ -66,10 +78,17 @@
           <Grid x:Name="Grid"
                 Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
-              <RowDefinition x:Name="TopRow" Height="0" />
+              <RowDefinition x:Name="TopRow" Height="0" MaxHeight="32" />
               <RowDefinition Height="*" />
-              <RowDefinition x:Name="BottomRow" Height="0" />
+              <RowDefinition x:Name="BottomRow" Height="0" MaxHeight="32" />
             </Grid.RowDefinitions>
+            <RepeatButton Grid.Column="0"
+                          Grid.Row="0"
+                          Style="{StaticResource TabControlScrollBarButton}"
+                          Command="{x:Static ScrollBar.LineUpCommand}"
+                          CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                          Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                          Content="&#xEDDB;" />
             <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                     Grid.Row="1"
                                     CanContentScroll="{TemplateBinding CanContentScroll}"
@@ -78,18 +97,13 @@
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
                                     Content="{TemplateBinding Content}"
                                     Margin="{TemplateBinding Padding}" />
-            <ScrollBar x:Name="PART_VerticalScrollBar"
-                       Cursor="Arrow"
-                       Grid.RowSpan="3"
-                       Orientation="Vertical"
-                       AutomationProperties.AutomationId="VerticalScrollBar"
-                       Maximum="{TemplateBinding ScrollableHeight}"
-                       Minimum="0"
-                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                       Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                       ViewportSize="{TemplateBinding ViewportHeight}"
-                       Style="{DynamicResource TabControlScrollBar}" />
-            <ScrollBar x:Name="PART_HorizontalScrollBar" Visibility="Collapsed" />
+            <RepeatButton Grid.Column="0"
+                          Grid.Row="2"
+                          Style="{StaticResource TabControlScrollBarButton}"
+                          Command="{x:Static ScrollBar.LineDownCommand}"
+                          CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                          Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                          Content="&#xEDDC;" />
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="ComputedVerticalScrollBarVisibility" Value="Visible">
