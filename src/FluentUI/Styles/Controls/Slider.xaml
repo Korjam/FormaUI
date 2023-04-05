@@ -139,22 +139,22 @@
       <Trigger Property="IsEnabled" Value="False">
         <Setter TargetName="TrackFill" Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
-      <MultiDataTrigger>
-        <MultiDataTrigger.Conditions>
-          <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-          <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-        </MultiDataTrigger.Conditions>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsEnabled" Value="False" />
+          <Condition Property="IsSelectionRangeEnabled" Value="False" />
+        </MultiTrigger.Conditions>
         <Setter TargetName="TrackBackground" Property="Background" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-      </MultiDataTrigger>
-      <MultiDataTrigger>
-        <MultiDataTrigger.Conditions>
-          <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-          <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="True" />
-        </MultiDataTrigger.Conditions>
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsEnabled" Value="False" />
+          <Condition Property="IsSelectionRangeEnabled" Value="True" />
+        </MultiTrigger.Conditions>
         <Setter TargetName="PART_SelectionRange" Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
         <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
         <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-      </MultiDataTrigger>
+      </MultiTrigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
@@ -254,22 +254,22 @@
       <Trigger Property="IsEnabled" Value="False">
         <Setter TargetName="TrackFill" Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
-      <MultiDataTrigger>
-        <MultiDataTrigger.Conditions>
-          <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-          <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-        </MultiDataTrigger.Conditions>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsEnabled" Value="False" />
+          <Condition Property="IsSelectionRangeEnabled" Value="False" />
+        </MultiTrigger.Conditions>
         <Setter TargetName="TrackBackground" Property="Background" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-      </MultiDataTrigger>
-      <MultiDataTrigger>
-        <MultiDataTrigger.Conditions>
-          <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
-          <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="True" />
-        </MultiDataTrigger.Conditions>
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsEnabled" Value="False" />
+          <Condition Property="IsSelectionRangeEnabled" Value="True" />
+        </MultiTrigger.Conditions>
         <Setter TargetName="PART_SelectionRange" Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
         <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
         <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-      </MultiDataTrigger>
+      </MultiTrigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
 

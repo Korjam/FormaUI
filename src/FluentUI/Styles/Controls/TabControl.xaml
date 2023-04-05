@@ -189,15 +189,15 @@
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
             </Trigger>
 
-            <MultiDataTrigger>
-              <MultiDataTrigger.Conditions>
-                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
-                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />
-              </MultiDataTrigger.Conditions>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsMouseOver" Value="True" />
+                <Condition Property="IsSelected" Value="False" />
+              </MultiTrigger.Conditions>
               <Setter TargetName="divider" Property="Opacity" Value="0" />
               <Setter TargetName="selectionBorder" Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}" />
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
-            </MultiDataTrigger>
+            </MultiTrigger>
 
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
