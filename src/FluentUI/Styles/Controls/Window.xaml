@@ -3,6 +3,10 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:FluentUI.Controls">
 
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.ScrollViewer.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
   <ControlTemplate x:Key="ChromeButtonTemplate" TargetType="{x:Type Button}">
 
     <Grid>
@@ -196,5 +200,133 @@
   </Style>
 
   <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:FluentWindow}" />
+
+  <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:TabWindow}">
+    <Setter Property="WindowChrome.WindowChrome">
+      <Setter.Value>
+        <WindowChrome
+          CaptionHeight="40"
+          NonClientFrameEdges="None"
+          UseAeroCaptionButtons="False" />
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:TabWindow}">
+          <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid Margin="{TemplateBinding Padding}">
+
+              <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+
+              <Grid
+                Grid.Row="0"
+                Margin="12,0,0,0"
+                VerticalAlignment="Stretch">
+
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer x:Name="headerPanel"
+                  Margin="8,2,2,0"
+                  VerticalAlignment="Bottom"
+                  Panel.ZIndex="1"
+                  KeyboardNavigation.TabIndex="1"
+                  Style="{StaticResource TabHorizontalOverflowScrollViewer}"
+                  WindowChrome.IsHitTestVisibleInChrome="True">
+                  <ItemsControl x:Name="headerContainer" ItemsSource="{TemplateBinding TabItems}">
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <StackPanel
+                          Background="Transparent"
+                          IsItemsHost="True"
+                          Orientation="Horizontal" />
+                      </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                  </ItemsControl>
+                  <!--<StackPanel x:Name="headerContainer"
+                              Orientation="Horizontal"
+                              Background="Transparent"
+                              IsItemsHost="True"  />-->
+                </ScrollViewer>
+
+                <StackPanel
+                  Grid.Column="1"
+                  VerticalAlignment="Top"
+                  Orientation="Horizontal"
+                  WindowChrome.IsHitTestVisibleInChrome="True">
+                  <Button x:Name="MinimizeButton"
+                    Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}"
+                    Content="&#xE921;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
+                  <Button x:Name="MaximizeButton"
+                    Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"
+                    Content="&#xE922;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
+                  <Button x:Name="RestoreButton"
+                    Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}"
+                    Content="&#xE923;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
+                  <Button x:Name="CloseButton"
+                    Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"
+                    Content="&#xE8BB;"
+                    Style="{DynamicResource CloseButtonStyle}" />
+                </StackPanel>
+              </Grid>
+
+              <AdornerDecorator Grid.Row="1">
+                <Border x:Name="contentPanel"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}"
+                  BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                  BorderThickness="0,1,0,0"
+                  KeyboardNavigation.DirectionalNavigation="Contained"
+                  KeyboardNavigation.TabIndex="2"
+                  KeyboardNavigation.TabNavigation="Local">
+                  <ContentPresenter x:Name="PART_SelectedContentHost"
+                    Margin="{TemplateBinding Padding}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                  <!--<ContentPresenter x:Name="PART_SelectedContentHost"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    Margin="{TemplateBinding Padding}"
+                                    ContentSource="SelectedContent" />-->
+                </Border>
+              </AdornerDecorator>
+
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="WindowState" Value="Normal">
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Visible" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="WindowState" Value="Maximized">
+              <Setter Property="Padding" Value="5" />
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="ResizeMode" Value="NoResize">
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="WindowStyle" Value="ToolWindow">
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
 
 </ResourceDictionary>

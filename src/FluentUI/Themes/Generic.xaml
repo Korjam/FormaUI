@@ -5,6 +5,8 @@
 
   <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:FluentWindow}" />
 
+  <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:TabWindow}" />
+
   <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:FluentDialog}" />
 
   <Style TargetType="{x:Type controls:SymbolIcon}">
