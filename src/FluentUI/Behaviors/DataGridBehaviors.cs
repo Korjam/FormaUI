@@ -12,7 +12,7 @@ public class DataGridBehaviors
             "ApplyFuentStyles",
             typeof(bool),
             typeof(DataGridBehaviors),
-            new PropertyMetadata(false, ApplyFuentStyles));
+            new PropertyMetadata(false, OnApplyFuentStylesChanged));
 
     [Category("FluentUI")]
     [AttachedPropertyBrowsableForType(typeof(DataGrid))]
@@ -28,7 +28,7 @@ public class DataGridBehaviors
         element.SetValue(ApplyFuentStylesProperty, value);
     }
 
-    private static void ApplyFuentStyles(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+    private static void OnApplyFuentStylesChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
         if (e.OldValue == e.NewValue)
         {
@@ -40,10 +40,10 @@ public class DataGridBehaviors
             return;
         }
 
-        ApplyFuentStylesChanged(dataGrid, (bool)e.NewValue);
+        OnApplyFuentStylesChanged(dataGrid, (bool)e.NewValue);
     }
 
-    private static void ApplyFuentStylesChanged(DataGrid dataGrid, bool newValue)
+    private static void OnApplyFuentStylesChanged(DataGrid dataGrid, bool newValue)
     {
         if (newValue)
         {

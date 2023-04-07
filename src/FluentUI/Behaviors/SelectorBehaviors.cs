@@ -12,7 +12,7 @@ public static class SelectorBehaviors
             "ScrollIntoSelectedItem",
             typeof(bool),
             typeof(SelectorBehaviors),
-            new PropertyMetadata(false, ScrollIntoSelectedItem));
+            new PropertyMetadata(false, OnScrollIntoSelectedItemChanged));
 
     [Category("FluentUI")]
     [AttachedPropertyBrowsableForType(typeof(Selector))]
@@ -28,7 +28,7 @@ public static class SelectorBehaviors
         element.SetValue(ScrollIntoSelectedItemProperty, value);
     }
 
-    private static void ScrollIntoSelectedItem(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+    private static void OnScrollIntoSelectedItemChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
         if (e.OldValue == e.NewValue)
         {
@@ -40,10 +40,10 @@ public static class SelectorBehaviors
             return;
         }
 
-        ScrollIntoSelectedItemChanged(selector, (bool)e.NewValue);
+        OnScrollIntoSelectedItemChanged(selector, (bool)e.NewValue);
     }
 
-    private static void ScrollIntoSelectedItemChanged(Selector selector, bool newValue)
+    private static void OnScrollIntoSelectedItemChanged(Selector selector, bool newValue)
     {
         if (newValue)
         {
