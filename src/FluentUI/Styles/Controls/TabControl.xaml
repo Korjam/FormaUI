@@ -108,8 +108,9 @@
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource CardStrokeColorDefaultBrush}" />
     <Setter Property="Margin" Value="0" />
+    <Setter Property="MinHeight" Value="32" />
     <Setter Property="MinWidth" Value="120" />
-    <Setter Property="Padding" Value="0,5,8,7" />
+    <Setter Property="Padding" Value="8,0,8,2" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
     <Setter Property="Template">
@@ -133,16 +134,14 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
               </Grid.ColumnDefinitions>
-              <Border x:Name="iconPlaceHolder"
-                      Grid.Column="0"
-                      BorderThickness="1"
-                      BorderBrush="{DynamicResource TextFillColorSecondaryBrush}"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Center"
-                      Height="16"
-                      Width="16"
-                      Margin="8,0"
-                      CornerRadius="8" />
+              <ContentControl x:Name="iconPlaceHolder"
+                              Grid.Column="0"
+                              Margin="8,0,0,0"
+                              Height="16"
+                              Width="16"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Content="{TemplateBinding behaviors:TabControlBehavior.Icon}" />
               <ContentPresenter x:Name="contentPresenter" 
                                 Grid.Column="1"
                                 ContentSource="Header" 
@@ -155,6 +154,10 @@
             </Grid>
           </Grid>
           <ControlTemplate.Triggers>
+
+            <Trigger Property="behaviors:TabControlBehavior.Icon" Value="{x:Null}">
+              <Setter TargetName="iconPlaceHolder" Property="Visibility" Value="Collapsed" />
+            </Trigger>
             
             <Trigger Property="IsSelected" Value="True">
               <Setter TargetName="divider" Property="Opacity" Value="0" />
@@ -174,7 +177,7 @@
               <Setter TargetName="selectionBorder" Property="Opacity" Value="1" />
               <Setter TargetName="selectionBorder" Property="Background" Value="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}" />
             </MultiDataTrigger>
-            
+
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="False" />

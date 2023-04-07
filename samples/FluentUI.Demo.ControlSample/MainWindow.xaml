@@ -5,6 +5,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:FluentUI.Demo.ControlSample"
+  xmlns:behaviors="clr-namespace:FluentUI.Behaviors;assembly=FluentUI"
   xmlns:controls="clr-namespace:FluentUI.Controls;assembly=FluentUI"
   xmlns:sys="clr-namespace:System;assembly=mscorlib"
   xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
@@ -90,7 +91,7 @@
     </TabItem>
 
     <TabItem Header="Toggle Button">
-
+      
       <Grid>
 
         <Grid.ColumnDefinitions>
@@ -1954,6 +1955,9 @@
     </TabItem>
 
     <TabItem Header="Icons">
+      <behaviors:TabControlBehavior.Icon>
+        <controls:SymbolIcon Symbol="EmojiTabFoodPlants" />
+      </behaviors:TabControlBehavior.Icon>
 
       <ListView ItemsSource="{Binding Icons}">
 
