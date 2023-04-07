@@ -6,43 +6,29 @@ public class MainViewModel
     {
         Users = new List<User>()
         {
-            new User { Name = "Manuel Lozano", Gender = Gender.Male, Age = 27, Registered = true },
-            new User { Name = "Carmen González", Gender = Gender.Female, Age = 31, Registered = false },
-            new User { Name = "Luisa Márquez", Gender = Gender.Female, Age = 22, Registered = true },
-            new User { Name = "Juan Sánchez", Gender = Gender.Male, Age = 19, Registered = false },
-            new User { Name = "Andrea Ochoa", Gender = Gender.Female, Age = 35, Registered = true },
-            new User { Name = "Diego Rosales", Gender = Gender.Male, Age = 40, Registered = false },
-            new User { Name = "Marta Núñez", Gender = Gender.Female, Age = 28, Registered = true },
-            new User { Name = "Arturo Vázquez", Gender = Gender.Male, Age = 30, Registered = false },
-            new User { Name = "Raquel Soria", Gender = Gender.Female, Age = 25, Registered = true },
-            new User { Name = "Oscar Barrera", Gender = Gender.Male, Age = 33, Registered = false },
-            new User { Name = "Mireia Herrera", Gender = Gender.Female, Age = 24, Registered = true },
-            new User { Name = "Eloy Rubio", Gender = Gender.Male, Age = 37, Registered = false },
-            new User { Name = "Bianca Rodríguez", Gender = Gender.Female, Age = 29, Registered = true },
-            new User { Name = "Aitor Gómez", Gender = Gender.Male, Age = 26, Registered = false },
-            new User { Name = "Jazmín Álvarez", Gender = Gender.Female, Age = 23, Registered = true },
-            new User { Name = "Jorge Reyes", Gender = Gender.Male, Age = 34, Registered = false },
-            new User { Name = "Nuria Calvo", Gender = Gender.Female, Age = 32, Registered = true },
-            new User { Name = "Iván Sosa", Gender = Gender.Male, Age = 21, Registered = false },
-            new User { Name = "Rosa Torres", Gender = Gender.Female, Age = 36, Registered = true },
-            new User { Name = "Javier Vega", Gender = Gender.Male, Age = 39, Registered = false }
+            new User("Manuel Lozano", Gender.Male, 27, true),
+            new User("Carmen González", Gender.Female, 31, false),
+            new User("Luisa Márquez", Gender.Female, 22, true),
+            new User("Juan Sánchez", Gender.Male, 19, false),
+            new User("Andrea Ochoa", Gender.Female, 35, true),
+            new User("Diego Rosales", Gender.Male, 40, false),
+            new User("Marta Núñez", Gender.Female, 28, true),
+            new User("Arturo Vázquez", Gender.Male, 30, false),
+            new User("Raquel Soria", Gender.Female, 25, true),
+            new User("Oscar Barrera", Gender.Male, 33, false),
+            new User("Mireia Herrera", Gender.Female, 24, true),
+            new User("Eloy Rubio", Gender.Male, 37, false),
+            new User("Bianca Rodríguez", Gender.Female, 29, true),
+            new User("Aitor Gómez", Gender.Male, 26, false),
+            new User("Jazmín Álvarez", Gender.Female, 23, true),
+            new User("Jorge Reyes", Gender.Male, 34, false),
+            new User("Nuria Calvo", Gender.Female, 32, true),
+            new User("Iván Sosa", Gender.Male, 21, false),
+            new User("Rosa Torres", Gender.Female, 36, true),
+            new User("Javier Vega", Gender.Male, 39, false)
         };
 
     }
 
     public List<User> Users { get; }
-}
-
-public class User
-{
-    public string Name { get; set; }
-    public Gender Gender { get; set; }
-    public int Age { get; set; }
-    public bool Registered { get; set; }
-}
-
-public enum Gender
-{
-    Female,
-    Male,
 }
