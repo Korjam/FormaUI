@@ -98,60 +98,68 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
         switch (value)
         {
             case MessageBoxButton.OK:
-                _confirmationButton.Content = "OK";
+                _confirmationButton.Style = (Style)FindResource("StandardButtonStyle");
 
-                _confirmationButton.Visibility = Visibility.Visible;
-                _denegationButton.Visibility = Visibility.Collapsed;
-                _cancellationButton.Visibility = Visibility.Collapsed;
+                _confirmationButton.SetCurrentValue(ContentProperty, "OK");
+
+                _confirmationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _denegationButton.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
+                _cancellationButton.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
 
                 Grid.SetColumn(_confirmationButton, 4);
 
-                _firstColumn.Width = new GridLength(0);
-                _firstMargin.Width = new GridLength(0);
+                _firstColumn.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
+                _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
                 break;
             case MessageBoxButton.OKCancel:
-                _confirmationButton.Content = "OK";
-                _cancellationButton.Content = "Cancel";
+                _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
-                _confirmationButton.Visibility = Visibility.Visible;
-                _denegationButton.Visibility = Visibility.Collapsed;
-                _cancellationButton.Visibility = Visibility.Visible;
+                _confirmationButton.SetCurrentValue(ContentProperty, "OK");
+                _cancellationButton.SetCurrentValue(ContentProperty, "Cancel");
+
+                _confirmationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _denegationButton.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
+                _cancellationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
 
                 Grid.SetColumn(_confirmationButton, 2);
                 Grid.SetColumn(_cancellationButton, 4);
 
-                _firstColumn.Width = new GridLength(0);
-                _firstMargin.Width = new GridLength(0);
+                _firstColumn.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
+                _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
                 break;
             case MessageBoxButton.YesNoCancel:
-                _confirmationButton.Content = "Yes";
-                _denegationButton.Content = "No";
-                _cancellationButton.Content = "Cancel";
+                _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
-                _confirmationButton.Visibility = Visibility.Visible;
-                _denegationButton.Visibility = Visibility.Visible;
-                _cancellationButton.Visibility = Visibility.Visible;
+                _confirmationButton.SetCurrentValue(ContentProperty, "Yes");
+                _denegationButton.SetCurrentValue(ContentProperty, "No");
+                _cancellationButton.SetCurrentValue(ContentProperty, "Cancel");
+
+                _confirmationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _denegationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _cancellationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
 
                 Grid.SetColumn(_confirmationButton, 0);
                 Grid.SetColumn(_denegationButton, 2);
                 Grid.SetColumn(_cancellationButton, 4);
 
-                _firstColumn.Width = new GridLength(1, GridUnitType.Star);
-                _firstMargin.Width = new GridLength(8);
+                _firstColumn.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Star));
+                _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(8));
                 break;
             case MessageBoxButton.YesNo:
-                _confirmationButton.Content = "Yes";
-                _denegationButton.Content = "No";
+                _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
-                _confirmationButton.Visibility = Visibility.Visible;
-                _denegationButton.Visibility = Visibility.Visible;
-                _cancellationButton.Visibility = Visibility.Collapsed;
+                _confirmationButton.SetCurrentValue(ContentProperty, "Yes");
+                _denegationButton.SetCurrentValue(ContentProperty, "No");
+
+                _confirmationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _denegationButton.SetCurrentValue(VisibilityProperty, Visibility.Visible);
+                _cancellationButton.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
 
                 Grid.SetColumn(_confirmationButton, 2);
                 Grid.SetColumn(_denegationButton, 4);
 
-                _firstColumn.Width = new GridLength(0);
-                _firstMargin.Width = new GridLength(0);
+                _firstColumn.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
+                _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
                 break;
         }
     }
