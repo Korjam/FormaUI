@@ -7,6 +7,7 @@
   xmlns:local="clr-namespace:FluentUI.Demo.ControlSample"
   xmlns:controls="clr-namespace:FluentUI.Controls;assembly=FluentUI"
   xmlns:sys="clr-namespace:System;assembly=mscorlib"
+  xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
   mc:Ignorable="d"
   Title="MainWindow"
   Height="600"
@@ -1949,6 +1950,40 @@
                   IsEnabled="False" />
       </Grid>
 
+
+    </TabItem>
+
+    <TabItem Header="Icons">
+
+      <ListView ItemsSource="{Binding Icons}">
+
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <Grid ToolTip="{Binding}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="120" />
+              </Grid.ColumnDefinitions>
+              <controls:SymbolIcon Symbol="{Binding}"
+                                   VerticalAlignment="Center" />
+              <TextBlock Grid.Column="1"
+                         Margin="8,0,0,0"
+                         Text="{Binding}"
+                         Style="{DynamicResource TextBody}" />
+            </Grid>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <ListView.ItemsPanel>
+          <ItemsPanelTemplate>
+            <wpftk:VirtualizingWrapPanel IsItemsHost="True"
+                                         MaxWidth="1000"
+                                         SpacingMode="StartAndEndOnly"
+                                         HorizontalAlignment="Center" />
+          </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+
+      </ListView>
 
     </TabItem>
 
