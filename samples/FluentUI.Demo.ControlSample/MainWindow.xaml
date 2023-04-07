@@ -20,6 +20,30 @@
 
   <TabControl Padding="10,10,0,10" TabStripPlacement="Top">
 
+    <TabItem Header="Surfaces">
+
+      <Border
+        Margin="50"
+        CornerRadius="8"
+        Style="{DynamicResource CardSurface}">
+        <Border
+          Margin="50"
+          CornerRadius="8"
+          Style="{DynamicResource CardSurface}">
+          <Border
+            Margin="50"
+            CornerRadius="8"
+            Style="{DynamicResource CardSurface}">
+            <Border
+              Margin="50"
+              CornerRadius="8"
+              Style="{DynamicResource CardSurface}" />
+          </Border>
+        </Border>
+      </Border>
+
+    </TabItem>
+
     <TabItem Header="Button">
 
       <Grid>
