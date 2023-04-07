@@ -91,7 +91,7 @@
     </TabItem>
 
     <TabItem Header="Toggle Button">
-      
+
       <Grid>
 
         <Grid.ColumnDefinitions>
@@ -2352,6 +2352,58 @@
         </Grid>
 
       </ScrollViewer>
+
+    </TabItem>
+
+    <TabItem Header="Dialogs">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Dialogs"
+                   Style="{DynamicResource TextSubtitle}" />
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Content="Show OK Dialog"
+                Click="ShowOkDialog" />
+
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Content="Show OK/Cancel Dialog"
+                Click="ShowOkCancelDialog" />
+
+        <Button Grid.Row="6"
+                Grid.Column="0"
+                Content="Show Yes/No Dialog"
+                Click="ShowYesNoDialog" />
+
+        <Button Grid.Row="8"
+                Grid.Column="0"
+                Content="Show Yes/No/Cancel Dialog"
+                Click="ShowYesNoCancelDialog" />
+
+      </Grid>
 
     </TabItem>
 
