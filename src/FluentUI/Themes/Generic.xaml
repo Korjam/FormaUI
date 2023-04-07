@@ -6,6 +6,9 @@
   <Style TargetType="{x:Type controls:FluentWindow}"
          BasedOn="{StaticResource {x:Type Window}}" />
 
+  <Style TargetType="{x:Type controls:FluentDialog}"
+         BasedOn="{StaticResource {x:Type Window}}" />
+
   <Style TargetType="{x:Type controls:SymbolIcon}">
     <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
     <Setter Property="FontSize" Value="16" />
