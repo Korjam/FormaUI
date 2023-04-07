@@ -98,6 +98,8 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
         switch (value)
         {
             case MessageBoxButton.OK:
+                SetCurrentValue(CanCloseProperty, true);
+
                 _confirmationButton.Style = (Style)FindResource("StandardButtonStyle");
 
                 _confirmationButton.SetCurrentValue(ContentProperty, "OK");
@@ -112,6 +114,8 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
                 _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
                 break;
             case MessageBoxButton.OKCancel:
+                SetCurrentValue(CanCloseProperty, true);
+
                 _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
                 _confirmationButton.SetCurrentValue(ContentProperty, "OK");
@@ -128,6 +132,8 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
                 _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(0));
                 break;
             case MessageBoxButton.YesNoCancel:
+                SetCurrentValue(CanCloseProperty, true);
+
                 _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
                 _confirmationButton.SetCurrentValue(ContentProperty, "Yes");
@@ -146,6 +152,8 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
                 _firstMargin.SetCurrentValue(ColumnDefinition.WidthProperty, new GridLength(8));
                 break;
             case MessageBoxButton.YesNo:
+                SetCurrentValue(CanCloseProperty, false);
+
                 _confirmationButton.Style = (Style)FindResource("AccentButtonStyle");
 
                 _confirmationButton.SetCurrentValue(ContentProperty, "Yes");
@@ -168,7 +176,9 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
     {
         if (result is null)
         {
-            return MessageBoxResult.Cancel;
+            return Button == MessageBoxButton.OK
+                ? MessageBoxResult.OK
+                : MessageBoxResult.Cancel;
         }
 
         return Button switch
@@ -179,5 +189,13 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
             MessageBoxButton.YesNo => result.Value ? MessageBoxResult.Yes : MessageBoxResult.No,
             _ => throw new UnreachableException(),
         };
+    }
+
+    private void FluentDialog_Closing(object sender, CancelEventArgs e)
+    {
+        if (Result == MessageBoxResult.None)
+        {
+            Result = CalculateResult(null);
+        }
     }
 }

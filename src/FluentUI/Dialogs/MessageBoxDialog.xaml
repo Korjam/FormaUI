@@ -8,7 +8,9 @@
   xmlns:controls="clr-namespace:FluentUI.Controls"
   mc:Ignorable="d"
   Title="MessageBoxDialog"
-  Width="450">
+  Width="450"
+  CanClose="True"
+  Closing="FluentDialog_Closing">
 
   <Grid>
 
