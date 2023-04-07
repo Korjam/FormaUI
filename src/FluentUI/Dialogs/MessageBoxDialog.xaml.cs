@@ -1,5 +1,6 @@
 ﻿using FluentUI.Common;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,8 +13,9 @@ namespace FluentUI.Dialogs;
 /// </summary>
 public partial class MessageBoxDialog : INotifyPropertyChanged
 {
-    private string _message;
+    private string _message = string.Empty;
     private MessageBoxButton _button = MessageBoxButton.YesNoCancel;
+    private MessageBoxResult _result = MessageBoxResult.None;
 
     public MessageBoxDialog()
     {
@@ -21,9 +23,21 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
 
         DataContext = this;
 
-        ConfirmationCommand = new RelayCommand(() => DialogResult = true);
-        DenegationCommand = new RelayCommand(() => DialogResult = false);
-        CancellationCommand = new RelayCommand(() => Close());
+        ConfirmationCommand = new RelayCommand(() =>
+        {
+            Result = CalculateResult(true);
+            DialogResult = true;
+        });
+        DenegationCommand = new RelayCommand(() =>
+        {
+            Result = CalculateResult(false);
+            DialogResult = false;
+        });
+        CancellationCommand = new RelayCommand(() =>
+        {
+            Result = CalculateResult(null);
+            Close();
+        });
     }
 
     public string Message
@@ -50,6 +64,19 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
                 OnPropertyChanged();
 
                 UpdateButtons(value);
+            }
+        }
+    }
+
+    public MessageBoxResult Result
+    {
+        get => _result;
+        private set
+        {
+            if (_result != value)
+            {
+                _result = value;
+                OnPropertyChanged();
             }
         }
     }
@@ -127,5 +154,22 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
                 _firstMargin.Width = new GridLength(0);
                 break;
         }
+    }
+
+    private MessageBoxResult CalculateResult(bool? result)
+    {
+        if (result is null)
+        {
+            return MessageBoxResult.Cancel;
+        }
+
+        return Button switch
+        {
+            MessageBoxButton.OK => result.Value ? MessageBoxResult.OK : throw new NotSupportedException("Result always should be 'Ok'."),
+            MessageBoxButton.OKCancel => result.Value ? MessageBoxResult.OK : throw new NotSupportedException("Result always should be 'Ok' if not cancelled."),
+            MessageBoxButton.YesNoCancel => result.Value ? MessageBoxResult.Yes : MessageBoxResult.No,
+            MessageBoxButton.YesNo => result.Value ? MessageBoxResult.Yes : MessageBoxResult.No,
+            _ => throw new UnreachableException(),
+        };
     }
 }
