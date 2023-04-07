@@ -1,4 +1,6 @@
-﻿namespace FluentUI.Demo.ControlSample;
+﻿using FluentUI.Controls;
+
+namespace FluentUI.Demo.ControlSample;
 
 public class MainViewModel
 {
@@ -28,7 +30,12 @@ public class MainViewModel
             new User("Javier Vega", Gender.Male, 39, false)
         };
 
+        Icons = Enum.GetValues<Symbol>()
+            .Skip(1)
+            .OrderBy(x => x.ToString())
+            .ToList();
     }
 
     public List<User> Users { get; }
+    public List<Symbol> Icons { get; }
 }
