@@ -113,6 +113,7 @@
     <Setter Property="Padding" Value="8,0,8,2" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="VerticalContentAlignment" Value="Stretch" />
+    <Setter Property="behaviors:TabControlBehavior.CanClose" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -151,6 +152,18 @@
                                 Focusable="False" 
                                 Margin="{TemplateBinding Padding}"
                                 RecognizesAccessKey="True" />
+              <Button x:Name="closeButton"
+                      Grid.Column="2"
+                      HorizontalAlignment="Right"
+                      FontSize="12"
+                      Margin="-3,5,5,5"
+                      Width="30"
+                      Height="22"
+                      Padding="7,3"
+                      Style="{DynamicResource SubtleIconOnlyButtonStyle}"
+                      Command="{x:Static behaviors:TabControlBehavior.CloseCommand}"
+                      Content="&#xE624;"
+                      Visibility="Collapsed" />
             </Grid>
           </Grid>
           <ControlTemplate.Triggers>
@@ -158,6 +171,14 @@
             <Trigger Property="behaviors:TabControlBehavior.Icon" Value="{x:Null}">
               <Setter TargetName="iconPlaceHolder" Property="Visibility" Value="Collapsed" />
             </Trigger>
+
+            <MultiDataTrigger>
+              <MultiDataTrigger.Conditions>
+                <Condition Binding="{Binding Path=(behaviors:TabControlBehavior.CanClose), RelativeSource={RelativeSource Self}}" Value="True" />
+                <Condition Binding="{Binding Path=(behaviors:TabControlBehavior.CanClose), RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="True" />
+              </MultiDataTrigger.Conditions>
+              <Setter TargetName="closeButton" Property="Visibility" Value="Visible" />
+            </MultiDataTrigger>
             
             <Trigger Property="IsSelected" Value="True">
               <Setter TargetName="divider" Property="Opacity" Value="0" />
