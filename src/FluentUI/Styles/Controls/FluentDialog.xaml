@@ -19,6 +19,8 @@
     <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
     <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Padding" Value="24" />
+    <Setter Property="SizeToContent" Value="Height" />
     <Setter Property="WindowChrome.WindowChrome">
       <Setter.Value>
         <WindowChrome CaptionHeight="0"
@@ -34,8 +36,32 @@
                   BorderThickness="{TemplateBinding BorderThickness}">
             <Grid>
               <AdornerDecorator>
-                <ContentPresenter Margin="{TemplateBinding Padding}" />
+                <Grid>
+                
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+
+                  <Border x:Name="PART_MainContent"
+                          Grid.Row="0"
+                          BorderThickness="0,0,0,1"
+                          BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                          Background="{DynamicResource LayerFillColorAltBrush}">
+                    
+                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                    
+                  </Border>
+
+                  <ContentControl x:Name="PART_BottomContent"
+                                  Grid.Row="1"
+                                  Margin="{TemplateBinding Padding}"
+                                  Content="{TemplateBinding BottomContent}" />
+
+                </Grid>
+                
               </AdornerDecorator>
+              
               <Button x:Name="CloseButton"
                       Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
                       Content="&#xE8BB;"
@@ -48,6 +74,10 @@
           <ControlTemplate.Triggers>
             <Trigger Property="CanClose" Value="False">
               <Setter TargetName="CloseButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="HasBottomContent" Value="False">
+              <Setter TargetName="PART_MainContent" Property="BorderThickness" Value="0" />
+              <Setter TargetName="PART_BottomContent" Property="Visibility" Value="Collapsed" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
