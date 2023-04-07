@@ -151,6 +151,16 @@
                                 Focusable="False" 
                                 Margin="{TemplateBinding Padding}"
                                 RecognizesAccessKey="True" />
+              <Button x:Name="closeButton"
+                      Grid.Column="2"
+                      HorizontalAlignment="Right"
+                      FontSize="12"
+                      Margin="-3,5,5,5"
+                      Width="30"
+                      Height="22"
+                      Padding="7,3"
+                      Style="{DynamicResource SubtleIconOnlyButtonStyle}"
+                      Content="&#xE624;" />
             </Grid>
           </Grid>
           <ControlTemplate.Triggers>
