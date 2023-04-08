@@ -1,41 +1,41 @@
-<ResourceDictionary
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
   <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
-    <Setter Property="OverridesDefaultStyle" Value="true"/>
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="Focusable" Value="false"/>
-    <Setter Property="IsTabStop" Value="false"/>
+    <Setter Property="OverridesDefaultStyle" Value="True" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type RepeatButton}">
-          <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+          <Rectangle
+            Width="{TemplateBinding Width}"
+            Height="{TemplateBinding Height}"
+            Fill="{TemplateBinding Background}" />
         </ControlTemplate>
       </Setter.Value>
     </Setter>
   </Style>
 
-  <ControlTemplate x:Key="SliderThumbDefault"
-                   TargetType="{x:Type Thumb}">
+  <ControlTemplate x:Key="SliderThumbDefault" TargetType="{x:Type Thumb}">
     <Grid x:Name="grip" UseLayoutRounding="True">
       <Ellipse x:Name="border"
-               Stroke="{DynamicResource CircleElevationBorderBrush}"
-               Fill="{DynamicResource ControlSolidFillColorDefaultBrush}"
-               StrokeThickness="1" />
+        Fill="{DynamicResource ControlSolidFillColorDefaultBrush}"
+        Stroke="{DynamicResource CircleElevationBorderBrush}"
+        StrokeThickness="1" />
       <Ellipse x:Name="innerCircle"
-               Fill="{DynamicResource AccentFillColorDefaultBrush}"
-               Margin="4" />
+        Margin="4"
+        Fill="{DynamicResource AccentFillColorDefaultBrush}" />
     </Grid>
     <ControlTemplate.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
-        <Setter TargetName="innerCircle" Property="Margin" Value="3" />
         <Setter TargetName="innerCircle" Property="Fill" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+        <Setter TargetName="innerCircle" Property="Margin" Value="3" />
       </Trigger>
       <Trigger Property="IsDragging" Value="True">
-        <Setter TargetName="innerCircle" Property="Margin" Value="5" />
-        <Setter TargetName="innerCircle" Property="Fill" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
         <Setter TargetName="border" Property="Stroke" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+        <Setter TargetName="innerCircle" Property="Fill" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+        <Setter TargetName="innerCircle" Property="Margin" Value="5" />
       </Trigger>
       <Trigger Property="IsEnabled" Value="False">
         <Setter TargetName="innerCircle" Property="Fill" Value="{DynamicResource AccentFillColorDisabledBrush}" />
@@ -43,243 +43,241 @@
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
-  <ControlTemplate x:Key="SliderHorizontal"
-                   TargetType="{x:Type Slider}">
-    <Border x:Name="border" 
-            SnapsToDevicePixels="True"
-            Background="{TemplateBinding Background}"
-            BorderBrush="{TemplateBinding BorderBrush}"
-            BorderThickness="{TemplateBinding BorderThickness}">
+  <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
+    <Border x:Name="border"
+      Background="{TemplateBinding Background}"
+      BorderBrush="{TemplateBinding BorderBrush}"
+      BorderThickness="{TemplateBinding BorderThickness}"
+      SnapsToDevicePixels="True">
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}" />
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TickBar x:Name="TopTick" 
-                 Height="4" 
-                 Placement="Bottom" 
-                 Grid.Row="0" 
-                 Visibility="Collapsed" 
-                 Margin="0,0,0,-5" 
-                 IsSelectionRangeEnabled="False"
-                 Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-        <TickBar x:Name="BottomTick" 
-                 Height="4" 
-                 Placement="Top" 
-                 Grid.Row="2" 
-                 Visibility="Collapsed" 
-                 Margin="0,-5,0,0" 
-                 IsSelectionRangeEnabled="False"
-                 Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-        <Border x:Name="TrackBackground" 
-                Height="4" 
-                Margin="5,0" 
-                Grid.Row="1" 
-                VerticalAlignment="Center"
-                CornerRadius="2"
-                Background="{DynamicResource ControlStrongFillColorDefaultBrush}">
+        <TickBar x:Name="TopTick"
+          Grid.Row="0"
+          Height="4"
+          Margin="0,0,0,-5"
+          Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+          IsSelectionRangeEnabled="False"
+          Placement="Bottom"
+          Visibility="Collapsed" />
+        <TickBar x:Name="BottomTick"
+          Grid.Row="2"
+          Height="4"
+          Margin="0,-5,0,0"
+          Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+          IsSelectionRangeEnabled="False"
+          Placement="Top"
+          Visibility="Collapsed" />
+        <Border x:Name="TrackBackground"
+          Grid.Row="1"
+          Height="4"
+          Margin="5,0"
+          VerticalAlignment="Center"
+          Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
+          CornerRadius="2">
           <Canvas Margin="-6,0">
-            <Rectangle x:Name="PART_SelectionRange" 
-                       Height="2"
-                       RadiusX="1"
-                       RadiusY="1"
-                       Visibility="Hidden" 
-                       Fill="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+            <Rectangle x:Name="PART_SelectionRange"
+              Height="2"
+              Fill="{DynamicResource ControlStrongFillColorDefaultBrush}"
+              RadiusX="1"
+              RadiusY="1"
+              Visibility="Hidden" />
           </Canvas>
         </Border>
         <Border Name="TrackFill"
-                Height="4" 
-                Width="{Binding ActualWidth, ElementName=DecreaseButton}"
-                Margin="5,0" 
-                Grid.Row="1" 
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                CornerRadius="2"
-                Background="{DynamicResource AccentFillColorDefaultBrush}" />
+          Grid.Row="1"
+          Width="{Binding ActualWidth, ElementName=DecreaseButton}"
+          Height="4"
+          Margin="5,0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Center"
+          Background="{DynamicResource AccentFillColorDefaultBrush}"
+          CornerRadius="2" />
         <Track x:Name="PART_Track" Grid.Row="1">
           <Track.DecreaseRepeatButton>
             <RepeatButton x:Name="DecreaseButton"
-                          Command="{x:Static Slider.DecreaseLarge}" 
-                          Style="{StaticResource RepeatButtonTransparent}" />
+              Command="{x:Static Slider.DecreaseLarge}"
+              Style="{StaticResource RepeatButtonTransparent}" />
           </Track.DecreaseRepeatButton>
           <Track.IncreaseRepeatButton>
             <RepeatButton x:Name="IncreaseButton"
-                          Command="{x:Static Slider.IncreaseLarge}" 
-                          Style="{StaticResource RepeatButtonTransparent}" />
+              Command="{x:Static Slider.IncreaseLarge}"
+              Style="{StaticResource RepeatButtonTransparent}" />
           </Track.IncreaseRepeatButton>
           <Track.Thumb>
-            <Thumb x:Name="Thumb" 
-                   OverridesDefaultStyle="True" 
-                   Focusable="False" 
-                   VerticalAlignment="Center" 
-                   Template="{StaticResource SliderThumbDefault}" 
-                   Width="21" 
-                   Height="21" />
+            <Thumb x:Name="Thumb"
+              Width="21"
+              Height="21"
+              VerticalAlignment="Center"
+              Focusable="False"
+              OverridesDefaultStyle="True"
+              Template="{StaticResource SliderThumbDefault}" />
           </Track.Thumb>
         </Track>
       </Grid>
     </Border>
     <ControlTemplate.Triggers>
       <Trigger Property="TickPlacement" Value="TopLeft">
-        <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
+        <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="TickPlacement" Value="BottomRight">
-        <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+        <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="TickPlacement" Value="Both">
-        <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
-        <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+        <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+        <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="IsSelectionRangeEnabled" Value="True">
-        <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible" />
-        <Setter Property="BorderThickness" TargetName="TrackBackground" Value="1" />
-        <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
-        <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
+        <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter TargetName="TrackBackground" Property="BorderThickness" Value="1" />
       </Trigger>
       <Trigger Property="IsEnabled" Value="False">
-        <Setter Property="Background" TargetName="TrackFill" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+        <Setter TargetName="TrackFill" Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
           <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
           <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
         </MultiDataTrigger.Conditions>
-        <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
       </MultiDataTrigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
           <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
           <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="True" />
         </MultiDataTrigger.Conditions>
-        <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-        <Setter Property="Fill" TargetName="PART_SelectionRange" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-        <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
+        <Setter TargetName="PART_SelectionRange" Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
+        <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
       </MultiDataTrigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
-  <ControlTemplate x:Key="SliderVertical"
-                   TargetType="{x:Type Slider}">
-    <Border x:Name="border" 
-            SnapsToDevicePixels="True"
-            Background="{TemplateBinding Background}"
-            BorderBrush="{TemplateBinding BorderBrush}"
-            BorderThickness="{TemplateBinding BorderThickness}">
+  <ControlTemplate x:Key="SliderVertical" TargetType="{x:Type Slider}">
+    <Border x:Name="border"
+      Background="{TemplateBinding Background}"
+      BorderBrush="{TemplateBinding BorderBrush}"
+      BorderThickness="{TemplateBinding BorderThickness}"
+      SnapsToDevicePixels="True">
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="Auto" />
-          <ColumnDefinition MinWidth="{TemplateBinding MinWidth}" Width="Auto" />
+          <ColumnDefinition Width="Auto" MinWidth="{TemplateBinding MinWidth}" />
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TickBar x:Name="TopTick" 
-                 Grid.Column="0" 
-                 Placement="Right" 
-                 Visibility="Collapsed" 
-                 Width="4" 
-                 Margin="0,0,-5,0" 
-                 IsSelectionRangeEnabled="False"
-                 Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-        <TickBar x:Name="BottomTick" 
-                 Grid.Column="2" 
-                 Placement="Left" 
-                 Visibility="Collapsed" 
-                 Width="4" 
-                 Margin="-5,0,0,0" 
-                 IsSelectionRangeEnabled="False"
-                 Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
-        <Border x:Name="TrackBackground" 
-                Grid.Column="1" 
-                HorizontalAlignment="Center" 
-                Margin="0,5" 
-                Width="4" 
-                CornerRadius="2"
-                Background="{DynamicResource ControlStrongFillColorDefaultBrush}">
+        <TickBar x:Name="TopTick"
+          Grid.Column="0"
+          Width="4"
+          Margin="0,0,-5,0"
+          Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+          IsSelectionRangeEnabled="False"
+          Placement="Right"
+          Visibility="Collapsed" />
+        <TickBar x:Name="BottomTick"
+          Grid.Column="2"
+          Width="4"
+          Margin="-5,0,0,0"
+          Fill="{DynamicResource ControlStrongStrokeColorDefaultBrush}"
+          IsSelectionRangeEnabled="False"
+          Placement="Left"
+          Visibility="Collapsed" />
+        <Border x:Name="TrackBackground"
+          Grid.Column="1"
+          Width="4"
+          Margin="0,5"
+          HorizontalAlignment="Center"
+          Background="{DynamicResource ControlStrongFillColorDefaultBrush}"
+          CornerRadius="2">
           <Canvas Margin="0,-6">
-            <Rectangle x:Name="PART_SelectionRange" 
-                       Width="2" 
-                       RadiusX="1"
-                       RadiusY="1"
-                       Visibility="Hidden" 
-                       Fill="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+            <Rectangle x:Name="PART_SelectionRange"
+              Width="2"
+              Fill="{DynamicResource ControlStrongFillColorDefaultBrush}"
+              RadiusX="1"
+              RadiusY="1"
+              Visibility="Hidden" />
           </Canvas>
         </Border>
         <Border Name="TrackFill"
-                Width="4" 
-                Height="{Binding ActualHeight, ElementName=DecreaseButton}"
-                Margin="0,5" 
-                Grid.Column="1" 
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                CornerRadius="2"
-                Background="{DynamicResource AccentFillColorDefaultBrush}" />
+          Grid.Column="1"
+          Width="4"
+          Height="{Binding ActualHeight, ElementName=DecreaseButton}"
+          Margin="0,5"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Bottom"
+          Background="{DynamicResource AccentFillColorDefaultBrush}"
+          CornerRadius="2" />
         <Track x:Name="PART_Track" Grid.Column="1">
           <Track.DecreaseRepeatButton>
             <RepeatButton x:Name="DecreaseButton"
-                          Command="{x:Static Slider.DecreaseLarge}" 
-                          Style="{StaticResource RepeatButtonTransparent}" />
+              Command="{x:Static Slider.DecreaseLarge}"
+              Style="{StaticResource RepeatButtonTransparent}" />
           </Track.DecreaseRepeatButton>
           <Track.IncreaseRepeatButton>
             <RepeatButton x:Name="IncreaseLarge"
-                          Command="{x:Static Slider.IncreaseLarge}" 
-                          Style="{StaticResource RepeatButtonTransparent}" />
+              Command="{x:Static Slider.IncreaseLarge}"
+              Style="{StaticResource RepeatButtonTransparent}" />
           </Track.IncreaseRepeatButton>
           <Track.Thumb>
-            <Thumb x:Name="Thumb" 
-                   OverridesDefaultStyle="True" 
-                   Focusable="False" 
-                   VerticalAlignment="Top" 
-                   Width="21" 
-                   Height="21" 
-                   Template="{StaticResource SliderThumbDefault}" />
+            <Thumb x:Name="Thumb"
+              Width="21"
+              Height="21"
+              VerticalAlignment="Top"
+              Focusable="False"
+              OverridesDefaultStyle="True"
+              Template="{StaticResource SliderThumbDefault}" />
           </Track.Thumb>
         </Track>
       </Grid>
     </Border>
     <ControlTemplate.Triggers>
       <Trigger Property="TickPlacement" Value="TopLeft">
-        <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
+        <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="TickPlacement" Value="BottomRight">
-        <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+        <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="TickPlacement" Value="Both">
-        <Setter Property="Visibility" TargetName="TopTick" Value="Visible" />
-        <Setter Property="Visibility" TargetName="BottomTick" Value="Visible" />
+        <Setter TargetName="BottomTick" Property="Visibility" Value="Visible" />
+        <Setter TargetName="TopTick" Property="Visibility" Value="Visible" />
       </Trigger>
       <Trigger Property="IsSelectionRangeEnabled" Value="True">
-        <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible" />
-        <Setter Property="BorderThickness" TargetName="TrackBackground" Value="1" />
-        <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
-        <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter TargetName="PART_SelectionRange" Property="Visibility" Value="Visible" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
+        <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDefaultBrush}" />
+        <Setter TargetName="TrackBackground" Property="BorderThickness" Value="1" />
       </Trigger>
       <Trigger Property="IsEnabled" Value="False">
-        <Setter Property="Background" TargetName="TrackFill" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+        <Setter TargetName="TrackFill" Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
       </Trigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
           <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
           <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
         </MultiDataTrigger.Conditions>
-        <Setter Property="Background" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
       </MultiDataTrigger>
       <MultiDataTrigger>
         <MultiDataTrigger.Conditions>
           <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False" />
           <Condition Binding="{Binding IsSelectionRangeEnabled, RelativeSource={RelativeSource Self}}" Value="True" />
         </MultiDataTrigger.Conditions>
-        <Setter Property="BorderBrush" TargetName="TrackBackground" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-        <Setter Property="Fill" TargetName="PART_SelectionRange" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
-        <Setter Property="Background" TargetName="TrackBackground" Value="Transparent" />
+        <Setter TargetName="PART_SelectionRange" Property="Fill" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
+        <Setter TargetName="TrackBackground" Property="Background" Value="Transparent" />
+        <Setter TargetName="TrackBackground" Property="BorderBrush" Value="{DynamicResource ControlStrongFillColorDisabledBrush}" />
       </MultiDataTrigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
   <Style TargetType="{x:Type Slider}">
-    <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderBrush" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
     <Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
     <Style.Triggers>
       <Trigger Property="Orientation" Value="Vertical">

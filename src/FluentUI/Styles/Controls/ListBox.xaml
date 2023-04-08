@@ -1,36 +1,32 @@
-<ResourceDictionary
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-  <Style x:Key="{x:Type ListBox}"
-         TargetType="{x:Type ListBox}">
-    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
-    <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
-    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
-    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
+  <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
     <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-    <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
-    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListBox}">
           <Border Name="Bd"
-                  Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}"
-                  SnapsToDevicePixels="True"
-                  CornerRadius="4"
-                  Padding="0,1">
-            <ScrollViewer Padding="{TemplateBinding Padding}"
-                          Focusable="False">
+            Padding="0,1"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="4"
+            SnapsToDevicePixels="True">
+            <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
               <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </ScrollViewer>
           </Border>
@@ -51,41 +47,42 @@
       </Setter.Value>
     </Setter>
   </Style>
-  
+
   <Style TargetType="{x:Type ListBoxItem}">
-    <Setter Property="SnapsToDevicePixels" Value="True" />
-    <Setter Property="Padding" Value="11,6,11,8" />
-    <Setter Property="Margin" Value="4,2" />
-    <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-    <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
     <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="Margin" Value="4,2" />
+    <Setter Property="Padding" Value="11,6,11,8" />
+    <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+    <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListBoxItem}">
           <Grid>
-            <Border x:Name="Bd" 
-                    BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}" 
-                    Background="{TemplateBinding Background}" 
-                    Padding="{TemplateBinding Padding}" 
-                    SnapsToDevicePixels="True"
-                    CornerRadius="4">
-              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            <Border x:Name="Bd"
+              Padding="{TemplateBinding Padding}"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="4"
+              SnapsToDevicePixels="True">
+              <ContentPresenter
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
             <Border x:Name="selector"
-                    Background="{DynamicResource AccentFillColorDefaultBrush}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Visibility="Collapsed"
-                    Width="3"
-                    Height="16"
-                    CornerRadius="2" />
+              Width="3"
+              Height="16"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              Background="{DynamicResource AccentFillColorDefaultBrush}"
+              CornerRadius="2"
+              Visibility="Collapsed" />
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -106,5 +103,5 @@
       </Setter.Value>
     </Setter>
   </Style>
-  
+
 </ResourceDictionary>

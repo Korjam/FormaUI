@@ -3,50 +3,44 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:controls="clr-namespace:FluentUI.Controls">
 
-  <ControlTemplate x:Key="ChromeButtonTemplate"
-    TargetType="{x:Type Button}">
+  <ControlTemplate x:Key="ChromeButtonTemplate" TargetType="{x:Type Button}">
 
     <Grid>
 
-      <Border
-        x:Name="background"
+      <Border x:Name="background"
         Background="{TemplateBinding Background}"
         BorderThickness="0"
         SnapsToDevicePixels="True" />
 
-      <Border
-        x:Name="border"
-        BorderThickness="{TemplateBinding BorderThickness}"
+      <Border x:Name="border"
         BorderBrush="{TemplateBinding BorderBrush}"
+        BorderThickness="{TemplateBinding BorderThickness}"
         CornerRadius="3"
         SnapsToDevicePixels="True" />
 
-      <ContentPresenter
-        x:Name="contentPresenter"
-        RecognizesAccessKey="True"
+      <ContentPresenter x:Name="contentPresenter"
         Margin="{TemplateBinding Padding}"
-        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-        Focusable="False" />
+        Focusable="False"
+        RecognizesAccessKey="True"
+        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
     </Grid>
   </ControlTemplate>
 
-  <Style x:Key="ChromeButtonStyle"
-         TargetType="{x:Type Button}">
+  <Style x:Key="ChromeButtonStyle" TargetType="{x:Type Button}">
+
+    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
     <Setter Property="FontSize" Value="10" />
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
-    
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="Height" Value="32" />
+    <Setter Property="Width" Value="46" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    
-    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTransparentBrush}" />
-    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Width" Value="46" />
-    <Setter Property="Height" Value="32" />
     <Setter Property="Template" Value="{DynamicResource ChromeButtonTemplate}" />
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
@@ -63,12 +57,12 @@
   </Style>
 
   <Style x:Key="CaptionButtonStyle"
-         TargetType="{x:Type Button}"
-         BasedOn="{StaticResource ChromeButtonStyle}" />
+    BasedOn="{StaticResource ChromeButtonStyle}"
+    TargetType="{x:Type Button}" />
 
   <Style x:Key="CloseButtonStyle"
-         TargetType="{x:Type Button}"
-         BasedOn="{StaticResource ChromeButtonStyle}">
+    BasedOn="{StaticResource ChromeButtonStyle}"
+    TargetType="{x:Type Button}">
     <Style.Triggers>
       <Trigger Property="IsMouseOver" Value="True">
         <Setter Property="Background" Value="{DynamicResource ShellCaptionCloseFillColorPrimaryBrush}" />
@@ -80,10 +74,8 @@
       </Trigger>
     </Style.Triggers>
   </Style>
-  
-  <Style x:Key="{x:Type Window}"
-         TargetType="{x:Type Window}">
-    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+
+  <Style x:Key="{x:Type Window}" TargetType="{x:Type Window}">
     <!--
     <Setter Property="FontSize" Value="{DynamicResource CaptionFontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
@@ -92,19 +84,22 @@
     <Setter Property="Background" Value="{DynamicResource MicaBackgroundFillColorBaseBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
     <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
     <Setter Property="WindowChrome.WindowChrome">
       <Setter.Value>
-        <WindowChrome CaptionHeight="32"
-                      NonClientFrameEdges="None"
-                      UseAeroCaptionButtons="False" />
+        <WindowChrome
+          CaptionHeight="32"
+          NonClientFrameEdges="None"
+          UseAeroCaptionButtons="False" />
       </Setter.Value>
     </Setter>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Window}">
-          <Border Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}">
+          <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
             <Grid Margin="{TemplateBinding Padding}">
 
               <Grid.RowDefinitions>
@@ -112,9 +107,10 @@
                 <RowDefinition Height="*" />
               </Grid.RowDefinitions>
 
-              <Grid Grid.Row="0"
-                    Margin="12,0,0,0"
-                    VerticalAlignment="Center">
+              <Grid
+                Grid.Row="0"
+                Margin="12,0,0,0"
+                VerticalAlignment="Center">
 
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto" />
@@ -125,44 +121,46 @@
                 </Grid.ColumnDefinitions>
 
                 <Border x:Name="iconPlaceHolder"
-                        Grid.Column="0"
-                        BorderThickness="1"
-                        BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Height="16"
-                        Width="16"
-                        CornerRadius="8" />
+                  Grid.Column="0"
+                  Width="16"
+                  Height="16"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center"
+                  BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
+                  BorderThickness="1"
+                  CornerRadius="8" />
 
-                <TextBlock Grid.Column="2"
-                           Padding="0,0,0,2"
-                           Margin="0,0,8,0"
-                           VerticalAlignment="Center"
-                           Text="{TemplateBinding Title}"
-                           FontFamily="{DynamicResource ControlFontFamily}"
-                           FontSize="{DynamicResource CaptionFontSize}"
-                           FontWeight="{DynamicResource CaptionFontWeight}"
-                           Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                <TextBlock
+                  Grid.Column="2"
+                  Margin="0,0,8,0"
+                  Padding="0,0,0,2"
+                  VerticalAlignment="Center"
+                  FontFamily="{DynamicResource ControlFontFamily}"
+                  FontSize="{DynamicResource CaptionFontSize}"
+                  FontWeight="{DynamicResource CaptionFontWeight}"
+                  Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                  Text="{TemplateBinding Title}" />
 
-                <StackPanel Grid.Column="4"
-                            Orientation="Horizontal"
-                            WindowChrome.IsHitTestVisibleInChrome="True">
+                <StackPanel
+                  Grid.Column="4"
+                  Orientation="Horizontal"
+                  WindowChrome.IsHitTestVisibleInChrome="True">
                   <Button x:Name="MinimizeButton"
-                          Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" 
-                          Content="&#xE921;"
-                          Style="{DynamicResource CaptionButtonStyle}" />
+                    Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}"
+                    Content="&#xE921;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="MaximizeButton"
-                          Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}" 
-                          Content="&#xE922;"
-                          Style="{DynamicResource CaptionButtonStyle}" />
+                    Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"
+                    Content="&#xE922;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="RestoreButton"
-                          Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
-                          Content="&#xE923;"
-                          Style="{DynamicResource CaptionButtonStyle}" />
+                    Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}"
+                    Content="&#xE923;"
+                    Style="{DynamicResource CaptionButtonStyle}" />
                   <Button x:Name="CloseButton"
-                          Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
-                          Content="&#xE8BB;"
-                          Style="{DynamicResource CloseButtonStyle}" />
+                    Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"
+                    Content="&#xE8BB;"
+                    Style="{DynamicResource CloseButtonStyle}" />
                 </StackPanel>
               </Grid>
 
@@ -174,23 +172,23 @@
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="WindowState" Value="Normal">
-              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="MaximizeButton" Property="Visibility" Value="Visible" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="WindowState" Value="Maximized">
-              <Setter TargetName="RestoreButton" Property="Visibility" Value="Visible" />
-              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
               <Setter Property="Padding" Value="5" />
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="RestoreButton" Property="Visibility" Value="Visible" />
             </Trigger>
             <Trigger Property="ResizeMode" Value="NoResize">
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
-              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="WindowStyle" Value="ToolWindow">
+              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
-              <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -198,7 +196,6 @@
     </Setter>
   </Style>
 
-  <Style TargetType="{x:Type controls:FluentWindow}"
-         BasedOn="{StaticResource {x:Type Window}}" />
-  
+  <Style BasedOn="{StaticResource {x:Type Window}}" TargetType="{x:Type controls:FluentWindow}" />
+
 </ResourceDictionary>

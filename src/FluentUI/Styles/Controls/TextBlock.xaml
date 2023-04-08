@@ -1,77 +1,66 @@
-﻿<ResourceDictionary
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  
-  <Style
-    x:Key="TextBlockBase"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource {x:Type TextBlock}}">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Style x:Key="TextBlockBase"
+    BasedOn="{StaticResource {x:Type TextBlock}}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
   </Style>
 
-  <Style
-    x:Key="TextCaption"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
+  <Style x:Key="TextCaption"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource CaptionFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextBody"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
+  <Style x:Key="TextBody"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextBodyStrong"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource BodyStrongFontWeight}" />
+  <Style x:Key="TextBodyStrong"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource BodyStrongFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyStrongFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextBodyLarge"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource BodyLargeFontWeight}" />
+  <Style x:Key="TextBodyLarge"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource BodyLargeFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyLargeFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextSubtitle"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource SubtitleFontWeight}" />
+  <Style x:Key="TextSubtitle"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource SubtitleFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource SubtitleFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextTitle"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource TitleFontWeight}" />
+  <Style x:Key="TextTitle"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource TitleFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource TitleFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextTitleLarge"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource TitleLargeFontWeight}" />
+  <Style x:Key="TextTitleLarge"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource TitleLargeFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource TitleLargeFontWeight}" />
   </Style>
 
-  <Style
-    x:Key="TextDisplay"
-    TargetType="{x:Type TextBlock}"
-    BasedOn="{StaticResource TextBlockBase}">
-    <Setter Property="FontWeight" Value="{DynamicResource DisplayFontWeight}" />
+  <Style x:Key="TextDisplay"
+    BasedOn="{StaticResource TextBlockBase}"
+    TargetType="{x:Type TextBlock}">
     <Setter Property="FontSize" Value="{DynamicResource DisplayFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource DisplayFontWeight}" />
   </Style>
-  
+
 </ResourceDictionary>

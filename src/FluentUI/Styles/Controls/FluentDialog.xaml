@@ -7,10 +7,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Window.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
-  <Style x:Key="{x:Type controls:FluentDialog}"
-         TargetType="{x:Type controls:FluentDialog}">
-    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
-    <Setter Property="MinWidth" Value="320" />
+  <Style x:Key="{x:Type controls:FluentDialog}" TargetType="{x:Type controls:FluentDialog}">
     <!--
     <Setter Property="FontSize" Value="{DynamicResource CaptionFontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
@@ -19,56 +16,60 @@
     <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
     <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <Setter Property="MinWidth" Value="320" />
     <Setter Property="Padding" Value="24" />
     <Setter Property="SizeToContent" Value="Height" />
     <Setter Property="WindowChrome.WindowChrome">
       <Setter.Value>
-        <WindowChrome CaptionHeight="0"
-                      NonClientFrameEdges="None"
-                      UseAeroCaptionButtons="False" />
+        <WindowChrome
+          CaptionHeight="0"
+          NonClientFrameEdges="None"
+          UseAeroCaptionButtons="False" />
       </Setter.Value>
     </Setter>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type controls:FluentDialog}">
-          <Border Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}">
+          <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
             <Grid>
               <AdornerDecorator>
                 <Grid>
-                
+
                   <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                   </Grid.RowDefinitions>
 
                   <Border x:Name="PART_MainContent"
-                          Grid.Row="0"
-                          BorderThickness="0,0,0,1"
-                          BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
-                          Background="{DynamicResource LayerFillColorAltBrush}">
-                    
+                    Grid.Row="0"
+                    Background="{DynamicResource LayerFillColorAltBrush}"
+                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="0,0,0,1">
+
                     <ContentPresenter Margin="{TemplateBinding Padding}" />
-                    
+
                   </Border>
 
                   <ContentControl x:Name="PART_BottomContent"
-                                  Grid.Row="1"
-                                  Margin="{TemplateBinding Padding}"
-                                  Content="{TemplateBinding BottomContent}" />
+                    Grid.Row="1"
+                    Margin="{TemplateBinding Padding}"
+                    Content="{TemplateBinding BottomContent}" />
 
                 </Grid>
-                
+
               </AdornerDecorator>
-              
+
               <Button x:Name="CloseButton"
-                      Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
-                      Content="&#xE8BB;"
-                      Height="40"
-                      HorizontalAlignment="Right"
-                      VerticalAlignment="Top"
-                      Style="{DynamicResource CloseButtonStyle}" />
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"
+                Content="&#xE8BB;"
+                Style="{DynamicResource CloseButtonStyle}" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
@@ -76,8 +77,8 @@
               <Setter TargetName="CloseButton" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="HasBottomContent" Value="False">
-              <Setter TargetName="PART_MainContent" Property="BorderThickness" Value="0" />
               <Setter TargetName="PART_BottomContent" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_MainContent" Property="BorderThickness" Value="0" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

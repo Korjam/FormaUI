@@ -4,8 +4,8 @@
   xmlns:controls="clr-namespace:FluentUI.Controls">
 
   <Style x:Key="{x:Type controls:SymbolIcon}"
-         TargetType="{x:Type controls:SymbolIcon}"
-         BasedOn="{StaticResource {x:Type controls:SymbolIcon}}">
+    BasedOn="{StaticResource {x:Type controls:SymbolIcon}}"
+    TargetType="{x:Type controls:SymbolIcon}">
     <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
     <Setter Property="FontSize" Value="16" />
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
@@ -13,5 +13,5 @@
     <Setter Property="HorizontalContentAlignment" Value="Left" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
   </Style>
-    
+
 </ResourceDictionary>

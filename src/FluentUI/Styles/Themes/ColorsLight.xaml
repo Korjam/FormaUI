@@ -1,6 +1,4 @@
-<ResourceDictionary
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <!-- Text -->
   <Color x:Key="TextFillColorPrimaryColor">#E4000000</Color>
@@ -151,32 +149,32 @@
   <!-- Control Elevation -->
   <LinearGradientBrush x:Key="ControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9058" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="1" />
+      <GradientStop Offset="0.9058" Color="{DynamicResource ControlStrokeColorDefaultColor}" />
+      <GradientStop Offset="1" Color="{DynamicResource ControlStrokeColorSecondaryColor}" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="CircleElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.5002" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorSecondaryColor}" Offset="0.9545" />
+      <GradientStop Offset="0.5002" Color="{DynamicResource ControlStrokeColorDefaultColor}" />
+      <GradientStop Offset="0.9545" Color="{DynamicResource ControlStrokeColorSecondaryColor}" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="TextControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.98" />
-      <GradientStop Color="{DynamicResource ControlStrongStrokeColorDefaultColor}" Offset="1" />
+      <GradientStop Offset="0.98" Color="{DynamicResource ControlStrokeColorDefaultColor}" />
+      <GradientStop Offset="1" Color="{DynamicResource ControlStrongStrokeColorDefaultColor}" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="TextControlElevationBorderFocusedBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorDefaultColor}" Offset="0.9687" />
-      <GradientStop Color="{DynamicResource AccentFillColorDefaultColor}" Offset="0.9689" />
+      <GradientStop Offset="0.9687" Color="{DynamicResource ControlStrokeColorDefaultColor}" />
+      <GradientStop Offset="0.9689" Color="{DynamicResource AccentFillColorDefaultColor}" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
   <LinearGradientBrush x:Key="AccentControlElevationBorderBrush" StartPoint="0,0" EndPoint="0,1">
     <LinearGradientBrush.GradientStops>
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentDefaultColor}" Offset="0.9667" />
-      <GradientStop Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" Offset="1" />
+      <GradientStop Offset="0.9667" Color="{DynamicResource ControlStrokeColorOnAccentDefaultColor}" />
+      <GradientStop Offset="1" Color="{DynamicResource ControlStrokeColorOnAccentSecondaryColor}" />
     </LinearGradientBrush.GradientStops>
   </LinearGradientBrush>
 
@@ -273,7 +271,7 @@
   <Color x:Key="SystemFillColorNeutralBackgroundColor">#06000000</Color>
   <SolidColorBrush x:Key="SystemFillColorNeutralBrush" Color="{DynamicResource SystemFillColorNeutralColor}" />
   <SolidColorBrush x:Key="SystemFillColorNeutralBackgroundBrush" Color="{DynamicResource SystemFillColorNeutralBackgroundColor}" />
-  
+
   <!-- System Solid Neutral -->
   <Color x:Key="SystemFillColorSolidNeutralColor">#FF8A8A8A</Color>
   <Color x:Key="SystemFillColorSolidNeutralBackgroundColor">#FFF3F3F3</Color>
@@ -282,46 +280,46 @@
 
   <!-- Effects -->
   <DropShadowEffect x:Key="CardRestShadow"
-                    BlurRadius="4"
-                    ShadowDepth="2"
-                    Opacity="0.04"
-                    Color="#000000"
-                    Direction="270" />
-  
+    BlurRadius="4"
+    Direction="270"
+    Opacity="0.04"
+    ShadowDepth="2"
+    Color="#000000" />
+
   <DropShadowEffect x:Key="CardHoverShadow"
-                    BlurRadius="4"
-                    ShadowDepth="2"
-                    Opacity="0.1"
-                    Color="#000000"
-                    Direction="270" />
+    BlurRadius="4"
+    Direction="270"
+    Opacity="0.1"
+    ShadowDepth="2"
+    Color="#000000" />
 
   <DropShadowEffect x:Key="TooltipShadow"
-                    BlurRadius="8"
-                    ShadowDepth="4"
-                    Opacity="0.14"
-                    Color="#000000"
-                    Direction="270" />
+    BlurRadius="8"
+    Direction="270"
+    Opacity="0.14"
+    ShadowDepth="4"
+    Color="#000000" />
 
   <DropShadowEffect x:Key="FlyoutShadow"
-                    BlurRadius="16"
-                    ShadowDepth="8"
-                    Opacity="0.14"
-                    Color="#000000"
-                    Direction="270" />
+    BlurRadius="16"
+    Direction="270"
+    Opacity="0.14"
+    ShadowDepth="8"
+    Color="#000000" />
 
   <DropShadowEffect x:Key="DialogShadow1"
-                    BlurRadius="21"
-                    ShadowDepth="2"
-                    Opacity="0.15"
-                    Color="#000000"
-                    Direction="270" />
+    BlurRadius="21"
+    Direction="270"
+    Opacity="0.15"
+    ShadowDepth="2"
+    Color="#000000" />
 
   <DropShadowEffect x:Key="DialogShadow2"
-                    BlurRadius="64"
-                    ShadowDepth="32"
-                    Opacity="0.19"
-                    Color="#000000"
-                    Direction="270" />
+    BlurRadius="64"
+    Direction="270"
+    Opacity="0.19"
+    ShadowDepth="32"
+    Color="#000000" />
 
   <!-- Shell colors -->
 
@@ -336,5 +334,5 @@
   <Color x:Key="ShellCaptionCloseTextColorSecondaryColor">#B2FFFFFF</Color>
   <SolidColorBrush x:Key="ShellCaptionCloseTextColorPrimaryBrush" Color="{DynamicResource ShellCaptionCloseTextColorPrimaryColor}" />
   <SolidColorBrush x:Key="ShellCaptionCloseTextColorSecondaryBrush" Color="{DynamicResource ShellCaptionCloseTextColorSecondaryColor}" />
-  
+
 </ResourceDictionary>
