@@ -136,6 +136,10 @@
       <Trigger Property="IsEnabled" Value="False">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
       </Trigger>
+      <Trigger Property="HasContent" Value="False">
+        <Setter Property="IsExpanded" Value="False" />
+        <Setter TargetName="ExpanderButton" Property="Visibility" Value="Hidden" />
+      </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
 
@@ -201,6 +205,10 @@
       </Trigger>
       <Trigger Property="IsEnabled" Value="False">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+      </Trigger>
+      <Trigger Property="HasContent" Value="False">
+        <Setter Property="IsExpanded" Value="False" />
+        <Setter TargetName="ExpanderButton" Property="Visibility" Value="Hidden" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
