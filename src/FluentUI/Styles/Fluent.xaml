@@ -26,6 +26,7 @@
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/RadioButton.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollBar.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/ScrollViewer.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Separator.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/Slider.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/SymbolIcon.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FluentUI;component/Styles/Controls/TabControl.xaml" />
