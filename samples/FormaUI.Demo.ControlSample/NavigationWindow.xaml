@@ -22,6 +22,11 @@
         NavigationType="{x:Type local:ExamplePage2}" />
     </controls:NavigationView.MenuItems>
 
+    <controls:NavigationView.FooterItems>
+      <controls:NavigationViewItem Content="Settings" Icon="Settings" />
+      <controls:NavigationViewItem Content="App Theme" Icon="Color" />
+    </controls:NavigationView.FooterItems>
+
     <Frame x:Name="_navigationRoot" NavigationUIVisibility="Hidden" />
   </controls:NavigationView>
 </controls:FluentWindow>
