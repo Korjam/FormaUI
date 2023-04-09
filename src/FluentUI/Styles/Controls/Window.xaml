@@ -109,29 +109,25 @@
 
               <Grid
                 Grid.Row="0"
-                Margin="12,0,0,0"
+                Margin="16,0,0,0"
                 VerticalAlignment="Center">
 
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="Auto" />
-                  <ColumnDefinition Width="16" />
                   <ColumnDefinition Width="Auto" />
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Border x:Name="iconPlaceHolder"
+                <Image x:Name="IconImage"
                   Grid.Column="0"
                   Width="16"
-                  Height="16"
+                  Margin="0,0,16,0"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
-                  BorderBrush="{DynamicResource TextFillColorPrimaryBrush}"
-                  BorderThickness="1"
-                  CornerRadius="8" />
+                  Source="{TemplateBinding Icon}" />
 
                 <TextBlock
-                  Grid.Column="2"
+                  Grid.Column="1"
                   Margin="0,0,8,0"
                   Padding="0,0,0,2"
                   VerticalAlignment="Center"
@@ -142,7 +138,7 @@
                   Text="{TemplateBinding Title}" />
 
                 <StackPanel
-                  Grid.Column="4"
+                  Grid.Column="2"
                   Orientation="Horizontal"
                   WindowChrome.IsHitTestVisibleInChrome="True">
                   <Button x:Name="MinimizeButton"
@@ -189,6 +185,9 @@
               <Setter TargetName="MaximizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="MinimizeButton" Property="Visibility" Value="Collapsed" />
               <Setter TargetName="RestoreButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Icon" Value="{x:Null}">
+              <Setter TargetName="IconImage" Property="Visibility" Value="Collapsed" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
