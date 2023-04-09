@@ -12,6 +12,10 @@
   mc:Ignorable="d">
   <controls:NavigationView Margin="0,8,0,0" ContentElement="{Binding ElementName=_navigationRoot}">
     <controls:NavigationView.MenuItems>
+      <controls:NavigationViewItem Content="Home" Icon="Home" />
+
+      <Separator />
+
       <controls:NavigationViewItem
         Content="Food"
         Icon="EmojiTabFoodPlants"
@@ -20,6 +24,12 @@
         Content="Party"
         Icon="EmojiTabCelebrationObjects"
         NavigationType="{x:Type local:ExamplePage2}" />
+
+      <Separator />
+
+      <controls:NavigationViewItem Content="Community" Icon="People" />
+      <controls:NavigationViewItem Content="Recent" Icon="EmojiTabFavorites" />
+      <controls:NavigationViewItem Content="Emojis" Icon="EmojiTabSmilesAnimals" />
     </controls:NavigationView.MenuItems>
 
     <controls:NavigationView.FooterItems>

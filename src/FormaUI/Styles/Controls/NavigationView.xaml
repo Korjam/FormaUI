@@ -5,6 +5,7 @@
 
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/ListBox.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/Separator.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
   <ControlTemplate x:Key="MenuButtonTemplate" TargetType="{x:Type ButtonBase}">
@@ -71,6 +72,12 @@
     BasedOn="{StaticResource {x:Type ListBoxItem}}"
     TargetType="{x:Type ListBoxItem}">
     <Setter Property="Padding" Value="6,6,0,8" />
+  </Style>
+
+  <Style x:Key="{x:Static controls:NavigationView.SeparatorStyleKey}"
+    BasedOn="{StaticResource {x:Type Separator}}"
+    TargetType="{x:Type Separator}">
+    <Setter Property="Margin" Value="-10,-8,-6,-8" />
   </Style>
 
   <Style TargetType="{x:Type controls:NavigationView}">

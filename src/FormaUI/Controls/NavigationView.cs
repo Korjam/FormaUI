@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -9,6 +10,9 @@ namespace FormaUI.Controls;
 [TemplatePart(Name = FooterItemsPart, Type = typeof(Selector))]
 public class NavigationView : ContentControl
 {
+    public static ComponentResourceKey SeparatorStyleKey =
+        new(typeof(NavigationView), nameof(SeparatorStyleKey));
+
     private const string MenuItemsPart = "PART_MenuItems";
     private const string FooterItemsPart = "PART_FooterItems";
 
@@ -17,13 +21,16 @@ public class NavigationView : ContentControl
         DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationView), new FrameworkPropertyMetadata(typeof(NavigationView)));
     }
 
-    public ObservableCollection<NavigationViewItemBase> MenuItems { get; }
-    public ObservableCollection<NavigationViewItemBase> FooterItems { get; }
+    public ObservableCollection<object> MenuItems { get; }
+    public ObservableCollection<object> FooterItems { get; }
 
     public NavigationView()
     {
-        MenuItems = new ObservableCollection<NavigationViewItemBase>();
-        FooterItems = new ObservableCollection<NavigationViewItemBase>();
+        MenuItems = new ObservableCollection<object>();
+        FooterItems = new ObservableCollection<object>();
+
+        MenuItems.CollectionChanged += MenuItems_CollectionChanged;
+        FooterItems.CollectionChanged += MenuItems_CollectionChanged;
     }
 
     public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
@@ -58,6 +65,10 @@ public class NavigationView : ContentControl
         if (item.NavigationType is not null)
         {
             ContentElement.NavigateToType(item.NavigationType);
+        }
+        else
+        {
+            ContentElement.Navigate(null);
         }
     }
 
@@ -132,5 +143,18 @@ public class NavigationView : ContentControl
         _menuItemsList.SetCurrentValue(Selector.SelectedItemProperty, null);
 
         _suppressSelectionEvent = false;
+    }
+
+    private void MenuItems_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        if (e.NewItems is null)
+        {
+            return;
+        }
+
+        foreach (var item in e.NewItems.Cast<object>().OfType<Separator>())
+        {
+            item.Style = (Style)FindResource(SeparatorStyleKey);
+        }
     }
 }
