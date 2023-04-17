@@ -11,13 +11,10 @@
   <SolidColorBrush x:Key="TextFillColorDisabledBrush" Color="{DynamicResource TextFillColorDisabledColor}" />
 
   <!-- Accent Text -->
-  <Color x:Key="AccentTextFillColorPrimaryColor">#003E92</Color> <!-- AccentDark2 -->
-  <Color x:Key="AccentTextFillColorSecondaryColor">#001A68</Color> <!-- AccentDark3 -->
-  <Color x:Key="AccentTextFillColorTertiaryColor">#005FB8</Color> <!-- AccentDark1 -->
   <Color x:Key="AccentTextFillColorDisabledColor">#5C000000</Color>
-  <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{DynamicResource AccentTextFillColorPrimaryColor}" />
-  <SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="{DynamicResource AccentTextFillColorSecondaryColor}" />
-  <SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="{DynamicResource AccentTextFillColorTertiaryColor}" />
+  <SolidColorBrush x:Key="AccentTextFillColorPrimaryBrush" Color="{DynamicResource AccentDark2}" />
+  <SolidColorBrush x:Key="AccentTextFillColorSecondaryBrush" Color="{DynamicResource AccentDark3}" />
+  <SolidColorBrush x:Key="AccentTextFillColorTertiaryBrush" Color="{DynamicResource AccentDark1}" />
   <SolidColorBrush x:Key="AccentTextFillColorDisabledBrush" Color="{DynamicResource AccentTextFillColorDisabledColor}" />
 
   <!-- Text On Accent -->
@@ -89,16 +86,12 @@
   <SolidColorBrush x:Key="ControlOnImageFillColorDisabledBrush" Color="{DynamicResource ControlOnImageFillColorDisabledColor}" />
 
   <!-- Accent Fill -->
-  <Color x:Key="AccentFillColorDefaultColor">#005FB8</Color> <!-- AccentDark1 -->
-  <Color x:Key="AccentFillColorSecondaryColor">#005FB8</Color> <!-- AccentDark1 -->
-  <Color x:Key="AccentFillColorTertiaryColor">#005FB8</Color> <!-- AccentDark1 -->
   <Color x:Key="AccentFillColorDisabledColor">#37000000</Color>
-  <Color x:Key="AccentFillColorSelectedTextBackgroundColor">#0078D4</Color> <!-- AccentBase -->
-  <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="{DynamicResource AccentFillColorDefaultColor}" Opacity="1" />
-  <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="{DynamicResource AccentFillColorSecondaryColor}" Opacity="0.9" />
-  <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="{DynamicResource AccentFillColorTertiaryColor}" Opacity="0.8" />
+  <SolidColorBrush x:Key="AccentFillColorDefaultBrush" Color="{DynamicResource AccentDark1}" Opacity="1" />
+  <SolidColorBrush x:Key="AccentFillColorSecondaryBrush" Color="{DynamicResource AccentDark1}" Opacity="0.9" />
+  <SolidColorBrush x:Key="AccentFillColorTertiaryBrush" Color="{DynamicResource AccentDark1}" Opacity="0.8" />
   <SolidColorBrush x:Key="AccentFillColorDisabledBrush" Color="{DynamicResource AccentFillColorDisabledColor}" />
-  <SolidColorBrush x:Key="AccentFillColorSelectedTextBackgroundBrush" Color="{DynamicResource AccentFillColorSelectedTextBackgroundColor}" />
+  <SolidColorBrush x:Key="AccentFillColorSelectedTextBackgroundBrush" Color="{DynamicResource AccentBase}" />
 
   <!-- Control Stroke -->
   <Color x:Key="ControlStrokeColorDefaultColor">#0F000000</Color>
@@ -235,8 +228,8 @@
   <SolidColorBrush x:Key="AcrylicBackgroundFillColorDefaultBrush" Color="#FFF9F9F9" />
 
   <!-- TODO: Accent Acrylic Background, currently implementing fallback values -->
-  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorBaseBrush" Color="#FF98ECFE" /> <!-- AccentLight3 -->
-  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorDefaultBrush" Color="#FF98ECFE" /> <!-- AccentLight3 -->
+  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorBaseBrush" Color="{DynamicResource AccentLight3}" />
+  <SolidColorBrush x:Key="AccentAcrylicBackgroundFillColorDefaultBrush" Color="{DynamicResource AccentLight3}" />
 
   <!-- System -->
   
