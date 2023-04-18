@@ -39,6 +39,6 @@
         NavigationType="{x:Type local:SettingsPage}" />
     </controls:NavigationView.FooterItems>
 
-    <Frame x:Name="_navigationRoot" NavigationUIVisibility="Hidden" />
+    <Frame x:Name="_navigationRoot" />
   </controls:NavigationView>
 </controls:FluentWindow>

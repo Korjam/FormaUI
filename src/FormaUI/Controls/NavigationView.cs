@@ -1,8 +1,9 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Navigation;
 
 namespace FormaUI.Controls;
 
@@ -76,12 +77,22 @@ public class NavigationView : ContentControl
         nameof(ContentElement),
         typeof(Frame),
         typeof(NavigationView),
-        new PropertyMetadata(null));
+        new PropertyMetadata(null, OnContentElementChanged));
 
     public Frame? ContentElement
     {
         get => (Frame?)GetValue(ContentElementProperty);
         set => SetValue(ContentElementProperty, value);
+    }
+
+    private static void OnContentElementChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        ((NavigationView)d).OnContentElementChanged((Frame?)e.NewValue);
+    }
+
+    private void OnContentElementChanged(Frame? newValue)
+    {
+        newValue?.SetCurrentValue(Frame.NavigationUIVisibilityProperty, NavigationUIVisibility.Hidden);
     }
 
     public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
