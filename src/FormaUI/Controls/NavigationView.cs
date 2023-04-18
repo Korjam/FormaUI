@@ -53,28 +53,6 @@ public class NavigationView : ContentControl
         ((NavigationView)d).OnSelectedItemChanged((NavigationViewItemBase?)e.NewValue);
     }
 
-    private void OnSelectedItemChanged(NavigationViewItemBase? newValue)
-    {
-        if (ContentElement is null)
-        {
-            return;
-        }
-
-        if (newValue is not NavigationViewItem item)
-        {
-            return;
-        }
-
-        if (item.NavigationType is not null)
-        {
-            ContentElement.NavigateToType(item.NavigationType);
-        }
-        else
-        {
-            ContentElement.Navigate(null);
-        }
-    }
-
     #endregion SelectedItem
 
     #region ContentElement
@@ -94,11 +72,6 @@ public class NavigationView : ContentControl
     private static void OnContentElementChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         ((NavigationView)d).OnContentElementChanged((Frame?)e.NewValue);
-    }
-
-    private void OnContentElementChanged(Frame? newValue)
-    {
-        newValue?.SetCurrentValue(Frame.NavigationUIVisibilityProperty, NavigationUIVisibility.Hidden);
     }
 
     #endregion ContentElement
@@ -136,6 +109,33 @@ public class NavigationView : ContentControl
 
         _menuItemsList.SelectionChanged += MenuItemsList_SelectionChanged;
         _footerItemsList.SelectionChanged += FooterItemsList_SelectionChanged;
+    }
+
+    private void OnSelectedItemChanged(NavigationViewItemBase? newValue)
+    {
+        if (ContentElement is null)
+        {
+            return;
+        }
+
+        if (newValue is not NavigationViewItem item)
+        {
+            return;
+        }
+
+        if (item.NavigationType is not null)
+        {
+            ContentElement.NavigateToType(item.NavigationType);
+        }
+        else
+        {
+            ContentElement.Navigate(null);
+        }
+    }
+
+    private void OnContentElementChanged(Frame? newValue)
+    {
+        newValue?.SetCurrentValue(Frame.NavigationUIVisibilityProperty, NavigationUIVisibility.Hidden);
     }
 
     private void MenuItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
