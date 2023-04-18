@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+using Microsoft.Win32;
+using System.Diagnostics;
 using System.Windows;
 
 namespace FluentUI;
@@ -9,6 +10,7 @@ public static class ThemeManager
     private const string DarkDictionary = "/FluentUI;component/Styles/Themes/ColorsDark.xaml";
 
     private static Theme _currentTheme;
+    private static Theme _appliedTheme;
 
     public static Theme CurrentTheme
     {
@@ -24,14 +26,47 @@ public static class ThemeManager
         private set => _currentTheme = value;
     }
 
-    public static void ChangeTheme(Theme newTheme)
+    public static Theme AppliedTheme
     {
-        if (CurrentTheme == newTheme)
+        get
+        {
+            if (_appliedTheme == Theme.Unknown)
+            {
+                _appliedTheme = CurrentTheme;
+            }
+
+            if (_appliedTheme == Theme.SystemTheme)
+            {
+                _appliedTheme = GetSystemTheme();
+            }
+
+            return _appliedTheme;
+        }
+        private set => _appliedTheme = value;
+    }
+
+    public static void ChangeTheme(Theme theme)
+    {
+        if (CurrentTheme == theme)
         {
             return;
         }
 
-        var originalUri = GetUri(CurrentTheme);
+        ChangeThemeInternal(theme == Theme.SystemTheme
+            ? GetSystemTheme()
+            : theme);
+
+        CurrentTheme = theme;
+    }
+
+    private static void ChangeThemeInternal(Theme theme)
+    {
+        if (AppliedTheme == theme)
+        {
+            return;
+        }
+
+        var originalUri = GetUri(AppliedTheme);
 
         var dictionary = Application.Current.Resources.MergedDictionaries
             .FirstOrDefault(x => x.Source.LocalPath == originalUri);
@@ -43,13 +78,13 @@ public static class ThemeManager
 
         Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary
         {
-            Source = new Uri($"pack://application:,,,{GetUri(newTheme)}")
+            Source = new Uri($"pack://application:,,,{GetUri(theme)}")
         });
 
-        CurrentTheme = newTheme;
+        AppliedTheme = theme;
     }
 
-    private static string GetUri(Theme currentTheme) => currentTheme switch
+    private static string GetUri(Theme theme) => theme switch
     {
         Theme.Light => LightDictionary,
         Theme.Dark => DarkDictionary,
@@ -74,6 +109,30 @@ public static class ThemeManager
         return Theme.Unknown;
     }
 
+    private static Theme GetSystemTheme()
+    {
+        using var registry = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize");
+
+        if (registry is null)
+        {
+            return Theme.Unknown;
+        }
+
+        var appsLightTheme = registry.GetValue("AppsUseLightTheme");
+
+        if (appsLightTheme is not int appsLightThemeValue)
+        {
+            return Theme.Unknown;
+        }
+
+        return appsLightThemeValue switch
+        {
+            0 => Theme.Dark,
+            1 => Theme.Light,
+            _ => Theme.Unknown
+        };
+    }
+
     private static IEnumerable<ResourceDictionary> GetMergedDictionariesRecursive() =>
         Application.Current.Resources.GetMergedDictionariesRecursive();
 
@@ -85,5 +144,6 @@ public enum Theme
 {
     Unknown,
     Light,
-    Dark
+    Dark,
+    SystemTheme
 }
