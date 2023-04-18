@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +33,8 @@ public class NavigationView : ContentControl
         MenuItems.CollectionChanged += MenuItems_CollectionChanged;
         FooterItems.CollectionChanged += MenuItems_CollectionChanged;
     }
+
+    #region SelectedItem
 
     public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
         nameof(SelectedItem),
@@ -73,6 +75,10 @@ public class NavigationView : ContentControl
         }
     }
 
+    #endregion SelectedItem
+
+    #region ContentElement
+
     public static readonly DependencyProperty ContentElementProperty = DependencyProperty.Register(
         nameof(ContentElement),
         typeof(Frame),
@@ -95,6 +101,10 @@ public class NavigationView : ContentControl
         newValue?.SetCurrentValue(Frame.NavigationUIVisibilityProperty, NavigationUIVisibility.Hidden);
     }
 
+    #endregion ContentElement
+
+    #region IsOpen
+
     public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
         nameof(IsOpen),
         typeof(bool),
@@ -106,6 +116,8 @@ public class NavigationView : ContentControl
         get => (bool)GetValue(IsOpenProperty);
         set => SetValue(IsOpenProperty, value);
     }
+
+    #endregion IsOpen
 
     private Selector? _menuItemsList;
     private Selector? _footerItemsList;
