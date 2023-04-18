@@ -8,35 +8,30 @@ public static class ThemeManager
     private const string LightDictionary = "/FluentUI;component/Styles/Themes/ColorsLight.xaml";
     private const string DarkDictionary = "/FluentUI;component/Styles/Themes/ColorsDark.xaml";
 
-    public static Theme CurrentTheme { get; private set; }
+    private static Theme _currentTheme;
 
-    public static void ChangeTheme()
+    public static Theme CurrentTheme
     {
-        if (CurrentTheme == Theme.Unknown)
+        get
         {
-            CurrentTheme = FindTheme();
-        }
+            if (_currentTheme == Theme.Unknown)
+            {
+                _currentTheme = FindTheme();
+            }
 
-        if (CurrentTheme != Theme.Unknown)
-        {
-            SwitchTheme();
+            return _currentTheme;
         }
+        private set => _currentTheme = value;
     }
 
-    private static void SwitchTheme() => SwitchTheme(CurrentTheme);
-
-    private static void SwitchTheme(Theme currentTheme) =>
-        SwitchTheme(currentTheme, currentTheme switch
-        {
-            Theme.Light => Theme.Dark,
-            Theme.Dark => Theme.Light,
-            Theme.Unknown => throw new ArgumentOutOfRangeException(nameof(currentTheme), currentTheme, "Cannot switch to an unknown theme."),
-            _ => throw new UnreachableException(),
-        });
-
-    private static void SwitchTheme(Theme currentTheme, Theme newTheme)
+    public static void ChangeTheme(Theme newTheme)
     {
-        var originalUri = GetUri(currentTheme);
+        if (CurrentTheme == newTheme)
+        {
+            return;
+        }
+
+        var originalUri = GetUri(CurrentTheme);
 
         var dictionary = Application.Current.Resources.MergedDictionaries
             .FirstOrDefault(x => x.Source.LocalPath == originalUri);
