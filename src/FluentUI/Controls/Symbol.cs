@@ -4,6 +4,10 @@ public enum Symbol
 {
     None,
 
+    // TODO: There are some missing icons
+    Clear12 = 0xe624,
+    Dash12 = 0xe629,
+
     // PUA E700-E900 https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font#pua-e700-e900
 
     GlobalNavButton = 0xe700,
