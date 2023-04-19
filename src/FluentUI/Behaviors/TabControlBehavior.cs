@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,16 +56,37 @@ public static class TabControlBehavior
     private static void OnCloseCommand(object sender, ExecutedRoutedEventArgs e)
     {
         var tabItem = (TabItem)sender;
-        ((TabControl)tabItem.Parent).Items.Remove(tabItem);
+        var tabControl = tabItem.FindParent<TabControl>();
+        if (tabControl != null)
+        {
+            if (tabControl.ItemsSource is null)
+            {
+                tabControl.Items.Remove(tabItem);
+            }
+            else if (tabControl.ItemsSource is IList list)
+            {
+                list.Remove(tabItem.DataContext);
+            }
+        }
     }
 
     private static void CanCloseCommand(object sender, CanExecuteRoutedEventArgs e)
     {
         var tabItem = (TabItem)sender;
-        var tabControl = (TabControl)tabItem.Parent;
+        var tabControl = tabItem.FindParent<TabControl>();
         if (tabControl != null)
         {
-            e.CanExecute = GetCanClose(tabItem) && GetCanClose(tabControl);
+            if (tabControl.ItemsSource is null)
+            {
+                e.CanExecute = GetCanClose(tabItem)
+                    && GetCanClose(tabControl);
+            }
+            else if (tabControl.ItemsSource is IList list)
+            {
+                e.CanExecute = !list.IsReadOnly
+                    && GetCanClose(tabItem)
+                    && GetCanClose(tabControl);
+            }
         }
     }
 }
