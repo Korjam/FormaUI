@@ -11,23 +11,25 @@
   </Style>
 
   <ControlTemplate x:Key="HorizontalGridSplitter" TargetType="{x:Type GridSplitter}">
-    <Border Height="2"
-            Margin="{TemplateBinding Padding}"
-            Background="{TemplateBinding Background}"
-            BorderBrush="{TemplateBinding BorderBrush}"
-            BorderThickness="{TemplateBinding BorderThickness}"
-            VerticalAlignment="Center"
-            SnapsToDevicePixels="True" />
+    <Border
+      Height="2"
+      Margin="{TemplateBinding Padding}"
+      VerticalAlignment="Center"
+      Background="{TemplateBinding Background}"
+      BorderBrush="{TemplateBinding BorderBrush}"
+      BorderThickness="{TemplateBinding BorderThickness}"
+      SnapsToDevicePixels="True" />
   </ControlTemplate>
 
   <ControlTemplate x:Key="VerticalGridSplitter" TargetType="{x:Type GridSplitter}">
-    <Border Width="2"
-            Margin="{TemplateBinding Padding}"
-            Background="{TemplateBinding Background}"
-            BorderBrush="{TemplateBinding BorderBrush}"
-            BorderThickness="{TemplateBinding BorderThickness}"
-            HorizontalAlignment="Center"
-            SnapsToDevicePixels="True" />
+    <Border
+      Width="2"
+      Margin="{TemplateBinding Padding}"
+      HorizontalAlignment="Center"
+      Background="{TemplateBinding Background}"
+      BorderBrush="{TemplateBinding BorderBrush}"
+      BorderThickness="{TemplateBinding BorderThickness}"
+      SnapsToDevicePixels="True" />
   </ControlTemplate>
 
   <Style x:Key="{x:Type GridSplitter}" TargetType="{x:Type GridSplitter}">
@@ -46,5 +48,5 @@
       </Trigger>
     </Style.Triggers>
   </Style>
-  
+
 </ResourceDictionary>
