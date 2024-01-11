@@ -153,4 +153,14 @@
     <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
   </Style>
 
+  <Style x:Key="TextBoxButtonStyle"
+    BasedOn="{StaticResource SubtleIconOnlyButtonStyle}"
+    TargetType="{x:Type ButtonBase}">
+    <Setter Property="FontFamily" Value="{DynamicResource IconsFontFamily}" />
+    <Setter Property="Margin" Value="3" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Height" Value="22" />
+    <Setter Property="Width" Value="26" />
+  </Style>
+
 </ResourceDictionary>
