@@ -14,14 +14,14 @@ public class DataGridBehaviors
             typeof(DataGridBehaviors),
             new PropertyMetadata(false, OnApplyFuentStylesChanged));
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(DataGrid))]
     public static bool GetApplyFuentStyles(UIElement element)
     {
         return (bool)element.GetValue(ApplyFuentStylesProperty);
     }
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(DataGrid))]
     public static void SetApplyFuentStyles(UIElement element, bool value)
     {

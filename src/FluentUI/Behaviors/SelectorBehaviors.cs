@@ -14,14 +14,14 @@ public static class SelectorBehaviors
             typeof(SelectorBehaviors),
             new PropertyMetadata(false, OnScrollIntoSelectedItemChanged));
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(Selector))]
     public static bool GetScrollIntoSelectedItem(UIElement element)
     {
         return (bool)element.GetValue(ScrollIntoSelectedItemProperty);
     }
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(Selector))]
     public static void SetScrollIntoSelectedItem(UIElement element, bool value)
     {

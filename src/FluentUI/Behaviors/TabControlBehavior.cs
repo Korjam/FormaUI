@@ -15,12 +15,12 @@ public static class TabControlBehavior
             typeof(TabControlBehavior),
             new PropertyMetadata(null));
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(TabItem))]
     public static object? GetIcon(UIElement element) =>
         (object?)element.GetValue(IconProperty);
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(TabItem))]
     public static void SetIcon(UIElement element, object? value) =>
         element.SetValue(IconProperty, value);
@@ -32,13 +32,13 @@ public static class TabControlBehavior
             typeof(TabControlBehavior),
             new PropertyMetadata(false));
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(TabItem))]
     [AttachedPropertyBrowsableForType(typeof(TabControl))]
     public static bool GetCanClose(UIElement element) =>
         (bool)element.GetValue(CanCloseProperty);
 
-    [Category("FluentUI")]
+    [Category(Constans.WpfCategory)]
     [AttachedPropertyBrowsableForType(typeof(TabItem))]
     [AttachedPropertyBrowsableForType(typeof(TabControl))]
     public static void SetCanClose(UIElement element, bool value) =>
