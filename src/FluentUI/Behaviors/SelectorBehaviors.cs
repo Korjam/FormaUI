@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
@@ -40,19 +39,6 @@ public static class SelectorBehaviors
             return;
         }
 
-        OnScrollIntoSelectedItemChanged(selector, (bool)e.NewValue);
-    }
-
-    private static void OnScrollIntoSelectedItemChanged(Selector selector, bool newValue)
-    {
-        if (newValue)
-        {
-            Interaction.GetBehaviors(selector).Add(new ScrollToSelectedItemBehaviour());
-        }
-        else
-        {
-            var behaviors = Interaction.GetBehaviors(selector);
-            behaviors.Remove(behaviors.OfType<ScrollToSelectedItemBehaviour>().First());
-        }
+        selector.AddOrRemoveBehavior<ScrollToSelectedItemBehaviour>((bool)e.NewValue);
     }
 }

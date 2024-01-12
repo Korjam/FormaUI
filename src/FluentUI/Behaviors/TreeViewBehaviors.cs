@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -61,19 +60,6 @@ public static class TreeViewBehaviors
             return;
         }
 
-        OnCalculateDepthChanged(treeViewItem, (bool)e.NewValue);
-    }
-
-    private static void OnCalculateDepthChanged(TreeViewItem treeViewItem, bool newValue)
-    {
-        if (newValue)
-        {
-            Interaction.GetBehaviors(treeViewItem).Add(new TreeViewItemDepthBehavior());
-        }
-        else
-        {
-            var behaviors = Interaction.GetBehaviors(treeViewItem);
-            behaviors.Remove(behaviors.OfType<TreeViewItemDepthBehavior>().First());
-        }
+        treeViewItem.AddOrRemoveBehavior<TreeViewItemDepthBehavior>((bool)e.NewValue);
     }
 }

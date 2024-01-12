@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -61,19 +60,6 @@ public static class PasswordBoxBehaviors
             return;
         }
 
-        OnShowPasswordChanged(passwordBox, (bool)e.NewValue);
-    }
-
-    private static void OnShowPasswordChanged(PasswordBox passwordBox, bool newValue)
-    {
-        if (newValue)
-        {
-            Interaction.GetBehaviors(passwordBox).Add(new PasswordBoxTextBehavior());
-        }
-        else
-        {
-            var behaviors = Interaction.GetBehaviors(passwordBox);
-            behaviors.Remove(behaviors.OfType<PasswordBoxTextBehavior>().First());
-        }
+        passwordBox.AddOrRemoveBehavior<PasswordBoxTextBehavior>((bool)e.NewValue);
     }
 }

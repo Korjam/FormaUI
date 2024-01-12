@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,19 +39,6 @@ public class DataGridBehaviors
             return;
         }
 
-        OnApplyFuentStylesChanged(dataGrid, (bool)e.NewValue);
-    }
-
-    private static void OnApplyFuentStylesChanged(DataGrid dataGrid, bool newValue)
-    {
-        if (newValue)
-        {
-            Interaction.GetBehaviors(dataGrid).Add(new DataGridFluentStylesBehavior());
-        }
-        else
-        {
-            var behaviors = Interaction.GetBehaviors(dataGrid);
-            behaviors.Remove(behaviors.OfType<DataGridFluentStylesBehavior>().First());
-        }
+        dataGrid.AddOrRemoveBehavior<DataGridFluentStylesBehavior>((bool)e.NewValue);
     }
 }
