@@ -53,7 +53,7 @@ internal static class TreeHelper
     {
         var parent = VisualTreeHelper.GetParent(dependencyObject);
 
-        return VisualTreeHelper.GetParent(dependencyObject) switch
+        return parent switch
         {
             null => null,
             T match => match,

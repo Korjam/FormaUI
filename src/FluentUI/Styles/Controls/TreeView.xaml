@@ -1,4 +1,10 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:behaviors="clr-namespace:FluentUI.Behaviors"
+  xmlns:converters="clr-namespace:FluentUI.Converters">
+
+  <converters:ThicknessConverter x:Key="depthMarginConverter" Factor="16,0,0,0" />
 
   <SolidColorBrush x:Key="ListBorder" Color="#828790" />
 
@@ -11,6 +17,7 @@
     <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
     <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="Padding" Value="4,0" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -98,33 +105,28 @@
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
     <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-    <Setter Property="Margin" Value="4,2" />
+    <Setter Property="Margin" Value="0,2" />
     <Setter Property="Padding" Value="11,2,11,4" />
     <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
     <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
     <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Setter Property="behaviors:TreeViewBehaviors.CalculateDepth" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type TreeViewItem}">
           <Grid>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto" MinWidth="26" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto" />
               <RowDefinition />
             </Grid.RowDefinitions>
             <Border Name="Bd"
-              Grid.Column="0"
-              Grid.ColumnSpan="2"
               Padding="{TemplateBinding Padding}"
               Background="{TemplateBinding Background}"
               BorderBrush="{TemplateBinding BorderBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
               CornerRadius="4"
               SnapsToDevicePixels="True">
-              <Grid>
+              <Grid Margin="{TemplateBinding behaviors:TreeViewBehaviors.Depth, Converter={StaticResource depthMarginConverter}}">
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="12" />
                   <ColumnDefinition Width="14" />
@@ -145,7 +147,6 @@
               </Grid>
             </Border>
             <Border x:Name="selector"
-              Grid.Column="0"
               Width="3"
               Height="16"
               HorizontalAlignment="Left"
@@ -153,10 +154,7 @@
               Background="{DynamicResource AccentFillColorDefaultBrush}"
               CornerRadius="2"
               Visibility="Collapsed" />
-            <ItemsPresenter x:Name="ItemsHost"
-              Grid.Row="1"
-              Grid.Column="1"
-              Grid.ColumnSpan="2" />
+            <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" />
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger SourceName="Bd" Property="IsMouseOver" Value="True">
