@@ -17,6 +17,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormaUI", "src\FormaUI\Form
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormaUI.Demo.ControlSample", "samples\FormaUI.Demo.ControlSample\FormaUI.Demo.ControlSample.csproj", "{E7F85AAC-9ED7-45A1-A22F-FF44C95B3BE4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{08C8034E-F872-458F-9CE4-F1FA8FCC943A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{3284C369-B5C1-4460-A9AE-94DEE6916917}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yaml = .github\workflows\build.yaml
+		.github\workflows\publish.yaml = .github\workflows\publish.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{369AC4DE-E4A5-4F1B-8B33-943FE1F34995} = {B931A197-4F85-4DF3-8E57-C8DB3722EFC9}
 		{E7F85AAC-9ED7-45A1-A22F-FF44C95B3BE4} = {CE76A61D-C643-4C9B-8E29-1A0B059BA28E}
+		{3284C369-B5C1-4460-A9AE-94DEE6916917} = {08C8034E-F872-458F-9CE4-F1FA8FCC943A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE03720E-84DC-49E1-8C67-FA57170FF1B2}
