@@ -1,4 +1,4 @@
-name: .NET Desktop
+name: CI Build
 
 on:
   pull_request:
@@ -22,11 +22,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
-
-    - name: Setup NuGet
-      uses: nuget/setup-nuget@v1.2
-      with:
-        nuget-api-key: ${{ secrets.NUGET_API_KEY }}
 
     - name: Restore dependencies
       run: dotnet restore
