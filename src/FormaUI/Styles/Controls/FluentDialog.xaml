@@ -1,0 +1,89 @@
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="clr-namespace:FormaUI.Controls">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/Window.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <Style x:Key="{x:Type controls:FluentDialog}" TargetType="{x:Type controls:FluentDialog}">
+    <!--
+    <Setter Property="FontSize" Value="{DynamicResource CaptionFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource CaptionFontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    -->
+    <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorBaseBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <Setter Property="MinWidth" Value="320" />
+    <Setter Property="Padding" Value="24" />
+    <Setter Property="SizeToContent" Value="Height" />
+    <Setter Property="WindowChrome.WindowChrome">
+      <Setter.Value>
+        <WindowChrome
+          CaptionHeight="0"
+          NonClientFrameEdges="None"
+          UseAeroCaptionButtons="False" />
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type controls:FluentDialog}">
+          <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+              <AdornerDecorator>
+                <Grid>
+
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+
+                  <Border x:Name="PART_MainContent"
+                    Grid.Row="0"
+                    Background="{DynamicResource LayerFillColorAltBrush}"
+                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="0,0,0,1">
+
+                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+
+                  </Border>
+
+                  <ContentControl x:Name="PART_BottomContent"
+                    Grid.Row="1"
+                    Margin="{TemplateBinding Padding}"
+                    Content="{TemplateBinding BottomContent}" />
+
+                </Grid>
+
+              </AdornerDecorator>
+
+              <Button x:Name="CloseButton"
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"
+                Content="&#xE8BB;"
+                Style="{DynamicResource CloseButtonStyle}" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="CanClose" Value="False">
+              <Setter TargetName="CloseButton" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="HasBottomContent" Value="False">
+              <Setter TargetName="PART_BottomContent" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_MainContent" Property="BorderThickness" Value="0" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>

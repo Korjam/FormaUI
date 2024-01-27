@@ -1,0 +1,2558 @@
+<controls:FluentWindow
+  x:Class="FormaUI.Demo.ControlSample.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:behaviors="clr-namespace:FormaUI.Behaviors;assembly=FormaUI"
+  xmlns:controls="clr-namespace:FormaUI.Controls;assembly=FormaUI"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="clr-namespace:FormaUI.Demo.ControlSample"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+  xmlns:wpftk="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+  Title="MainWindow"
+  Width="1000"
+  Height="600"
+  mc:Ignorable="d">
+
+  <Window.DataContext>
+    <local:MainViewModel />
+  </Window.DataContext>
+
+  <TabControl Padding="10,10,0,10" TabStripPlacement="Top">
+
+    <TabItem Header="Button">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Button" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="0"
+          Content="Text" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="2"
+          Content="Text"
+          IsEnabled="False" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="4"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          Style="{DynamicResource StandardCompactButtonStyle}" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="6"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource StandardCompactButtonStyle}" />
+
+        <Button
+          Grid.Row="4"
+          Grid.Column="0"
+          Content="Text"
+          Style="{DynamicResource AccentButtonStyle}" />
+
+        <Button
+          Grid.Row="4"
+          Grid.Column="2"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource AccentButtonStyle}" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Toggle Button">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Toggle Button" />
+
+        <ToggleButton
+          Grid.Row="2"
+          Grid.Column="0"
+          Content="Text" />
+
+        <ToggleButton
+          Grid.Row="2"
+          Grid.Column="2"
+          Content="Text"
+          IsEnabled="False" />
+
+        <ToggleButton
+          Grid.Row="4"
+          Grid.Column="2"
+          Content="Text"
+          IsChecked="True"
+          IsEnabled="False" />
+
+        <ToggleButton
+          Grid.Row="2"
+          Grid.Column="4"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          Style="{DynamicResource StandardCompactToggleButtonStyle}" />
+
+        <ToggleButton
+          Grid.Row="2"
+          Grid.Column="6"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource StandardCompactToggleButtonStyle}" />
+
+        <ToggleButton
+          Grid.Row="4"
+          Grid.Column="6"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          IsChecked="True"
+          IsEnabled="False"
+          Style="{DynamicResource StandardCompactToggleButtonStyle}" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Check Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Column="0"
+          Grid.ColumnSpan="8"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Check Box" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="0"
+          Content="Text" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="2"
+          Content="Text"
+          IsEnabled="False" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="0"
+          Content="Text"
+          IsChecked="True" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="2"
+          Content="Text"
+          IsChecked="True"
+          IsEnabled="False" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="0"
+          Content="Text"
+          IsChecked="{x:Null}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="2"
+          Content="Text"
+          IsChecked="{x:Null}"
+          IsEnabled="False" />
+
+        <CheckBox Grid.Row="2" Grid.Column="4" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="6"
+          IsEnabled="False" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="4"
+          IsChecked="True" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="6"
+          IsChecked="True"
+          IsEnabled="False" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="4"
+          IsChecked="{x:Null}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="6"
+          IsChecked="{x:Null}"
+          IsEnabled="False" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Radio Button">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Radio Button" />
+
+        <Grid Grid.Row="2" Grid.Column="0">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <RadioButton
+            Grid.Row="0"
+            Content="Item 1"
+            IsChecked="True" />
+
+          <RadioButton Grid.Row="2" Content="Item 2" />
+
+          <RadioButton Grid.Row="4" Content="Item 3" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="2">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0" Content="Item 1" />
+
+          <RadioButton
+            Grid.Row="2"
+            Content="Item 2"
+            IsChecked="{x:Null}" />
+
+          <RadioButton Grid.Row="4" Content="Item 3" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="4">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+
+          <RadioButton
+            Grid.Row="0"
+            Content="Item 1"
+            IsChecked="True"
+            IsEnabled="False" />
+
+          <RadioButton
+            Grid.Row="2"
+            Content="Item 2"
+            IsChecked="{x:Null}"
+            IsEnabled="False" />
+
+          <RadioButton
+            Grid.Row="4"
+            Content="Item 3"
+            IsEnabled="False" />
+
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="6">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0" IsChecked="True" />
+
+          <RadioButton Grid.Row="2" />
+
+          <RadioButton Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="8">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton Grid.Row="0" />
+
+          <RadioButton Grid.Row="2" IsChecked="{x:Null}" />
+
+          <RadioButton Grid.Row="4" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="10">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <RadioButton
+            Grid.Row="0"
+            IsChecked="True"
+            IsEnabled="False" />
+
+          <RadioButton
+            Grid.Row="2"
+            IsChecked="{x:Null}"
+            IsEnabled="False" />
+
+          <RadioButton Grid.Row="4" IsEnabled="False" />
+
+        </Grid>
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Slider">
+
+      <ScrollViewer>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Style="{DynamicResource TextSubtitle}"
+            Text="Slider" />
+
+          <Grid Grid.Row="2" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider Grid.Row="0" Grid.Column="0" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="2" Grid.Column="2">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="2" Grid.Column="4">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="2" Grid.Column="6">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="4" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="4" Grid.Column="2">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="4" Grid.Column="4">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="4" Grid.Column="6">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="6" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="6" Grid.Column="2">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="6" Grid.Column="4">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="6" Grid.Column="6">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="8" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="8" Grid.Column="2">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="8" Grid.Column="4">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="8" Grid.Column="6">
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="5" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="2"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="4"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="10" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              Orientation="Vertical" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              Orientation="Vertical"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              Orientation="Vertical"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="10" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              Orientation="Vertical" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              Orientation="Vertical"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              Orientation="Vertical"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="10" Grid.Column="4">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="10" Grid.Column="6">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              Orientation="Vertical"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              Orientation="Vertical"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              Orientation="Vertical"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="4">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="6">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="BottomRight" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="BottomRight"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="BottomRight"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="14" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              Orientation="Vertical"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              Orientation="Vertical"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              Orientation="Vertical"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="14" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="14" Grid.Column="4">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="14" Grid.Column="6">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="TopLeft" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="TopLeft"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="TopLeft"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="16" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              Orientation="Vertical"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              Orientation="Vertical"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              Orientation="Vertical"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="16" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              Orientation="Vertical"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="16" Grid.Column="4">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+          <Grid Grid.Row="16" Grid.Column="6">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+              <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="0"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="5"
+              SelectionStart="0"
+              TickPlacement="Both" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="2"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="7.5"
+              SelectionStart="2.5"
+              TickPlacement="Both"
+              Value="5" />
+
+            <Slider
+              Grid.Row="0"
+              Grid.Column="4"
+              IsEnabled="False"
+              IsSelectionRangeEnabled="True"
+              Orientation="Vertical"
+              SelectionEnd="10"
+              SelectionStart="5"
+              TickPlacement="Both"
+              Value="10" />
+
+          </Grid>
+
+        </Grid>
+
+      </ScrollViewer>
+
+    </TabItem>
+
+    <TabItem Header="Text Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Column="0"
+          Grid.ColumnSpan="2"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Text Box" />
+
+        <TextBox
+          Grid.Row="2"
+          Grid.Column="0"
+          Text="Text" />
+
+        <TextBox
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          Text="Text" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Password Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Column="0"
+          Grid.ColumnSpan="2"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Password Box" />
+
+        <PasswordBox
+          Grid.Row="2"
+          Grid.Column="0"
+          Password="Text" />
+
+        <PasswordBox
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          Password="Text" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Combo Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="160" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Column="0"
+          Grid.ColumnSpan="2"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Combo Box" />
+
+        <ComboBox
+          Grid.Row="2"
+          Grid.Column="0"
+          SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox
+          Grid.Row="4"
+          Grid.Column="0"
+          IsEditable="True"
+          SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox
+          Grid.Row="4"
+          Grid.Column="2"
+          IsEditable="True"
+          IsEnabled="False"
+          SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <ComboBoxItem>Item2</ComboBoxItem>
+        </ComboBox>
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Date Picker">
+
+      <ScrollViewer>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{DynamicResource TextSubtitle}"
+            Text="Date Picker" />
+
+          <DatePicker Grid.Row="2" Grid.Column="0" />
+
+          <Calendar
+            Grid.Row="4"
+            Grid.Column="0"
+            SelectionMode="MultipleRange">
+
+            <Calendar.BlackoutDates>
+              <CalendarDateRange End="03/23/2023" Start="03/21/2023" />
+            </Calendar.BlackoutDates>
+
+            <Calendar.SelectedDates>
+              <sys:DateTime>03/15/2023</sys:DateTime>
+              <sys:DateTime>03/16/2023</sys:DateTime>
+              <sys:DateTime>03/17/2023</sys:DateTime>
+            </Calendar.SelectedDates>
+
+          </Calendar>
+
+          <Calendar
+            Grid.Row="4"
+            Grid.Column="2"
+            DisplayMode="Year" />
+
+          <Calendar
+            Grid.Row="4"
+            Grid.Column="4"
+            DisplayMode="Decade" />
+
+          <Calendar
+            Grid.Row="6"
+            Grid.Column="0"
+            IsEnabled="False" />
+
+          <Calendar
+            Grid.Row="6"
+            Grid.Column="2"
+            DisplayMode="Year"
+            IsEnabled="False" />
+
+          <Calendar
+            Grid.Row="6"
+            Grid.Column="4"
+            DisplayMode="Decade"
+            IsEnabled="False" />
+
+        </Grid>
+
+      </ScrollViewer>
+
+    </TabItem>
+
+    <TabItem Header="List Box">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="200" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="400" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="List Box" />
+
+        <ListBox
+          Grid.Row="2"
+          Grid.Column="0"
+          SelectionMode="Extended">
+          <ListBoxItem IsSelected="True">Item1</ListBoxItem>
+          <ListBoxItem>Item2</ListBoxItem>
+          <ListBoxItem IsSelected="True">Item3</ListBoxItem>
+          <ListBoxItem>Item4</ListBoxItem>
+          <ListBoxItem>Item5</ListBoxItem>
+        </ListBox>
+
+        <ListBox
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          SelectedIndex="1">
+          <ListBoxItem>Item1</ListBoxItem>
+          <ListBoxItem>Item2</ListBoxItem>
+          <ListBoxItem>Item3</ListBoxItem>
+          <ListBoxItem>Item4</ListBoxItem>
+          <ListBoxItem>Item5</ListBoxItem>
+        </ListBox>
+
+        <ListView
+          Grid.Row="2"
+          Grid.Column="4"
+          SelectionMode="Extended">
+          <ListViewItem IsSelected="True">Item1</ListViewItem>
+          <ListViewItem>Item2</ListViewItem>
+          <ListViewItem IsSelected="True">Item3</ListViewItem>
+          <ListViewItem>Item4</ListViewItem>
+          <ListViewItem>Item5</ListViewItem>
+        </ListView>
+
+        <TreeView Grid.Row="2" Grid.Column="6">
+          <TreeViewItem Header="Item 1" />
+          <TreeViewItem Header="Item 2" />
+          <TreeViewItem Header="Item 2" IsExpanded="True">
+            <TreeViewItem Header="Item 1" />
+            <TreeViewItem
+              Header="Item 2"
+              IsExpanded="True"
+              IsSelected="True">
+              <TreeViewItem Header="Item 1" />
+              <TreeViewItem Header="Item 2" />
+            </TreeViewItem>
+            <TreeViewItem Header="Item 3" />
+          </TreeViewItem>
+          <TreeViewItem Header="Item 2" IsExpanded="False">
+            <TreeViewItem Header="Item 1" />
+          </TreeViewItem>
+        </TreeView>
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Data Grid">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Data Grid" />
+
+        <DataGrid
+          Grid.Row="2"
+          Grid.Column="0"
+          ItemsSource="{Binding Users}"
+          SelectedIndex="3" />
+
+        <DataGrid
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          ItemsSource="{Binding Users}"
+          SelectedIndex="3" />
+      </Grid>
+
+
+    </TabItem>
+
+    <TabItem Header="Icons">
+      <behaviors:TabControlBehavior.Icon>
+        <controls:SymbolIcon Symbol="EmojiTabFoodPlants" />
+      </behaviors:TabControlBehavior.Icon>
+
+      <ListView ItemsSource="{Binding Icons}">
+
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <Grid ToolTip="{Binding}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="120" />
+              </Grid.ColumnDefinitions>
+              <controls:SymbolIcon VerticalAlignment="Center" Symbol="{Binding}" />
+              <TextBlock
+                Grid.Column="1"
+                Margin="8,0,0,0"
+                Style="{DynamicResource TextBody}"
+                Text="{Binding}" />
+            </Grid>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <ListView.ItemsPanel>
+          <ItemsPanelTemplate>
+            <wpftk:VirtualizingWrapPanel
+              MaxWidth="1000"
+              HorizontalAlignment="Center"
+              IsItemsHost="True"
+              SpacingMode="StartAndEndOnly" />
+          </ItemsPanelTemplate>
+        </ListView.ItemsPanel>
+
+      </ListView>
+
+    </TabItem>
+
+    <TabItem Header="Progress Bar">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="120" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="15" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Progress Bar" />
+
+        <ProgressBar
+          Grid.Row="2"
+          Grid.Column="0"
+          Value="0" />
+
+        <ProgressBar
+          Grid.Row="4"
+          Grid.Column="0"
+          Value="25" />
+
+        <ProgressBar
+          Grid.Row="6"
+          Grid.Column="0"
+          Value="50" />
+
+        <ProgressBar
+          Grid.Row="8"
+          Grid.Column="0"
+          Value="75" />
+
+        <ProgressBar
+          Grid.Row="10"
+          Grid.Column="0"
+          Value="100" />
+
+        <ProgressBar
+          Grid.Row="2"
+          Grid.Column="2"
+          IsEnabled="False"
+          Value="0" />
+
+        <ProgressBar
+          Grid.Row="4"
+          Grid.Column="2"
+          IsEnabled="False"
+          Value="25" />
+
+        <ProgressBar
+          Grid.Row="6"
+          Grid.Column="2"
+          IsEnabled="False"
+          Value="50" />
+
+        <ProgressBar
+          Grid.Row="8"
+          Grid.Column="2"
+          IsEnabled="False"
+          Value="75" />
+
+        <ProgressBar
+          Grid.Row="10"
+          Grid.Column="2"
+          IsEnabled="False"
+          Value="100" />
+
+        <ProgressBar
+          Grid.Row="2"
+          Grid.Column="4"
+          IsIndeterminate="True" />
+
+      </Grid>
+
+    </TabItem>
+
+    <TabItem Header="Menu">
+
+      <DockPanel>
+
+        <Menu DockPanel.Dock="Top">
+
+          <MenuItem Header="Item 1" />
+
+          <Separator />
+
+          <MenuItem Header="Parent Item 1">
+            <MenuItem.Icon>
+              <TextBlock
+                FontFamily="{DynamicResource IconsFontFamily}"
+                FontSize="16"
+                Text="&#xed56;" />
+            </MenuItem.Icon>
+            <MenuItem Header="Child Item 1" />
+            <MenuItem Header="Child Item 2" />
+          </MenuItem>
+
+          <MenuItem Header="Item 2" />
+
+          <Separator />
+
+          <MenuItem
+            Header="Checkable Item 1"
+            IsCheckable="True"
+            IsChecked="True" />
+          <MenuItem
+            Header="Checkable Item 2"
+            IsCheckable="True"
+            IsChecked="False" />
+
+          <Separator />
+
+          <MenuItem Header="Item 1" InputGestureText="Hint" />
+
+        </Menu>
+
+        <Grid>
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Style="{DynamicResource TextSubtitle}"
+            Text="Context Menu" />
+
+          <Grid.ContextMenu>
+
+            <ContextMenu>
+
+              <MenuItem Header="Item 1" />
+
+              <Separator />
+
+              <MenuItem Header="Parent Item 1">
+                <MenuItem.Icon>
+                  <TextBlock
+                    FontFamily="{DynamicResource IconsFontFamily}"
+                    FontSize="16"
+                    Text="&#xed56;" />
+                </MenuItem.Icon>
+                <MenuItem Header="Child Item 1" />
+                <MenuItem Header="Child Item 2" />
+              </MenuItem>
+
+              <MenuItem Header="Item 2" />
+
+              <Separator />
+
+              <MenuItem
+                Header="Checkable Item 1"
+                IsCheckable="True"
+                IsChecked="True" />
+              <MenuItem
+                Header="Checkable Item 2"
+                IsCheckable="True"
+                IsChecked="False" />
+
+              <Separator />
+
+              <MenuItem Header="Item 1" InputGestureText="Hint" />
+
+            </ContextMenu>
+
+          </Grid.ContextMenu>
+
+        </Grid>
+
+      </DockPanel>
+
+    </TabItem>
+
+    <TabItem Header="Expander">
+
+      <ScrollViewer>
+
+        <Grid>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="300" />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Style="{DynamicResource TextSubtitle}"
+            Text="Expander" />
+
+          <Expander
+            Grid.Row="2"
+            Grid.Column="0"
+            Content="I'm expander content"
+            Header="I'm an expander header" />
+
+          <Expander
+            Grid.Row="4"
+            Grid.Column="0"
+            Content="I'm expander content"
+            Header="I'm an expander header"
+            IsExpanded="True" />
+
+          <Expander
+            Grid.Row="6"
+            Grid.Column="0"
+            Content="I'm expander content"
+            ExpandDirection="Up"
+            Header="I'm an expander header" />
+
+          <Expander
+            Grid.Row="8"
+            Grid.Column="0"
+            Content="I'm expander content"
+            ExpandDirection="Up"
+            Header="I'm an expander header"
+            IsExpanded="True" />
+
+          <Expander
+            Grid.Row="2"
+            Grid.Column="2"
+            Content="I'm expander content"
+            Header="I'm an expander header"
+            IsEnabled="False" />
+
+          <Expander
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="I'm expander content"
+            Header="I'm an expander header"
+            IsEnabled="False"
+            IsExpanded="True" />
+
+          <Expander
+            Grid.Row="6"
+            Grid.Column="2"
+            Content="I'm expander content"
+            ExpandDirection="Up"
+            Header="I'm an expander header"
+            IsEnabled="False" />
+
+          <Expander
+            Grid.Row="8"
+            Grid.Column="2"
+            Content="I'm expander content"
+            ExpandDirection="Up"
+            Header="I'm an expander header"
+            IsEnabled="False"
+            IsExpanded="True" />
+
+          <Grid Grid.Row="10" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander
+              Grid.Column="0"
+              Content="I'm expander content"
+              ExpandDirection="Right"
+              Header="I'm an expander header" />
+
+            <Expander
+              Grid.Column="2"
+              Content="I'm expander content"
+              ExpandDirection="Right"
+              Header="I'm an expander header"
+              IsExpanded="True" />
+
+          </Grid>
+
+          <Grid Grid.Row="10" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander
+              Grid.Column="0"
+              Content="I'm expander content"
+              ExpandDirection="Right"
+              Header="I'm an expander header"
+              IsEnabled="False" />
+
+            <Expander
+              Grid.Column="2"
+              Content="I'm expander content"
+              ExpandDirection="Right"
+              Header="I'm an expander header"
+              IsEnabled="False"
+              IsExpanded="True" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="0">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander
+              Grid.Column="0"
+              Content="I'm expander content"
+              ExpandDirection="Left"
+              Header="I'm an expander header" />
+
+            <Expander
+              Grid.Column="2"
+              Content="I'm expander content"
+              ExpandDirection="Left"
+              Header="I'm an expander header"
+              IsExpanded="True" />
+
+          </Grid>
+
+          <Grid Grid.Row="12" Grid.Column="2">
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Expander
+              Grid.Column="0"
+              Content="I'm expander content"
+              ExpandDirection="Left"
+              Header="I'm an expander header"
+              IsEnabled="False" />
+
+            <Expander
+              Grid.Column="2"
+              Content="I'm expander content"
+              ExpandDirection="Left"
+              Header="I'm an expander header"
+              IsEnabled="False"
+              IsExpanded="True" />
+
+          </Grid>
+
+        </Grid>
+
+      </ScrollViewer>
+
+    </TabItem>
+
+    <TabItem Header="Dialogs">
+
+      <Grid>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+          Grid.Row="0"
+          Grid.Column="0"
+          Grid.ColumnSpan="3"
+          Style="{DynamicResource TextSubtitle}"
+          Text="Dialogs" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="0"
+          Click="ShowOkDialog"
+          Content="Show OK Dialog" />
+
+        <Button
+          Grid.Row="4"
+          Grid.Column="0"
+          Click="ShowOkCancelDialog"
+          Content="Show OK/Cancel Dialog" />
+
+        <Button
+          Grid.Row="6"
+          Grid.Column="0"
+          Click="ShowYesNoDialog"
+          Content="Show Yes/No Dialog" />
+
+        <Button
+          Grid.Row="8"
+          Grid.Column="0"
+          Click="ShowYesNoCancelDialog"
+          Content="Show Yes/No/Cancel Dialog" />
+
+      </Grid>
+
+    </TabItem>
+
+  </TabControl>
+
+</controls:FluentWindow>
