@@ -37,6 +37,3 @@ jobs:
 
     - name: Publish the package
       run: nuget push .\*.nupkg -NonInteractive -SkipDuplicate -Source 'https://api.nuget.org/v3/index.json'
-
-    - name: Publish the symbols
-      run: nuget push .\*.snupkg -NonInteractive -SkipDuplicate -Source 'https://api.nuget.org/v3/index.json'
