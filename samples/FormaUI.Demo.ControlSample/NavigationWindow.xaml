@@ -23,8 +23,11 @@
     </controls:NavigationView.MenuItems>
 
     <controls:NavigationView.FooterItems>
-      <controls:NavigationViewItem Content="Settings" Icon="Settings" />
       <controls:NavigationViewItem Content="App Theme" Icon="Color" />
+      <controls:NavigationViewItem
+        Content="Settings"
+        Icon="Settings"
+        NavigationType="{x:Type local:SettingsPage}" />
     </controls:NavigationView.FooterItems>
 
     <Frame x:Name="_navigationRoot" NavigationUIVisibility="Hidden" />
