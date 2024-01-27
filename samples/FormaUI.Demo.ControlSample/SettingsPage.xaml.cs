@@ -10,10 +10,15 @@ public partial class SettingsPage : Page
     public SettingsPage()
     {
         InitializeComponent();
+        _themeComboBox.SelectedItem = ThemeManager.CurrentTheme;
     }
 
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        // TODO: Theme change
+        if (!IsLoaded)
+        {
+            return;
+        }
+        ThemeManager.ChangeTheme((Theme)_themeComboBox.SelectedItem);
     }
 }

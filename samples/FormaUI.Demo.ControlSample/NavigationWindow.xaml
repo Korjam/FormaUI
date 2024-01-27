@@ -23,7 +23,6 @@
     </controls:NavigationView.MenuItems>
 
     <controls:NavigationView.FooterItems>
-      <controls:NavigationViewItem Content="App Theme" Icon="Color" />
       <controls:NavigationViewItem
         Content="Settings"
         Icon="Settings"

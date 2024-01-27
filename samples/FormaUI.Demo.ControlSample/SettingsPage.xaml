@@ -6,7 +6,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:FormaUI.Demo.ControlSample"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:system="clr-namespace:System;assembly=System.Runtime"
+  xmlns:ui="clr-namespace:FormaUI;assembly=FormaUI"
   Title="SettingsPage"
   d:DesignHeight="450"
   d:DesignWidth="800"
@@ -16,7 +16,7 @@
     
     <TextBlock
       Margin="0,0,0,20"
-      Style="{DynamicResource TextSubtitle}"
+      Style="{DynamicResource TextTitle}"
       Text="Settings" />
     
     <Expander HorizontalContentAlignment="Stretch">
@@ -26,6 +26,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
           <controls:SymbolIcon
@@ -46,14 +47,16 @@
               Grid.Row="1"
               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
               Style="{DynamicResource TextCaption}"
-              Text="Select which app theme to display" />
+              Text="Select which app theme to display"
+              TextTrimming="CharacterEllipsis" />
           </Grid>
-          <ComboBox
-            Grid.Column="3"
+          <ComboBox x:Name="_themeComboBox"
+            Grid.Column="4"
             MinWidth="120"
-            SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
-            <system:String>Light</system:String>
-            <system:String>Dark</system:String>
+            SelectedIndex="0"
+            SelectionChanged="ComboBox_SelectionChanged">
+            <ui:Theme>Light</ui:Theme>
+            <ui:Theme>Dark</ui:Theme>
           </ComboBox>
         </Grid>
       </Expander.Header>
