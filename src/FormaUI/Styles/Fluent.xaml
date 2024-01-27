@@ -22,6 +22,7 @@
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/ListView.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/Menu.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/MenuItem.xaml" />
+    <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/NavigationView.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/NumericUpDown.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/PasswordBox.xaml" />
     <ResourceDictionary Source="pack://application:,,,/FormaUI;component/Styles/Controls/ProgressBar.xaml" />
