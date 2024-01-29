@@ -69,7 +69,7 @@ public static class ThemeManager
         var originalUri = GetUri(AppliedTheme);
 
         var dictionary = Application.Current.Resources.MergedDictionaries
-            .FirstOrDefault(x => x.Source.LocalPath == originalUri);
+            .FirstOrDefault(x => x.Source.IsAbsoluteUri && x.Source.LocalPath == originalUri);
 
         if (dictionary is not null)
         {
@@ -94,7 +94,7 @@ public static class ThemeManager
 
     private static Theme FindTheme()
     {
-        foreach (var item in GetMergedDictionariesRecursive().Where(x => x.Source != null).Reverse())
+        foreach (var item in GetMergedDictionariesRecursive().Where(x => x.Source != null && x.Source.IsAbsoluteUri).Reverse())
         {
             if (item.Source.LocalPath == LightDictionary)
             {
