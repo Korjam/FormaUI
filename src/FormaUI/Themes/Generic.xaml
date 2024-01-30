@@ -29,4 +29,6 @@
     </Setter>
   </Style>
 
+  <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type controls:NumericUpDown}" />
+
 </ResourceDictionary>
