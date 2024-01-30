@@ -32,6 +32,12 @@
           <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -78,6 +84,40 @@
           Content="Text"
           IsEnabled="False"
           Style="{DynamicResource StandardCompactButtonStyle}" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="8"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          Style="{DynamicResource StandardButtonPillStyle}" />
+
+        <Button
+          Grid.Row="2"
+          Grid.Column="10"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource StandardButtonPillStyle}" />
+
+        <Button
+          Grid.Row="4"
+          Grid.Column="8"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          Style="{DynamicResource AccentButtonPillStyle}" />
+
+        <Button
+          Grid.Row="4"
+          Grid.Column="10"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource AccentButtonPillStyle}" />
 
         <Button
           Grid.Row="4"
