@@ -87,4 +87,16 @@
     </Style.Triggers>
   </Style>
 
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:IntegerUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:DoubleUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:FloatUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:DecimalUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:LongUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:ShortUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:ByteUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:SByteUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:UShortUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:UIntUpDown}" />
+  <Style BasedOn="{StaticResource {x:Type controls:NumericUpDown}}" TargetType="{x:Type controls:ULongUpDown}" />
+
 </ResourceDictionary>

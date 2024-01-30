@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Numerics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
@@ -6,14 +7,22 @@ namespace FormaUI.Controls;
 
 [TemplatePart(Name = "PART_UpButton", Type = typeof(RepeatButton))]
 [TemplatePart(Name = "PART_DownButton", Type = typeof(RepeatButton))]
-public class NumericUpDown : TextBox
+public abstract class NumericUpDown : TextBox
+{
+    static NumericUpDown()
+    {
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown), new FrameworkPropertyMetadata(typeof(NumericUpDown)));
+    }
+}
+
+public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber<T>, IMinMaxValue<T>
 {
     private const string UpButtonName = "PART_UpButton";
     private const string DownButtonName = "PART_DownButton";
 
     static NumericUpDown()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown), new FrameworkPropertyMetadata(typeof(NumericUpDown)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown<T>), new FrameworkPropertyMetadata(typeof(NumericUpDown<T>)));
     }
 
     private RepeatButton _upButton;
@@ -22,78 +31,87 @@ public class NumericUpDown : TextBox
     public static readonly DependencyProperty ValueProperty =
         DependencyProperty.Register(
             nameof(Value),
-            typeof(int?),
-            typeof(NumericUpDown),
-            new FrameworkPropertyMetadata(0, OnValueChanged, CoerceValue));
+            typeof(T?),
+            typeof(NumericUpDown<T>),
+            new FrameworkPropertyMetadata(null,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                OnValueChanged,
+                CoerceValue));
 
-    public int? Value
+    public T? Value
     {
-        get => (int?)GetValue(ValueProperty);
+        get => (T?)GetValue(ValueProperty);
         set => SetValue(ValueProperty, value);
     }
 
     private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown)d).OnValueChanged((int?)e.NewValue);
+        ((NumericUpDown<T>)d).OnValueChanged((T?)e.NewValue);
     }
 
     private static object? CoerceValue(DependencyObject d, object baseValue)
     {
-        return ((NumericUpDown)d).CoerceValue((int?)baseValue);
+        return ((NumericUpDown<T>)d).CoerceValue((T?)baseValue);
     }
 
     public static readonly DependencyProperty StepProperty =
         DependencyProperty.Register(
             nameof(Step),
-            typeof(int),
-            typeof(NumericUpDown),
-            new FrameworkPropertyMetadata(1, OnStepChanged));
+            typeof(T),
+            typeof(NumericUpDown<T>),
+            new FrameworkPropertyMetadata(1,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                OnStepChanged));
 
-    public int Step
+    public T Step
     {
-        get => (int)GetValue(StepProperty);
+        get => (T)GetValue(StepProperty);
         set => SetValue(StepProperty, Step);
     }
 
     private static void OnStepChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown)d).OnStepChanged((int)e.NewValue);
+        ((NumericUpDown<T>)d).OnStepChanged((T)e.NewValue);
     }
 
     public static readonly DependencyProperty MinProperty =
         DependencyProperty.Register(
             nameof(Min),
-            typeof(int),
-            typeof(NumericUpDown),
-            new FrameworkPropertyMetadata(int.MinValue, OnMinChanged));
+            typeof(T),
+            typeof(NumericUpDown<T>),
+            new FrameworkPropertyMetadata(T.MinValue,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                OnMinChanged));
 
-    public int Min
+    public T Min
     {
-        get => (int)GetValue(MinProperty);
+        get => (T)GetValue(MinProperty);
         set => SetValue(MinProperty, Min);
     }
 
     private static void OnMinChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown)d).OnMinChanged((int)e.NewValue);
+        ((NumericUpDown<T>)d).OnMinChanged((T)e.NewValue);
     }
 
     public static readonly DependencyProperty MaxProperty =
         DependencyProperty.Register(
             nameof(Max),
-            typeof(int),
-            typeof(NumericUpDown),
-            new FrameworkPropertyMetadata(int.MaxValue, OnMaxChanged));
+            typeof(T),
+            typeof(NumericUpDown<T>),
+            new FrameworkPropertyMetadata(T.MaxValue,
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                OnMaxChanged));
 
-    public int Max
+    public T Max
     {
-        get => (int)GetValue(MaxProperty);
+        get => (T)GetValue(MaxProperty);
         set => SetValue(MaxProperty, Max);
     }
 
     private static void OnMaxChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown)d).OnMaxChanged((int)e.NewValue);
+        ((NumericUpDown<T>)d).OnMaxChanged((T)e.NewValue);
     }
 
     public override void OnApplyTemplate()
@@ -105,29 +123,27 @@ public class NumericUpDown : TextBox
 
         _upButton.Click += (sender, e) =>
         {
+            Value ??= T.Zero;
             Value += Step;
         };
 
         _downButton.Click += (sender, e) =>
         {
+            Value ??= T.Zero;
             Value -= Step;
         };
+
+        UpdateButtonsState();
     }
 
-    protected virtual void OnValueChanged(int? newValue)
+    protected virtual void OnValueChanged(T? newValue)
     {
-        if (newValue is null)
-        {
-            return;
-        }
+        UpdateButtonsState();
 
-        _upButton.SetCurrentValue(IsEnabledProperty, newValue < Max);
-        _downButton.SetCurrentValue(IsEnabledProperty, newValue > Min);
-
-        SetCurrentValue(TextProperty, newValue.ToString());
+        SetCurrentValue(TextProperty, newValue?.ToString());
     }
 
-    protected virtual int? CoerceValue(int? newValue)
+    protected virtual T? CoerceValue(T? newValue)
     {
         if (newValue is null)
         {
@@ -144,38 +160,52 @@ public class NumericUpDown : TextBox
         return newValue;
     }
 
-    protected virtual void OnStepChanged(int newValue)
+    protected virtual void OnStepChanged(T newValue)
     {
 
     }
 
-    protected virtual void OnMinChanged(int newValue)
+    protected virtual void OnMinChanged(T newValue)
     {
         if (Value < newValue)
         {
             SetCurrentValue(ValueProperty, newValue);
         }
+
+        UpdateButtonsState();
     }
 
-    protected virtual void OnMaxChanged(int newValue)
+    protected virtual void OnMaxChanged(T newValue)
     {
         if (Value > newValue)
         {
             SetCurrentValue(ValueProperty, newValue);
         }
+
+        UpdateButtonsState();
     }
 
     protected override void OnTextChanged(TextChangedEventArgs e)
     {
         base.OnTextChanged(e);
 
-        if (!int.TryParse(Text, out int result))
+        if (!T.TryParse(Text, null, out T result))
         {
             SetCurrentValue(TextProperty, Value?.ToString());
         }
-        else
+        else if (result <= Max && result >= Min)
         {
             SetCurrentValue(ValueProperty, result);
         }
+        else
+        {
+            SetCurrentValue(TextProperty, Value?.ToString());
+        }
+    }
+
+    private void UpdateButtonsState()
+    {
+        _upButton?.SetCurrentValue(IsEnabledProperty, Value < Max);
+        _downButton?.SetCurrentValue(IsEnabledProperty, Value > Min);
     }
 }

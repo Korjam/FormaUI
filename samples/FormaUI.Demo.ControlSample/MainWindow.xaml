@@ -1852,14 +1852,14 @@
           Style="{DynamicResource TextSubtitle}"
           Text="Numeric Box" />
 
-        <controls:NumericUpDown
+        <controls:IntegerUpDown
           Grid.Row="2"
           Grid.Column="0"
           Max="50"
           Min="-100"
           Step="10" />
 
-        <controls:NumericUpDown
+        <controls:IntegerUpDown
           Grid.Row="2"
           Grid.Column="2"
           IsEnabled="False" />
