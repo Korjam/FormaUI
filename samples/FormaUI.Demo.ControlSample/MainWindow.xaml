@@ -226,6 +226,14 @@
           <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -310,6 +318,86 @@
           Grid.Column="6"
           IsChecked="{x:Null}"
           IsEnabled="False" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="8"
+          Content="Text"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="10"
+          Content="Text"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="8"
+          Content="Text"
+          IsChecked="True"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="10"
+          Content="Text"
+          IsChecked="True"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="8"
+          Content="Text"
+          IsChecked="{x:Null}"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="10"
+          Content="Text"
+          IsChecked="{x:Null}"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="12"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="2"
+          Grid.Column="14"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="12"
+          IsChecked="True"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="4"
+          Grid.Column="14"
+          IsChecked="True"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="12"
+          IsChecked="{x:Null}"
+          Style="{DynamicResource SwitchToggle}" />
+
+        <CheckBox
+          Grid.Row="6"
+          Grid.Column="14"
+          IsChecked="{x:Null}"
+          IsEnabled="False"
+          Style="{DynamicResource SwitchToggle}" />
 
       </Grid>
 

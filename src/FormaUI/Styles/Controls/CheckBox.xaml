@@ -146,4 +146,189 @@
       </Setter.Value>
     </Setter>
   </Style>
+
+  <Style x:Key="SwitchToggle" TargetType="{x:Type CheckBox}">
+    <Setter Property="Background" Value="{DynamicResource ControlAltFillColorSecondaryBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}" />
+    <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <Setter Property="FontSize" Value="{DynamicResource BodyFontSize}" />
+    <Setter Property="FontWeight" Value="{DynamicResource BodyFontWeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type CheckBox}">
+          <Grid x:Name="templateRoot"
+            Background="Transparent"
+            SnapsToDevicePixels="True">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+              Width="40"
+              Height="20"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="10" />
+
+            <Border x:Name="thumb"
+              Width="12"
+              Height="12"
+              Margin="4"
+              HorizontalAlignment="Left"
+              Background="{DynamicResource TextFillColorSecondaryBrush}"
+              CornerRadius="6" />
+            <Border x:Name="thumbOutterBorder"
+              Width="14"
+              Height="14"
+              Margin="3"
+              HorizontalAlignment="Left"
+              BorderBrush="{DynamicResource CircleElevationBorderBrush}"
+              BorderThickness="0"
+              CornerRadius="7" />
+
+            <ContentPresenter x:Name="contentPresenter"
+              Grid.Column="1"
+              Margin="{TemplateBinding Padding}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Focusable="False"
+              RecognizesAccessKey="True"
+              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+          </Grid>
+          <ControlTemplate.Triggers>
+
+            <Trigger Property="HasContent" Value="True">
+              <Setter Property="Padding" Value="8,5,0,7" />
+              <Setter TargetName="templateRoot" Property="Margin" Value="4,0,8,0" />
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+              <Setter Property="BorderThickness" Value="0" />
+              <Setter TargetName="thumb" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
+              <Setter TargetName="thumbOutterBorder" Property="HorizontalAlignment" Value="Right" />
+              <Setter TargetName="thumbOutterBorder" Property="BorderThickness" Value="1" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="thumb" Property="Height" Value="14" />
+              <Setter TargetName="thumb" Property="Width" Value="14" />
+              <Setter TargetName="thumb" Property="CornerRadius" Value="7" />
+              <Setter TargetName="thumb" Property="Margin" Value="3" />
+
+              <Setter TargetName="thumbOutterBorder" Property="Height" Value="16" />
+              <Setter TargetName="thumbOutterBorder" Property="Width" Value="16" />
+              <Setter TargetName="thumbOutterBorder" Property="CornerRadius" Value="8" />
+              <Setter TargetName="thumbOutterBorder" Property="Margin" Value="2" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="thumb" Property="Height" Value="14" />
+              <Setter TargetName="thumb" Property="Width" Value="17" />
+              <Setter TargetName="thumb" Property="CornerRadius" Value="7" />
+              <Setter TargetName="thumb" Property="Margin" Value="3" />
+
+              <Setter TargetName="thumbOutterBorder" Property="Height" Value="16" />
+              <Setter TargetName="thumbOutterBorder" Property="Width" Value="19" />
+              <Setter TargetName="thumbOutterBorder" Property="CornerRadius" Value="8" />
+              <Setter TargetName="thumbOutterBorder" Property="Margin" Value="2" />
+            </Trigger>
+
+            <!-- Checked == False -->
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="False" />
+                <Condition Property="IsMouseOver" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="False" />
+                <Condition Property="IsPressed" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="False" />
+                <Condition Property="IsEnabled" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorDisabledBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongColorDisabledBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorDisabledBrush}" />
+            </MultiTrigger>
+
+            <!-- Checked == null (same as Checked == false) -->
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="{x:Null}" />
+                <Condition Property="IsMouseOver" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorTertiaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="{x:Null}" />
+                <Condition Property="IsPressed" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorQuarternaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongStrokeColorDefaultBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="{x:Null}" />
+                <Condition Property="IsEnabled" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource ControlAltFillColorDisabledBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource ControlStrongColorDisabledBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextFillColorDisabledBrush}" />
+            </MultiTrigger>
+
+            <!-- Checked == True -->
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="True" />
+                <Condition Property="IsMouseOver" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorSecondaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="True" />
+                <Condition Property="IsPressed" Value="True" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorTertiaryBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsChecked" Value="True" />
+                <Condition Property="IsEnabled" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+              <Setter TargetName="thumb" Property="Background" Value="{DynamicResource TextOnAccentFillColorDisabledBrush}" />
+              <Setter TargetName="thumbOutterBorder" Property="BorderThickness" Value="0" />
+            </MultiTrigger>
+
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
 </ResourceDictionary>
