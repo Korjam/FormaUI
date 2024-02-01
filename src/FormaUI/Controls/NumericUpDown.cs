@@ -77,41 +77,41 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
     public static readonly DependencyProperty MinProperty =
         DependencyProperty.Register(
             nameof(Min),
-            typeof(T),
+            typeof(T?),
             typeof(NumericUpDown<T>),
             new FrameworkPropertyMetadata(T.MinValue,
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnMinChanged));
 
-    public T Min
+    public T? Min
     {
-        get => (T)GetValue(MinProperty);
+        get => (T?)GetValue(MinProperty);
         set => SetValue(MinProperty, Min);
     }
 
     private static void OnMinChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown<T>)d).OnMinChanged((T)e.NewValue);
+        ((NumericUpDown<T>)d).OnMinChanged((T?)e.NewValue);
     }
 
     public static readonly DependencyProperty MaxProperty =
         DependencyProperty.Register(
             nameof(Max),
-            typeof(T),
+            typeof(T?),
             typeof(NumericUpDown<T>),
             new FrameworkPropertyMetadata(T.MaxValue,
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnMaxChanged));
 
-    public T Max
+    public T? Max
     {
-        get => (T)GetValue(MaxProperty);
+        get => (T?)GetValue(MaxProperty);
         set => SetValue(MaxProperty, Max);
     }
 
     private static void OnMaxChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((NumericUpDown<T>)d).OnMaxChanged((T)e.NewValue);
+        ((NumericUpDown<T>)d).OnMaxChanged((T?)e.NewValue);
     }
 
     public override void OnApplyTemplate()
@@ -165,8 +165,9 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
     }
 
-    protected virtual void OnMinChanged(T newValue)
+    protected virtual void OnMinChanged(T? newValue)
     {
+        newValue ??= T.MinValue;
         if (Value < newValue)
         {
             SetCurrentValue(ValueProperty, newValue);
@@ -175,8 +176,9 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         UpdateButtonsState();
     }
 
-    protected virtual void OnMaxChanged(T newValue)
+    protected virtual void OnMaxChanged(T? newValue)
     {
+        newValue ??= T.MaxValue;
         if (Value > newValue)
         {
             SetCurrentValue(ValueProperty, newValue);
@@ -205,7 +207,17 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
     private void UpdateButtonsState()
     {
-        _upButton?.SetCurrentValue(IsEnabledProperty, Value < Max);
-        _downButton?.SetCurrentValue(IsEnabledProperty, Value > Min);
+        if (Value is null)
+        {
+            _upButton?.SetCurrentValue(IsEnabledProperty, true);
+            _downButton?.SetCurrentValue(IsEnabledProperty, true);
+            return;
+        }
+
+        var maxValue = Max ?? T.MaxValue;
+        var minValue = Min ?? T.MinValue;
+
+        _upButton?.SetCurrentValue(IsEnabledProperty, Value < maxValue);
+        _downButton?.SetCurrentValue(IsEnabledProperty, Value > minValue);
     }
 }
