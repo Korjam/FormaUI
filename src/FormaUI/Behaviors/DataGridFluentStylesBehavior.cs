@@ -47,7 +47,7 @@ public sealed class DataGridFluentStylesBehavior : Behavior<DataGrid>
             case NotifyCollectionChangedAction.Move:
             case NotifyCollectionChangedAction.Reset:
             default:
-                throw new UnreachableException();
+                break;
         }
     }
 
