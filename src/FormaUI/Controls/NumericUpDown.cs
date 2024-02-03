@@ -149,14 +149,19 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         {
             return null;
         }
-        if (newValue > Max)
+
+        var maxValue = Max ?? T.MaxValue;
+        if (newValue > maxValue)
         {
-            return Max;
+            return maxValue;
         }
-        if (newValue < Min)
+
+        var minValue = Min ?? T.MinValue;
+        if (newValue < minValue)
         {
-            return Min;
+            return minValue;
         }
+
         return newValue;
     }
 
@@ -195,7 +200,7 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         {
             SetCurrentValue(TextProperty, Value?.ToString());
         }
-        else if (result <= Max && result >= Min)
+        else if (result <= (Max ?? T.MaxValue) && result >= (Min ?? T.MinValue))
         {
             SetCurrentValue(ValueProperty, result);
         }
