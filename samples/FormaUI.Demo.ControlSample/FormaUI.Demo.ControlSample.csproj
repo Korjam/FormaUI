@@ -10,7 +10,7 @@
     <PackageReference Include="VirtualizingWrapPanel" Version="2.3.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(TargetFramework) == net48">
+  <ItemGroup Condition=" $(DefineConstants.Contains(NETCOREAPP)) == false ">
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
