@@ -25,8 +25,8 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown<T>), new FrameworkPropertyMetadata(typeof(NumericUpDown<T>)));
     }
 
-    private RepeatButton _upButton;
-    private RepeatButton _downButton;
+    private RepeatButton? _upButton;
+    private RepeatButton? _downButton;
 
     public static readonly DependencyProperty ValueProperty =
         DependencyProperty.Register(
@@ -49,7 +49,7 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         ((NumericUpDown<T>)d).OnValueChanged((T?)e.NewValue);
     }
 
-    private static object? CoerceValue(DependencyObject d, object baseValue)
+    private static object? CoerceValue(DependencyObject d, object? baseValue)
     {
         return ((NumericUpDown<T>)d).CoerceValue((T?)baseValue);
     }
@@ -59,7 +59,9 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
             nameof(Step),
             typeof(T),
             typeof(NumericUpDown<T>),
+#pragma warning disable WPF0010 // Default value type must match registered type
             new FrameworkPropertyMetadata(1,
+#pragma warning restore WPF0010 // Default value type must match registered type
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnStepChanged));
 
@@ -123,14 +125,12 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
         _upButton.Click += (sender, e) =>
         {
-            Value ??= T.Zero;
-            Value += Step;
+            SetCurrentValue(ValueProperty, (Value ?? T.Zero) + Step);
         };
 
         _downButton.Click += (sender, e) =>
         {
-            Value ??= T.Zero;
-            Value -= Step;
+            SetCurrentValue(ValueProperty, (Value ?? T.Zero) - Step);
         };
 
         UpdateButtonsState();
