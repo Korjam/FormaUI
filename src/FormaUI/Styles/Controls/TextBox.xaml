@@ -20,7 +20,6 @@
     <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
     <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
     <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}" />
-    <Setter Property="SelectionTextBrush" Value="{DynamicResource TextOnAccentFillColorSelectedTextBrush}" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
     <Setter Property="behaviors:TextBoxBehaviors.MonitorProperties" Value="True" />
@@ -92,7 +91,6 @@
           <Condition Property="IsSelectionActive" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}" />
-        <Setter Property="SelectionTextBrush" Value="{DynamicResource TextOnAccentFillColorSelectedTextBrush}" />
       </MultiTrigger>
     </Style.Triggers>
   </Style>
