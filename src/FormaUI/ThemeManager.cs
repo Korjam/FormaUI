@@ -141,7 +141,11 @@ public static class ThemeManager
         Application.Current.Resources.GetMergedDictionariesRecursive();
 
     private static IEnumerable<ResourceDictionary> GetMergedDictionariesRecursive(this ResourceDictionary dictionary) =>
+#if NET47_OR_GREATER || NET
         dictionary.MergedDictionaries.SelectMany(GetMergedDictionariesRecursive).Prepend(dictionary);
+#else
+        new[] { dictionary }.Concat(dictionary.MergedDictionaries.SelectMany(GetMergedDictionariesRecursive));
+#endif
 }
 
 public enum Theme
