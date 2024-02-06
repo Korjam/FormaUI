@@ -3,6 +3,14 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <Authors>Francisco Torralvo</Authors>
+    <Description>FormaUI is an open source implementation of FluentUI styles for existing WPF components.</Description>
+    <Copyright>Copyright © 2023 Francisco Torralvo</Copyright>
+    <PackageProjectUrl>https://github.com/Korjam/FormaUI</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Korjam/FormaUI</RepositoryUrl>
+    <PackageTags>WPF,XAML,UI,Modern,Material,Fluent,WinUI,Toolkit,Theme,OpenSource</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
     
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     
