@@ -187,7 +187,11 @@ public partial class MessageBoxDialog : INotifyPropertyChanged
             MessageBoxButton.OKCancel => result.Value ? MessageBoxResult.OK : throw new NotSupportedException("Result always should be 'Ok' if not cancelled."),
             MessageBoxButton.YesNoCancel => result.Value ? MessageBoxResult.Yes : MessageBoxResult.No,
             MessageBoxButton.YesNo => result.Value ? MessageBoxResult.Yes : MessageBoxResult.No,
+#if NET7_0_OR_GREATER
             _ => throw new UnreachableException(),
+#else
+            _ => throw new NotImplementedException(),
+#endif
         };
     }
 
