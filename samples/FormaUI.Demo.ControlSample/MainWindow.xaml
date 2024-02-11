@@ -1852,6 +1852,8 @@
           <RowDefinition Height="Auto" />
           <RowDefinition Height="5" />
           <RowDefinition Height="Auto" />
+          <RowDefinition Height="5" />
+          <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBlock
@@ -1870,6 +1872,17 @@
           Grid.Column="2"
           IsEnabled="False"
           Text="Text" />
+
+        <TextBox
+          Grid.Row="4"
+          Grid.Column="0"
+          behaviors:TextBoxBehaviors.Watermark="Watermark" />
+
+        <TextBox
+          Grid.Row="4"
+          Grid.Column="2"
+          behaviors:TextBoxBehaviors.Watermark="Watermark"
+          IsEnabled="False" />
 
       </Grid>
 
