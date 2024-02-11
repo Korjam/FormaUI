@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+#if NET7_0_OR_GREATER
+using System.Numerics;
+#endif
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -15,7 +17,11 @@ public abstract class NumericUpDown : TextBox
     }
 }
 
+#if NET7_0_OR_GREATER
 public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber<T>, IMinMaxValue<T>
+#else
+public abstract class NumericUpDown<T> : NumericUpDown where T : struct
+#endif
 {
     private const string UpButtonName = "PART_UpButton";
     private const string DownButtonName = "PART_DownButton";
@@ -82,7 +88,11 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
             nameof(Min),
             typeof(T?),
             typeof(NumericUpDown<T>),
+#if NET7_0_OR_GREATER
             new FrameworkPropertyMetadata(T.MinValue,
+#else
+            new FrameworkPropertyMetadata(null,
+#endif
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnMinChanged));
 
@@ -102,7 +112,11 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
             nameof(Max),
             typeof(T?),
             typeof(NumericUpDown<T>),
+#if NET7_0_OR_GREATER
             new FrameworkPropertyMetadata(T.MaxValue,
+#else
+            new FrameworkPropertyMetadata(null,
+#endif
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnMaxChanged));
 
@@ -126,12 +140,20 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
         _upButton.Click += (sender, e) =>
         {
+#if NET7_0_OR_GREATER
             SetCurrentValue(ValueProperty, (Value ?? T.Zero) + Step);
+#else
+            Increment(Step);
+#endif
         };
 
         _downButton.Click += (sender, e) =>
         {
+#if NET7_0_OR_GREATER
             SetCurrentValue(ValueProperty, (Value ?? T.Zero) - Step);
+#else
+            Decrement(Step);
+#endif
         };
 
         UpdateButtonsState();
@@ -160,14 +182,24 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
             return null;
         }
 
+#if NET7_0_OR_GREATER
         var maxValue = Max ?? T.MaxValue;
         if (newValue > maxValue)
+#else
+        var maxValue = Max ?? MaxValue;
+        if (IsGreaterThan(newValue.Value, maxValue))
+#endif
         {
             return maxValue;
         }
 
+#if NET7_0_OR_GREATER
         var minValue = Min ?? T.MinValue;
         if (newValue < minValue)
+#else
+        var minValue = Min ?? MinValue;
+        if (IsLessThan(newValue.Value, minValue))
+#endif
         {
             return minValue;
         }
@@ -182,8 +214,13 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
     protected virtual void OnMinChanged(T? newValue)
     {
+#if NET7_0_OR_GREATER
         newValue ??= T.MinValue;
         if (Value < newValue)
+#else
+        newValue ??= MinValue;
+        if (IsLessThan(Value ?? Zero, newValue.Value))
+#endif
         {
             SetCurrentValue(ValueProperty, newValue);
         }
@@ -193,8 +230,13 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
     protected virtual void OnMaxChanged(T? newValue)
     {
+#if NET7_0_OR_GREATER
         newValue ??= T.MaxValue;
         if (Value > newValue)
+#else
+        newValue ??= MaxValue;
+        if (IsGreaterThan(Value ?? Zero, newValue.Value))
+#endif
         {
             SetCurrentValue(ValueProperty, newValue);
         }
@@ -217,7 +259,11 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         {
             SetCurrentValue(ValueProperty, null);
         }
+#if NET7_0_OR_GREATER
         else if (!T.TryParse(Text, null, out T result))
+#else
+        else if (!TryParse(Text, out T result))
+#endif
         {
             if (Text.Trim() == "-")
             {
@@ -228,7 +274,11 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
                 SetCurrentValue(TextProperty, Value?.ToString());
             }
         }
+#if NET7_0_OR_GREATER
         else if (result <= (Max ?? T.MaxValue) && result >= (Min ?? T.MinValue))
+#else
+        else if (IsLessThanOrEquals(result, Max ?? MaxValue) && IsGreaterThanOrEquals(result, (Min ?? MinValue)))
+#endif
         {
             SetCurrentValue(ValueProperty, result);
         }
@@ -249,10 +299,31 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
             return;
         }
 
+#if NET7_0_OR_GREATER
         var maxValue = Max ?? T.MaxValue;
         var minValue = Min ?? T.MinValue;
 
         _upButton?.SetCurrentValue(IsEnabledProperty, Value < maxValue);
         _downButton?.SetCurrentValue(IsEnabledProperty, Value > minValue);
+#else
+        var maxValue = Max ?? MaxValue;
+        var minValue = Min ?? MinValue;
+
+        _upButton?.SetCurrentValue(IsEnabledProperty, IsLessThan(Value.Value, maxValue));
+        _downButton?.SetCurrentValue(IsEnabledProperty, IsGreaterThan(Value.Value, minValue));
+#endif
     }
+
+#if !NET7_0_OR_GREATER
+    protected abstract T Zero { get; }
+    protected abstract T MaxValue { get; }
+    protected abstract T MinValue { get; }
+    protected abstract bool TryParse(string? s, out T result);
+    protected abstract bool IsLessThan(T left, T right);
+    protected abstract bool IsLessThanOrEquals(T left, T right);
+    protected abstract bool IsGreaterThan(T left, T right);
+    protected abstract bool IsGreaterThanOrEquals(T left, T right);
+    protected abstract void Increment(T step);
+    protected abstract void Decrement(T step);
+#endif
 }
