@@ -51,7 +51,7 @@ public static class FluentMessageBox
             Owner = owner,
             WindowStartupLocation = WindowStartupLocation.CenterOwner,
         };
-        
+
         dialog.ShowDialog();
 
         return dialog.Result;

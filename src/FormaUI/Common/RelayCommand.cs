@@ -9,18 +9,18 @@ internal class RelayCommand : ICommand
 
     public RelayCommand(Action execute)
          : this(execute, null)
-     {
-     }
+    {
+    }
 
-     public RelayCommand(Action execute, Func<bool>? canExecute)
-     {
-         this._execute = execute ?? throw new ArgumentNullException(nameof(execute));
-         this._canExecute = canExecute;
-     }
+    public RelayCommand(Action execute, Func<bool>? canExecute)
+    {
+        this._execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        this._canExecute = canExecute;
+    }
 
-     public event EventHandler? CanExecuteChanged;
+    public event EventHandler? CanExecuteChanged;
 
-     public bool CanExecute(object? parameter) => _canExecute?.Invoke() ?? true;
-     public void Execute(object? parameter) => _execute();
-     public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    public bool CanExecute(object? parameter) => _canExecute?.Invoke() ?? true;
+    public void Execute(object? parameter) => _execute();
+    public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }
