@@ -30,7 +30,11 @@ public class MainViewModel
             new User("Javier Vega", Gender.Male, 39, false)
         };
 
+#if NET5_0_OR_GREATER
         Icons = Enum.GetValues<Symbol>()
+#else
+        Icons = Enum.GetValues(typeof(Symbol)).Cast<Symbol>()
+#endif
             .Skip(1)
             .OrderBy(x => x.ToString())
             .ToList();

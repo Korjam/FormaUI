@@ -89,7 +89,11 @@ public static class ThemeManager
         Theme.Light => LightDictionary,
         Theme.Dark => DarkDictionary,
         Theme.Unknown => throw new InvalidOperationException(),
+#if NET7_0_OR_GREATER
         _ => throw new UnreachableException(),
+#else
+        _ => throw new NotImplementedException(),
+#endif
     };
 
     private static Theme FindTheme()
