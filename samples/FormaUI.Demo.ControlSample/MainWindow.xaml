@@ -2130,6 +2130,8 @@
           <ColumnDefinition Width="150" />
           <ColumnDefinition Width="5" />
           <ColumnDefinition Width="200" />
+          <ColumnDefinition Width="5" />
+          <ColumnDefinition Width="150" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -2182,6 +2184,28 @@
         </ListView>
 
         <TreeView Grid.Row="2" Grid.Column="6">
+          <TreeViewItem Header="Item 1" />
+          <TreeViewItem Header="Item 2" />
+          <TreeViewItem Header="Item 2" IsExpanded="True">
+            <TreeViewItem Header="Item 1" />
+            <TreeViewItem
+              Header="Item 2"
+              IsExpanded="True"
+              IsSelected="True">
+              <TreeViewItem Header="Item 1" />
+              <TreeViewItem Header="Item 2" />
+            </TreeViewItem>
+            <TreeViewItem Header="Item 3" />
+          </TreeViewItem>
+          <TreeViewItem Header="Item 2" IsExpanded="False">
+            <TreeViewItem Header="Item 1" />
+          </TreeViewItem>
+        </TreeView>
+
+        <TreeView
+          Grid.Row="2"
+          Grid.Column="8"
+          Style="{DynamicResource CompactTreeView}">
           <TreeViewItem Header="Item 1" />
           <TreeViewItem Header="Item 2" />
           <TreeViewItem Header="Item 2" IsExpanded="True">

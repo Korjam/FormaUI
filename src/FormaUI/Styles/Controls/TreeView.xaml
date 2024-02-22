@@ -6,8 +6,6 @@
 
   <converters:ThicknessConverter x:Key="depthMarginConverter" Factor="16,0,0,0" />
 
-  <SolidColorBrush x:Key="ListBorder" Color="#828790" />
-
   <Style x:Key="{x:Type TreeView}" TargetType="{x:Type TreeView}">
     <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
@@ -194,6 +192,91 @@
         </Setter>
       </Trigger>
     </Style.Triggers>
+  </Style>
+
+  <Style x:Key="CompactTreeView"
+    BasedOn="{StaticResource {x:Type TreeView}}"
+    TargetType="{x:Type TreeView}">
+    <Setter Property="ItemContainerStyle" Value="{DynamicResource CompactTreeViewItem}" />
+  </Style>
+
+  <Style x:Key="CompactTreeViewItem"
+    BasedOn="{StaticResource {x:Type TreeViewItem}}"
+    TargetType="{x:Type TreeViewItem}">
+    <Setter Property="ItemContainerStyle" Value="{DynamicResource CompactTreeViewItem}" />
+    <Setter Property="behaviors:TreeViewBehaviors.CalculateDepth" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type TreeViewItem}">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Name="Bd"
+              Padding="{TemplateBinding Padding}"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="4"
+              SnapsToDevicePixels="True">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="14" />
+                  <ColumnDefinition Width="12" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="PART_Header"
+                  Grid.Column="0"
+                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                  ContentSource="Header"
+                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                <ToggleButton x:Name="Expander"
+                  Grid.Column="2"
+                  ClickMode="Press"
+                  Content="&#xE972;"
+                  Foreground="{TemplateBinding Foreground}"
+                  IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                  Style="{StaticResource ExpandCollapseToggleStyle}" />
+              </Grid>
+            </Border>
+            <Border x:Name="selector"
+              Width="3"
+              Height="16"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              Background="{DynamicResource AccentFillColorDefaultBrush}"
+              CornerRadius="2"
+              Visibility="Collapsed" />
+            <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" />
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger SourceName="Bd" Property="IsMouseOver" Value="True">
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+              <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+              <Setter Property="BorderBrush" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+              <Setter TargetName="selector" Property="Visibility" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
+              <Setter TargetName="selector" Property="Background" Value="{DynamicResource AccentFillColorDisabledBrush}" />
+            </Trigger>
+            <Trigger Property="IsExpanded" Value="False">
+              <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IsExpanded" Value="True">
+              <Setter TargetName="Expander" Property="Content" Value="&#xE971;" />
+            </Trigger>
+            <Trigger Property="HasItems" Value="False">
+              <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
   </Style>
 
 </ResourceDictionary>
