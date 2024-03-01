@@ -27,6 +27,7 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
 
     private RepeatButton? _upButton;
     private RepeatButton? _downButton;
+    private bool _blockReentrantCalls = false;
 
     public static readonly DependencyProperty ValueProperty =
         DependencyProperty.Register(
@@ -140,7 +141,16 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
     {
         UpdateButtonsState();
 
+        if (_blockReentrantCalls)
+        {
+            return;
+        }
+
+        _blockReentrantCalls = true;
+
         SetCurrentValue(TextProperty, newValue?.ToString());
+
+        _blockReentrantCalls = false;
     }
 
     protected virtual T? CoerceValue(T? newValue)
@@ -196,9 +206,27 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
     {
         base.OnTextChanged(e);
 
-        if (!T.TryParse(Text, null, out T result))
+        if (_blockReentrantCalls)
         {
-            SetCurrentValue(TextProperty, Value?.ToString());
+            return;
+        }
+
+        _blockReentrantCalls = true;
+
+        if (string.IsNullOrEmpty(Text))
+        {
+            SetCurrentValue(ValueProperty, null);
+        }
+        else if (!T.TryParse(Text, null, out T result))
+        {
+            if (Text.Trim() == "-")
+            {
+                SetCurrentValue(ValueProperty, null);
+            }
+            else
+            {
+                SetCurrentValue(TextProperty, Value?.ToString());
+            }
         }
         else if (result <= (Max ?? T.MaxValue) && result >= (Min ?? T.MinValue))
         {
@@ -208,6 +236,8 @@ public abstract class NumericUpDown<T> : NumericUpDown where T : struct, INumber
         {
             SetCurrentValue(TextProperty, Value?.ToString());
         }
+
+        _blockReentrantCalls = false;
     }
 
     private void UpdateButtonsState()
