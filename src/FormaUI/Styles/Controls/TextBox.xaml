@@ -22,6 +22,7 @@
     <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}" />
     <Setter Property="SelectionTextBrush" Value="{DynamicResource TextOnAccentFillColorSelectedTextBrush}" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
     <Setter Property="behaviors:TextBoxBehaviors.MonitorProperties" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -69,6 +70,10 @@
               <Setter TargetName="border" Property="Background" Value="{DynamicResource ControlFillColorInputActiveBrush}" />
               <Setter TargetName="borderAccent" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
               <Setter TargetName="borderAccent" Property="BorderThickness" Value="0,0,0,2" />
+            </Trigger>
+            <Trigger Property="Validation.HasError" Value="True">
+              <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SystemFillColorCriticalBrush}" />
+              <Setter TargetName="borderAccent" Property="BorderBrush" Value="{DynamicResource SystemFillColorCriticalBrush}" />
             </Trigger>
             <Trigger Property="behaviors:TextBoxBehaviors.Watermark" Value="{x:Null}">
               <Setter TargetName="watermarkText" Property="Visibility" Value="Collapsed" />
