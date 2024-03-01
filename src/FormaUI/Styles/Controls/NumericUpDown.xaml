@@ -1,6 +1,7 @@
-﻿<ResourceDictionary
+<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:behaviors="clr-namespace:FormaUI.Behaviors"
   xmlns:controls="clr-namespace:FormaUI.Controls">
 
   <Style x:Key="{x:Type controls:NumericUpDown}"
@@ -24,6 +25,7 @@
     <Setter Property="SelectionBrush" Value="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}" />
     <Setter Property="SelectionTextBrush" Value="{DynamicResource TextOnAccentFillColorSelectedTextBrush}" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="behaviors:TextBoxBehaviors.MonitorProperties" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type TextBoxBase}">
@@ -40,6 +42,16 @@
               Focusable="False"
               HorizontalScrollBarVisibility="Hidden"
               VerticalScrollBarVisibility="Hidden" />
+
+            <TextBlock x:Name="watermarkText"
+              Padding="{TemplateBinding Padding}"
+              FontFamily="{TemplateBinding FontFamily}"
+              FontSize="{TemplateBinding FontSize}"
+              FontWeight="{TemplateBinding FontWeight}"
+              Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+              Text="{TemplateBinding behaviors:TextBoxBehaviors.Watermark}"
+              TextTrimming="CharacterEllipsis"
+              TextWrapping="NoWrap" />
 
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
               <RepeatButton x:Name="PART_UpButton"
@@ -62,6 +74,7 @@
               <Setter Property="TextElement.Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
               <Setter TargetName="border" Property="Background" Value="{DynamicResource ControlFillColorDisabledBrush}" />
               <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource ControlStrokeColorDefaultBrush}" />
+              <Setter TargetName="watermarkText" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
               <Setter TargetName="border" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
@@ -70,6 +83,12 @@
               <Setter TargetName="border" Property="Background" Value="{DynamicResource ControlFillColorInputActiveBrush}" />
               <Setter TargetName="borderAccent" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
               <Setter TargetName="borderAccent" Property="BorderThickness" Value="0,0,0,2" />
+            </Trigger>
+            <Trigger Property="behaviors:TextBoxBehaviors.Watermark" Value="{x:Null}">
+              <Setter TargetName="watermarkText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="behaviors:TextBoxBehaviors.HasText" Value="True">
+              <Setter TargetName="watermarkText" Property="Visibility" Value="Collapsed" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
