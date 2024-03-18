@@ -58,5 +58,7 @@ public static class FluentMessageBox
     }
 
     private static Window? GetCurrentWindow() =>
-        Application.Current.Windows.Cast<Window>().LastOrDefault();
+        Application.Current.Windows.Cast<Window>()
+            .Where(x => x.IsVisible)
+            .LastOrDefault();
 }
