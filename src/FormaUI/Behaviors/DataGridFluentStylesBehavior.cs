@@ -66,8 +66,10 @@ public sealed class DataGridFluentStylesBehavior : Behavior<DataGrid>
                 checkBoxColumn.EditingElementStyle = (Style)AssociatedObject.FindResource(DataGridStyles.CheckBoxEditingStyleKey);
                 checkBoxColumn.ElementStyle = (Style)AssociatedObject.FindResource(DataGridStyles.CheckBoxStyleKey);
                 break;
-            //case DataGridHyperlinkColumn hyperlinkColumn:
-            //    break;
+            case DataGridHyperlinkColumn hyperlinkColumn:
+                hyperlinkColumn.EditingElementStyle = (Style)AssociatedObject.FindResource(DataGridStyles.TextBoxEditingStyleKey);
+                hyperlinkColumn.ElementStyle = (Style)AssociatedObject.FindResource(DataGridStyles.TextBoxStyleKey);
+                break;
             default:
                 break;
         }
