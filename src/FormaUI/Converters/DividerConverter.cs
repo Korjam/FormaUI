@@ -3,7 +3,8 @@ using System.Windows.Data;
 
 namespace FormaUI.Converters;
 
-public class DividerConverter : IValueConverter
+[ValueConversion(typeof(double), typeof(double))]
+public sealed class DividerConverter : IValueConverter
 {
     public double Divider { get; set; }
 

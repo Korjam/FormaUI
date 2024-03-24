@@ -4,7 +4,8 @@ using System.Windows.Data;
 
 namespace FormaUI.Converters;
 
-public class ThicknessConverter : IValueConverter
+[ValueConversion(typeof(int), typeof(Thickness))]
+public sealed class ThicknessConverter : IValueConverter
 {
     public Thickness Factor { get; set; }
 
@@ -22,8 +23,8 @@ public class ThicknessConverter : IValueConverter
         return value;
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException($"{nameof(ThicknessConverter)} can only be used in OneWay bindings");
     }
 }
