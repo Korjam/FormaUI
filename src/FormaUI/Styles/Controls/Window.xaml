@@ -114,6 +114,7 @@
                 <Grid.ColumnDefinitions>
                   <ColumnDefinition Width="Auto" MinWidth="16" />
                   <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
                   <ColumnDefinition Width="*" />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
@@ -146,8 +147,13 @@
                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                   Text="{TemplateBinding Title}" />
 
-                <StackPanel
+                <ContentControl
                   Grid.Column="3"
+                  Content="{TemplateBinding CaptionControl}"
+                  WindowChrome.IsHitTestVisibleInChrome="True" />
+
+                <StackPanel
+                  Grid.Column="4"
                   Orientation="Horizontal"
                   WindowChrome.IsHitTestVisibleInChrome="True">
                   <Button x:Name="MinimizeButton"

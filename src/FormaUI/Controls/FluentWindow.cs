@@ -55,6 +55,19 @@ public class FluentWindow : Window
         set => SetValue(CaptionHeightProperty, value);
     }
 
+    public static readonly DependencyProperty CaptionControlProperty =
+        DependencyProperty.Register(
+            nameof(CaptionControl),
+            typeof(object),
+            typeof(FluentWindow),
+            new FrameworkPropertyMetadata(null));
+
+    public object? CaptionControl
+    {
+        get => (object?)GetValue(CaptionControlProperty);
+        set => SetValue(CaptionControlProperty, value);
+    }
+
     public FluentWindow()
     {
         SetResourceReference(StyleProperty, typeof(FluentWindow));
