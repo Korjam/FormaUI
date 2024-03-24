@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shell;
 
 namespace FormaUI.Controls;
 
@@ -36,6 +37,24 @@ public class FluentWindow : Window
         set => SetValue(BackCommandParameterProperty, value);
     }
 
+    public static readonly DependencyProperty CaptionHeightProperty =
+        DependencyProperty.Register(
+            nameof(CaptionHeight),
+            typeof(int),
+            typeof(FluentWindow),
+            new FrameworkPropertyMetadata(32, OnCaptionHeightChanged));
+
+    private static void OnCaptionHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        ((FluentWindow)d).OnCaptionHeightChanged((int)e.NewValue);
+    }
+
+    public int CaptionHeight
+    {
+        get => (int)GetValue(CaptionHeightProperty);
+        set => SetValue(CaptionHeightProperty, value);
+    }
+
     public FluentWindow()
     {
         SetResourceReference(StyleProperty, typeof(FluentWindow));
@@ -64,4 +83,21 @@ public class FluentWindow : Window
 
     private void OnRestoreWindow(object sender, ExecutedRoutedEventArgs e) =>
         SystemCommands.RestoreWindow(this);
+
+    private void OnCaptionHeightChanged(int newValue)
+    {
+        var chrome = WindowChrome.GetWindowChrome(this);
+        if (chrome is not null)
+        {
+            WindowChrome.SetWindowChrome(this, new WindowChrome
+            {
+                CaptionHeight = newValue,
+                CornerRadius = chrome.CornerRadius,
+                GlassFrameThickness = chrome.GlassFrameThickness,
+                NonClientFrameEdges = chrome.NonClientFrameEdges,
+                ResizeBorderThickness = chrome.ResizeBorderThickness,
+                UseAeroCaptionButtons = chrome.UseAeroCaptionButtons,
+            });
+        }
+    }
 }

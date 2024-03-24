@@ -1,7 +1,8 @@
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:controls="clr-namespace:FormaUI.Controls">
+  xmlns:controls="clr-namespace:FormaUI.Controls"
+  xmlns:converter="clr-namespace:FormaUI.Converters">
 
   <ControlTemplate x:Key="ChromeButtonTemplate" TargetType="{x:Type Button}">
 
@@ -85,6 +86,7 @@
     <Setter Property="BorderBrush" Value="{DynamicResource SurfaceStrokeColorDefaultSnappedWindowsBrush}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="FontFamily" Value="{DynamicResource ControlFontFamily}" />
+    <Setter Property="CaptionHeight" Value="32" />
     <Setter Property="WindowChrome.WindowChrome">
       <Setter.Value>
         <WindowChrome
@@ -103,7 +105,7 @@
             <Grid Margin="{TemplateBinding Padding}">
 
               <Grid.RowDefinitions>
-                <RowDefinition Height="32" />
+                <RowDefinition Height="{TemplateBinding CaptionHeight, Converter={x:Static converter:GridLengthConverter.Default}}" />
                 <RowDefinition Height="*" />
               </Grid.RowDefinitions>
 
